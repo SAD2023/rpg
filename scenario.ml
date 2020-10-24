@@ -40,7 +40,8 @@ let rec print_choices choices =
   | h :: t -> "\n -" ^ h ^ (print_choices t) 
 
 let print_prompt scenario = 
-  print_string (scenario.prompt ^ "\n" ^ (print_choices scenario.choices) ^ "\n")
+  ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
+  ANSITerminal.(print_string [yellow] (print_choices scenario.choices ^ "\n"))
 
 let filter_helper a b = 
   String.uppercase_ascii a = String.uppercase_ascii (fst b)
@@ -109,8 +110,11 @@ let next_scenario decision =
 let return_consequences decision = 
   let tuple_list = 
     List.filter (filter_helper decision) Storage.decision_consequence_list in 
-  let consequence_list =   snd (get_element_out_of_list tuple_list) in 
-  consequence_list
+  let consequence_list =   snd (get_element_out_of_list tuple_list) in
+  if fst (get_element_out_of_list consequence_list) = "end" then  
+    (ANSITerminal.(print_string [magenta] "Your time at Cornell has come to an end. Goodbye! \n");
+     exit 0) else  
+    consequence_list
 
 
 let rec tuple_helper attribute tuple_list = 

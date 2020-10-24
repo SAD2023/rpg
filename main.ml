@@ -25,9 +25,9 @@ let rec play_game player scenario acc =
 
 
 let main () =
-  print_string
-    "\n\nWelcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew..\n";
-  print_endline "What's your name kid?\n";
+  ANSITerminal.(print_string [green] (
+      "\n\nWelcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew..\n"));
+  ANSITerminal.(print_string [blue] "What's your name kid?\n");
   print_string  "\n > ";
   let player = Student.initial (read_line ()) in
   play_game player Scenario.starting_scenario 0

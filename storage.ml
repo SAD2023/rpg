@@ -12,7 +12,10 @@ let decision_consequence_list = [("single", [("gpa", 0.2)]);
                                  ("go to class", [("gpa", 0.2); ("health", -2.0); ("social_life", 4.0)]);
                                  ("fun club", [("health", 10.0)]);                       
                                  ("career club", [("gpa", 0.2); ("brbs", 5.0)]);                    
-                                 ("charity club", [("morality", 6.0)])              
+                                 ("charity club", [("morality", 6.0)]);
+                                 ("study", [("end", 0.0)]);
+                                 ("go trick-or-treating", [("end", 0.0)])
+
                                 ]
 
 
@@ -28,7 +31,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("fun club", "Halloween");
                               ("career club", "Halloween");        
                               ("charity club", "Halloween");
-                              ("study", "Club Meeting");
-                              ("trick-or-treating", "Club Meeting");
+                              ("study", "End");
+                              ("go trick-or-treating", "End");
                               ("club", "TBD");
                               ("hiking", "TBD")]

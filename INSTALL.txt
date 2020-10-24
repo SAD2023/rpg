@@ -1,0 +1,12 @@
+We will assume you already have OCaml and opam installed.
+
+You do not need to install any other external libraries at this moment.
+
+Simply download the code. Run make build to compile.
+
+To play the game:
+  - Run make play from the terminal.
+
+
+If you have any trouble installing it, please contact any of the authors and we 
+will reach out to offer you assistance!
