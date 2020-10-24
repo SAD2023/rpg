@@ -81,3 +81,5 @@ val initial : string -> student
 val print_characteristics : student -> unit
 
 val update_student : student -> float -> float -> float -> float -> float -> student
+
+val judgement: student -> unit

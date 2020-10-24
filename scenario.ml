@@ -47,7 +47,7 @@ let filter_helper a b =
 
 let get_element_out_of_list list = 
   match list with 
-  | [] -> assert false
+  | [] -> raise (InvalidInput "Wrong input")
   | h :: t -> h
 
 
