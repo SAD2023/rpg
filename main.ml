@@ -11,7 +11,9 @@ let rec play_game player scenario =
       4. recall itself *)
   Scenario.print_prompt scenario;
   let (decision: Student.decision) = String.uppercase_ascii (read_line ()) in 
+  let player = Scenario.match_consequences player (return_consequences decision) in 
   let next_scenario = Scenario.next_scenario decision in 
+  Scenario.print_changes decision;
   play_game player next_scenario
 
 

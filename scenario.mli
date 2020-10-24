@@ -49,3 +49,9 @@ val starting_scenario: scenario
 val print_prompt: scenario -> unit
 
 val next_scenario: Student.decision -> scenario
+
+val return_consequences: Student.decision -> (string * float) list
+
+val match_consequences: Student.student -> (string * float) list -> Student.student
+
+val print_changes: Student.decision -> unit

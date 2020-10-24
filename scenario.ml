@@ -106,5 +106,38 @@ let next_scenario decision =
   let next_scenario_element = get_element_out_of_list one_scenario_list in 
   next_scenario_element
 
+let return_consequences decision = 
+  let tuple_list = 
+    List.filter (filter_helper decision) Storage.decision_consequence_list in 
+  let consequence_list =   snd (get_element_out_of_list tuple_list) in 
+  consequence_list
 
+
+let rec tuple_helper attribute tuple_list = 
+  match tuple_list with 
+  | [] -> 0.0
+  | h :: t -> if fst h = attribute then snd h else tuple_helper attribute t 
+
+let match_consequences student consequence_list = 
+  let gpa = tuple_helper "gpa" consequence_list in 
+  let morality = tuple_helper "morality" consequence_list in
+  let brbs = tuple_helper "brbs" consequence_list in
+  let health = tuple_helper "health" consequence_list in
+  let social_life = tuple_helper "social_life" consequence_list in
+  Student.update_student student morality gpa social_life health brbs
+
+
+let print_tuple tuple = 
+  " \n Your " ^ fst tuple ^ " changed by " ^ string_of_float (snd tuple) ^ "!! 
+  \n" 
+
+let rec map_print_helper string_list = 
+  match string_list with 
+  | [] -> ()
+  | h :: t -> print_string h; map_print_helper t 
+
+let print_changes decision = 
+  let consequence_list = return_consequences decision in 
+  let string_list = List.map print_tuple consequence_list in 
+  map_print_helper string_list
 

@@ -15,7 +15,7 @@ type name = string
     and ultimately their final job options. 
 
     Minimum of 0 and a maximum of 100. *)
-type morality = int
+type morality = float
 
 
 (** The GPA of a student. Starts as 0. Increses when given a scenario and
@@ -37,7 +37,7 @@ type gpa = float
 
     Minimum of 0 and a maximum of 100. 
 *)
-type social_life = int
+type social_life = float
 
 
 (** This is a reflection of how healthy a student is (mental and physical). 
@@ -48,7 +48,7 @@ type social_life = int
 
     Minimum of 0 and a maximum of 100. 
 *)
-type health = int
+type health = float
 
 (** This shows how much a student is ballin. Increases when given a scenario
     and they pick the cheaper option (e.g. going to a dining hall and using
@@ -57,7 +57,7 @@ type health = int
 
     Minimum of 0 and a maximum of 100. 
 *)
-type brbs = int
+type brbs = float
 
 
 (**  
@@ -79,3 +79,5 @@ val initial : string -> student
 (** [print_characteristics] prints out the characteristics (ex: gpa, morality,
     brbs, health etc) for a given student. *)
 val print_characteristics : student -> unit
+
+val update_student : student -> float -> float -> float -> float -> float -> student
