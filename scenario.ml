@@ -39,4 +39,4 @@ let rec print_choices choices =
   | h :: t -> "\n -" ^ h ^ (print_choices t) 
 
 let print_prompt scenario = 
-  print_string (scenario.prompt ^ "\n" ^ (print_choices scenario.choices))
+  print_string (scenario.prompt ^ "\n" ^ (print_choices scenario.choices) ^ "\n")
