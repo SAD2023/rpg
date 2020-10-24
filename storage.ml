@@ -26,6 +26,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("help them home", "First Day");
                               ("leave without them", "First Day");
                               ("stay in", "First Day");
+                              ("look at textbook", "First day");
                               ("snooze", "Clubfest");
                               ("go to class", "Clubfest");
                               ("fun club", "Halloween");

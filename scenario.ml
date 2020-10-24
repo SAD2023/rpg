@@ -84,7 +84,7 @@ Your alarm buzzes  WAAAY too early. Do you snooze or go to your first class?"
 let clubfest = 
   make_scenario "Clubfest" "It’s Clubfest! Choose a club and decide whether 
     or not you actually show up to the first meeting here:" 
-    ["Fun Club"; "Career Club"; "Charitable Club"] []
+    ["Fun Club"; "Career Club"; "Charity Club"] []
 
 let halloween = make_scenario "Halloween" "It’s Halloween! You want to go 
 trick-or-treating, but you have a prelim the next morning. Do you…" 
