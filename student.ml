@@ -44,3 +44,7 @@ let print_characteristics student =
   print_string ("Social Life: " ^ string_of_int student.social_life ^ "\n");
   print_string ("Health: " ^ string_of_int student.health ^ "\n");
   print_string ("BRBs: " ^ string_of_int student.brbs ^ "\n");
+
+  (** 
+     let update_student student morality gpa social_lfe health brbs = 0 in 0
+  *)

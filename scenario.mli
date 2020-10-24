@@ -48,3 +48,4 @@ val starting_scenario: scenario
 
 val print_prompt: scenario -> unit
 
+val next_scenario: Student.decision -> scenario

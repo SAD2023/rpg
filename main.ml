@@ -9,12 +9,11 @@ let rec play_game player scenario =
       2. take input based on scenario
       3. update student based on input
       4. recall itself *)
-  Scenario.print_prompt scenario
-(*
-  let (decision: Student.decision) = (read_line ()) in ()
-  match decision with 
-  | "" -> assert false
-*)
+  Scenario.print_prompt scenario;
+  let (decision: Student.decision) = String.uppercase_ascii (read_line ()) in 
+  let next_scenario = Scenario.next_scenario decision in 
+  play_game player next_scenario
+
 
 
 
