@@ -79,8 +79,8 @@ let judgement student =
 
   print_string "Let's see how rich your dad is. \n";
   if student.brbs <= 50.0 then print_string (
-      "You're broke. Get a job. You only have " ^ (string_of_float student.brbs) ^ " left. \n \n")
-  else print_string ("You're ballin! You have " ^ (string_of_float student.brbs) ^ " left. \n \n");
+      "You're broke. Get a job. You only have " ^ (string_of_float student.brbs) ^ " brbs left. \n \n")
+  else print_string ("You're ballin! You have " ^ (string_of_float student.brbs) ^ " brbs left. \n \n");
 
 
   print_string "Got any friends? \n";

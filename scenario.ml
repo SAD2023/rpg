@@ -130,10 +130,24 @@ let match_consequences student consequence_list =
   let social_life = tuple_helper "social_life" consequence_list in
   Student.update_student student morality gpa social_life health brbs
 
+(** [change_tuple_helper] returns " increased by "  if the second value in
+    a given tuple is positive, else returns " decreased by "  *)
+let change_tuple_helper tuple =
+  if snd tuple > 0. 
+  then " increased by " 
+  else " decreased by "
 
-let print_tuple tuple = 
-  " \n Your " ^ fst tuple ^ " changed by " ^ string_of_float (snd tuple) ^ "!! 
+let print_tuple tuple =  
+  if fst tuple = "gpa" then
+    " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ string_of_float (snd tuple) ^ "!! 
   \n" 
+  else
+    " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
+    string_of_int (abs (int_of_float (snd tuple))) ^ "!! 
+  \n" (* Prints an int so that there is no situation when it would print
+         out "Your social life changed by 5.!!" with a period and then exclamation 
+         points which looks weird *)
+
 
 let rec map_print_helper string_list = 
   match string_list with 
