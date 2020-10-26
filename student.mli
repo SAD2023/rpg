@@ -72,14 +72,25 @@ type brbs = float
 
 *)
 
+(** [decision] is the decision that the user makes during a given scenario.
+*)
 type decision = string
 
+(** [initial name] takes in a name (a string) and creates a new student with 
+    that name, plus default values of 0.0 for gpa, morality, brbs, health, 
+    social_life, and 18 for the age*)
 val initial : string -> student
 
 (** [print_characteristics] prints out the characteristics (ex: gpa, morality,
     brbs, health etc) for a given student. *)
 val print_characteristics : student -> unit
 
+(** [update_student student morality gpa social_life health brbs] takes in
+    a student and creates a new student with the previous student's attributes
+    added to the attributes given. *)
 val update_student : student -> float -> float -> float -> float -> float -> student
 
+(** [judgement student] takes in a student and prints out a string judging their 
+    various attributes, depending on the actions that they have taken, and if they 
+    are ethical or not *)
 val judgement: student -> unit
