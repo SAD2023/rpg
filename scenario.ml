@@ -95,6 +95,7 @@ However, your friend invited you to go hiking. What do you do?"
     ["Go to club meeting"; "Go hiking"] []
 
 
+(** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      first_day; clubfest; halloween; club_meeting]
 
@@ -110,7 +111,7 @@ let next_scenario decision =
 let return_consequences decision = 
   let tuple_list = 
     List.filter (filter_helper decision) Storage.decision_consequence_list in 
-  let consequence_list =   snd (get_element_out_of_list tuple_list) in
+  let consequence_list =  snd (get_element_out_of_list tuple_list) in
   if fst (get_element_out_of_list consequence_list) = "end" then  
     (ANSITerminal.(print_string [magenta] "Your time at Cornell has come to an end. Goodbye! \n");
      exit 0) else  
