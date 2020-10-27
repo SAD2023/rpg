@@ -88,7 +88,7 @@ let clubfest =
 
 let halloween = make_scenario "Halloween" "It’s Halloween! You want to go 
 trick-or-treating, but you have a prelim the next morning. Do you…" 
-    ["Go Trick-or-Treating"; "Study"] []
+    ["Go Trick or Treating"; "Study"] []
 
 let club_meeting = make_scenario "Club Meeting" "Your club has a meeting! 
 However, your friend invited you to go hiking. What do you do?" 

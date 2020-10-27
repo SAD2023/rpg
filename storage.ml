@@ -14,7 +14,7 @@ let decision_consequence_list = [("single", [("gpa", 0.2)]);
                                  ("career club", [("gpa", 0.2); ("brbs", 5.0)]);                    
                                  ("charity club", [("morality", 6.0)]);
                                  ("study", [("end", 0.0)]);
-                                 ("go trick-or-treating", [("end", 0.0)])
+                                 ("go trick or treating", [("end", 0.0)])
 
                                 ]
 
@@ -33,6 +33,6 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("career club", "Halloween");        
                               ("charity club", "Halloween");
                               ("study", "End");
-                              ("go trick-or-treating", "End");
+                              ("go trick or treating", "End");
                               ("club", "TBD");
                               ("hiking", "TBD")]
