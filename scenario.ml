@@ -18,6 +18,9 @@ type scenario = {
 
 
 (**TODO *)
+(** [match_input_to_input] matches a user's input; if it matches a valid
+    decision pertaining to the given scenario, then it is a valid input but 
+    if it isn't valid, it raises an exception. *)
 let rec match_input_to_choice choices input =
   match choices with 
   | [] -> raise (InvalidInput input)
@@ -34,24 +37,32 @@ let starting_scenario = {
 
 type next_scenarios = scenario list
 
+(** [print_choices] prints the choices pertaining to a given scenario to 
+    the terminal. *)
 let rec print_choices choices =
   match choices with 
   | [] -> ""
   | h :: t -> "\n -" ^ h ^ (print_choices t) 
 
+(** [print_prompt] prints the prompt pertaining to a given scenario to 
+    the terminal. *)
 let print_prompt scenario = 
   ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
   ANSITerminal.(print_string [yellow] (print_choices scenario.choices ^ "\n"))
 
+(**[filter_helper] is a helper function to filter. *)
 let filter_helper a b = 
   String.uppercase_ascii a = String.uppercase_ascii (fst b)
 
+(** [get_element_out_of_list] exerts the head of a list; if the list 
+    is empty, an exception is raised. *)
 let get_element_out_of_list list = 
   match list with 
   | [] -> raise (InvalidInput "Wrong input")
   | h :: t -> h
 
-
+(** [make_scenario] takes in types name, prompt, choices, and hidden_choices
+    and produces a new scenario type. *)
 let make_scenario name prompt choices hidden_choices =
   {
     name = name;
