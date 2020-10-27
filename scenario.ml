@@ -117,7 +117,9 @@ let return_consequences decision =
      exit 0) else  
     consequence_list
 
-
+(**[tuple_helper] is a helper function that extracts the second value of
+   the tuple of (attribute, change in attribute) to determine by how much to
+   change an atrribute(s) when updating the student. *)
 let rec tuple_helper attribute tuple_list = 
   match tuple_list with 
   | [] -> 0.0
@@ -138,6 +140,9 @@ let change_tuple_helper tuple =
   then " increased by " 
   else " decreased by "
 
+(** [print_tuple] prints a message to the user which indicates by how much 
+    an atrribute of theirs has changed given the tuple of 
+    (attribute, change in attribute). *)
 let print_tuple tuple =  
   if fst tuple = "gpa" then
     " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ string_of_float (snd tuple) ^ "!! 
@@ -149,7 +154,8 @@ let print_tuple tuple =
          out "Your social life changed by 5.!!" with a period and then exclamation 
          points which looks weird *)
 
-
+(** [map_print_helper] is a helper function to print_changes which takes
+    in a string list and prints out all of the values in the list.*)
 let rec map_print_helper string_list = 
   match string_list with 
   | [] -> ()
