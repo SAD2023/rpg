@@ -69,7 +69,7 @@ val return_consequences: Student.decision -> (string * float) list
 val match_consequences: Student.student -> (string * float) list -> Student.student
 
 
-(** [print_changes decision] takes in a given desicion and prints the values
+(** [print_changes decision] takes in a given decision and prints the values
     of the changes to the terminal. *)
 
 val print_changes: Student.decision -> unit
