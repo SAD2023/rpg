@@ -1,4 +1,14 @@
 open Storage 
+open Friend
+
+let jack = make_friend "Jack" 0 0
+
+exception Unimplemented 
+let potential_friend_list = []  
+
+let new_friend_finder = function
+  | [] -> jack
+  | h :: t -> h 
 
 type prompt = string
 type choice = string
@@ -153,7 +163,8 @@ let match_consequences student consequence_list =
   let brbs = tuple_helper "brbs" consequence_list in
   let health = tuple_helper "health" consequence_list in
   let social_life = tuple_helper "social_life" consequence_list in
-  Student.update_student student morality gpa social_life health brbs
+  let friend = new_friend_finder potential_friend_list in 
+  Student.update_student student morality gpa social_life health brbs friend
 
 (** [change_tuple_helper] returns " increased by "  if the second value in
     a given tuple is positive, else returns " decreased by "  *)

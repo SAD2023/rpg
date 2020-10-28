@@ -1,4 +1,4 @@
-
+open Friend
 
 type age = int
 
@@ -24,6 +24,7 @@ type student = {
   social_life: social_life;
   health: health;
   brbs: brbs;
+  friends: Friend.friend list;
 }
 
 let initial name = 
@@ -35,6 +36,7 @@ let initial name =
     social_life= 0.0;
     health = 0.0;
     brbs= 0.0;
+    friends= [];
   }
 
 let print_characteristics student = 
@@ -48,7 +50,7 @@ let print_characteristics student =
 
 
 
-let update_student student morality gpa social_life health brbs = 
+let update_student student morality gpa social_life health brbs friends = 
   {
     name = student.name;
     age = student.age;
@@ -57,6 +59,7 @@ let update_student student morality gpa social_life health brbs =
     social_life = student.social_life +. social_life;
     health = student.health +. health;
     brbs = student.brbs +. brbs;
+    friends = friends :: student.friends;
   }
 
 

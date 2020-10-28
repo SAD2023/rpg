@@ -16,3 +16,7 @@ type closeness = int
     integer from 1 - 100. *)
 type worth = int
 
+
+val make_friend: string -> closeness -> worth -> friend
+
+

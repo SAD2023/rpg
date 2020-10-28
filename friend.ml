@@ -2,7 +2,6 @@
 
 type closeness = int
 
-
 type worth = int
 
 type friend = {
@@ -11,3 +10,8 @@ type friend = {
   worth: worth;
 }
 
+let make_friend name closeness worth = {
+  name = name;
+  closeness = closeness;
+  worth = worth;
+}
