@@ -15,7 +15,6 @@ let decision_consequence_list = [("single", [("gpa", 0.2)]);
                                  ("charity club", [("morality", 6.0)]);
                                  ("study", [("end", 0.0)]);
                                  ("go trick or treating", [("end", 0.0)])
-
                                 ]
 
 

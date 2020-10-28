@@ -54,14 +54,14 @@ val print_prompt: scenario -> unit
 
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
-val next_scenario: Student.decision -> scenario
+val next_scenario: Student.decision -> choices -> scenario
 
 
 (** [return_conseses decision] returns a list of the consequences (changes of 
     a player's attributes) based on the decision they made. If it is the end of
     the game, then "Your time at Cornell has come to an end. Goodbye! \n" is
     printed, and the game terminates *)
-val return_consequences: Student.decision -> (string * float) list
+val return_consequences: Student.decision -> choices -> (string * float) list
 
 (** [return_consequences student consequence_list] takes in a student and
     a list of (attribute * float) tuples. It then takes in the tuples that are
@@ -72,4 +72,7 @@ val match_consequences: Student.student -> (string * float) list -> Student.stud
 (** [print_changes decision] takes in a given decision and prints the values
     of the changes to the terminal. *)
 
-val print_changes: Student.decision -> unit
+val print_changes: Student.decision -> choices -> unit
+
+(**Returns the choices of a given scenario *)
+val return_choices: scenario -> choices 

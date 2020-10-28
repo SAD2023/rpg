@@ -44,6 +44,10 @@ let rec print_choices choices =
   | [] -> ""
   | h :: t -> "\n -" ^ h ^ (print_choices t) 
 
+
+let return_choices scenario = 
+  scenario.choices
+
 (** [print_prompt] prints the prompt pertaining to a given scenario to 
     the terminal. *)
 let print_prompt scenario = 
@@ -110,23 +114,30 @@ However, your friend invited you to go hiking. What do you do?"
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      first_day; clubfest; halloween; club_meeting]
 
-let next_scenario decision = 
-  let tuple_list = 
-    List.filter (filter_helper decision) Storage.decision_scenario_name in
-  let scenario_name = snd (get_element_out_of_list tuple_list) in
-  let one_scenario_list = List.filter ( fun x -> x.name = scenario_name)
-      scenario_list in 
-  let next_scenario_element = get_element_out_of_list one_scenario_list in 
-  next_scenario_element
+(** [next_scenario decision] takes in a Student.decision and then prints out
+    the next scenario that corresponds to it *)
+let next_scenario decision choices = 
+  if List.mem decision choices then 
+    let tuple_list = 
+      List.filter (filter_helper decision) Storage.decision_scenario_name in
+    let scenario_name = snd (get_element_out_of_list tuple_list) in
+    let one_scenario_list = List.filter ( fun x -> x.name = scenario_name)
+        scenario_list in 
+    let next_scenario_element = get_element_out_of_list one_scenario_list in 
+    next_scenario_element 
+  else raise (InvalidInput decision)
 
-let return_consequences decision = 
-  let tuple_list = 
-    List.filter (filter_helper decision) Storage.decision_consequence_list in 
-  let consequence_list =  snd (get_element_out_of_list tuple_list) in
-  if fst (get_element_out_of_list consequence_list) = "end" then  
-    (ANSITerminal.(print_string [magenta] "Your time at Cornell has come to an end. Goodbye! \n");
-     exit 0) else  
-    consequence_list
+
+let return_consequences decision choices = 
+  if List.mem decision choices then 
+    let tuple_list = 
+      List.filter (filter_helper decision) Storage.decision_consequence_list in 
+    let consequence_list =  snd (get_element_out_of_list tuple_list) in
+    if fst (get_element_out_of_list consequence_list) = "end" then  
+      (ANSITerminal.(print_string [magenta] "Your time at Cornell has come to an end. Goodbye! \n");
+       exit 0) else  
+      consequence_list
+  else raise (InvalidInput decision)
 
 (**[tuple_helper] is a helper function that extracts the second value of
    the tuple of (attribute, change in attribute) to determine by how much to
@@ -172,8 +183,8 @@ let rec map_print_helper string_list =
   | [] -> ()
   | h :: t -> print_string h; map_print_helper t 
 
-let print_changes decision = 
-  let consequence_list = return_consequences decision in 
+let print_changes decision choices = 
+  let consequence_list = return_consequences decision choices in 
   let string_list = List.map print_tuple consequence_list in 
   map_print_helper string_list
 
