@@ -20,3 +20,4 @@ type worth = int
 val make_friend: string -> closeness -> worth -> friend
 
 
+val get_name: friend -> string

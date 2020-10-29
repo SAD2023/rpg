@@ -1,21 +1,21 @@
 open Storage 
 open Friend
 
-let jack = make_friend "Jack" 0 0
+let jack = make_friend "Jack" 5 0
+let nicola = make_friend "Nicola" 5 0
+let gandhi = make_friend "Gandhi" 5 0
+let maximillian = make_friend "Maximillian the III" 5 0
+let lirinda = make_friend "Lirinda" 5 0 
+let sam = make_friend "Sam" 5 0
+let brad = make_friend "Brad" 5 0
+let potential_friend_list = [jack; nicola; gandhi; maximillian; lirinda; sam; brad]  
 
 exception Unimplemented 
-let potential_friend_list = []  
-
-let new_friend_finder = function
-  | [] -> jack
-  | h :: t -> h 
-
 type prompt = string
 type choice = string
 type hidden_choice = choice
 type choices = choice list
 type hidden_choices = hidden_choice list
-
 exception InvalidInput of choice
 
 type scenario = {
@@ -24,6 +24,48 @@ type scenario = {
   choices: choice list;
   hidden_choices : hidden_choice list;
 }
+(** [get_element_out_of_list] exerts the head of a list; if the list 
+    is empty, an exception is raised. *)
+let get_element_out_of_list list = 
+  match list with 
+  | [] -> raise (InvalidInput "Wrong input")
+  | h :: t -> h
+
+(**[tuple_friend_helper] is a helper function that extracts the first value of
+   the tuple of (decision, friend name) to make a list of decision*)
+let rec tuple_friend_helper tuple_list acc = 
+  match tuple_list with 
+  | [] -> acc
+  | h :: t -> tuple_friend_helper t (fst h :: acc) 
+
+let match_decision_to_friend (decision:string) =
+  let decision_list = tuple_friend_helper Storage.scenario_friends_list [] in 
+  let is_this_a_friend_decision = List.mem decision decision_list in 
+  if is_this_a_friend_decision then 
+    let list_of_one_friend = List.filter (fun x -> fst x  = decision) Storage.scenario_friends_list in 
+    snd (get_element_out_of_list list_of_one_friend)
+  else "NONE"
+
+
+let give_friend name_of_friend = 
+  try 
+    let friend_in_list = List.filter (fun x -> (Friend.get_name x) = name_of_friend) potential_friend_list in  
+    friend_in_list
+  with InvalidInput "Wrong input" -> 
+    []
+
+let main_friend_function decision = 
+  let name_of_friend = match_decision_to_friend decision in 
+  let friend_list = give_friend name_of_friend in 
+  friend_list
+
+let new_friend_finder = function
+  | [] -> jack
+  | h :: t -> h 
+
+
+
+
 
 
 
@@ -68,12 +110,7 @@ let print_prompt scenario =
 let filter_helper a b = 
   String.uppercase_ascii a = String.uppercase_ascii (fst b)
 
-(** [get_element_out_of_list] exerts the head of a list; if the list 
-    is empty, an exception is raised. *)
-let get_element_out_of_list list = 
-  match list with 
-  | [] -> raise (InvalidInput "Wrong input")
-  | h :: t -> h
+
 
 (** [make_scenario] takes in types name, prompt, choices, and hidden_choices
     and produces a new scenario type. *)
@@ -137,7 +174,7 @@ let next_scenario decision choices =
     next_scenario_element 
   else raise (InvalidInput decision)
 
-
+(**Takes a decision and returns a list of consequences in the form [("gpa", 0.2)] *)
 let return_consequences decision choices = 
   if List.mem decision choices then 
     let tuple_list = 
@@ -157,13 +194,15 @@ let rec tuple_helper attribute tuple_list =
   | [] -> 0.0
   | h :: t -> if fst h = attribute then snd h else tuple_helper attribute t 
 
-let match_consequences student consequence_list = 
+(**Takes a student and a list of consequences in the form [("gpa", 0.2)] and 
+   creates a new student instance. *)
+let match_consequences student consequence_list decision = 
   let gpa = tuple_helper "gpa" consequence_list in 
   let morality = tuple_helper "morality" consequence_list in
   let brbs = tuple_helper "brbs" consequence_list in
   let health = tuple_helper "health" consequence_list in
   let social_life = tuple_helper "social_life" consequence_list in
-  let friend = new_friend_finder potential_friend_list in 
+  let friend = main_friend_function decision in 
   Student.update_student student morality gpa social_life health brbs friend
 
 (** [change_tuple_helper] returns " increased by "  if the second value in
@@ -179,11 +218,11 @@ let change_tuple_helper tuple =
 let print_tuple tuple =  
   if fst tuple = "gpa" then
     " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ string_of_float (snd tuple) ^ "!! 
-  \n" 
+  " 
   else
     " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
     string_of_int (abs (int_of_float (snd tuple))) ^ "!! 
-  \n" (* Prints an int so that there is no situation when it would print
+  " (* Prints an int so that there is no situation when it would print
          out "Your social life changed by 5.!!" with a period and then exclamation 
          points which looks weird *)
 
@@ -196,6 +235,9 @@ let rec map_print_helper string_list =
 
 let print_changes decision choices = 
   let consequence_list = return_consequences decision choices in 
-  let string_list = List.map print_tuple consequence_list in 
-  map_print_helper string_list
+  let string_list = List.map print_tuple consequence_list in
+  let new_friend = match_decision_to_friend decision in  
+  map_print_helper string_list;
+  if new_friend = "NONE" then () else
+    print_string("\n You gained a new friend: " ^ new_friend ^ "\n \n")
 

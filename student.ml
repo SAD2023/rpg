@@ -59,12 +59,12 @@ let update_student student morality gpa social_life health brbs friends =
     social_life = student.social_life +. social_life;
     health = student.health +. health;
     brbs = student.brbs +. brbs;
-    friends = friends :: student.friends;
+    friends = friends @ student.friends;
   }
 
 
 let judgement student = 
-  print_string " \n Hmm... time to judge your character! \n";
+  print_string "\nHmm... time to judge your character! \n";
   print_string "First, let's look at your gpa. ";
   if student.gpa <= 1.5 then print_string ("ew your gpa is " ^ (string_of_float student.gpa) ^ " Move to info sci \n \n") 
   else print_string ("wow your gpa is " ^ (string_of_float student.gpa) ^  " Walker White would be proud! \n \n");

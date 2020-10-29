@@ -15,3 +15,6 @@ let make_friend name closeness worth = {
   closeness = closeness;
   worth = worth;
 }
+
+let get_name friend =
+  friend.name

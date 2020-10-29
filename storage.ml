@@ -35,3 +35,14 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("go trick or treating", "End");
                               ("club", "TBD");
                               ("hiking", "TBD")]
+
+let scenario_friends_list = [
+  ("DOUBLE", "Sam");
+  ("O WEEK", "Brad");
+  ("GO TO CLASS", "Jack");
+  ("HELP THEM HOME", "Nicola");
+  ("FUN CLUB", "Lirinda");
+  ("CAREER CLUB", "Maximillian the III");
+  ("CHARITY CLUB", "Gandhi")
+
+]

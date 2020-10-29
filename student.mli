@@ -88,7 +88,7 @@ val print_characteristics : student -> unit
 (** [update_student student morality gpa social_life health brbs] takes in
     a student and creates a new student with the previous student's attributes
     added to the attributes given. *)
-val update_student : student -> float -> float -> float -> float -> float -> Friend.friend -> student
+val update_student : student -> float -> float -> float -> float -> float -> Friend.friend list -> student
 
 (** [judgement student] takes in a student and prints out a string judging their 
     various attributes, depending on the actions that they have taken, and if they 

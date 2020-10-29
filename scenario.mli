@@ -66,7 +66,7 @@ val return_consequences: Student.decision -> choices -> (string * float) list
 (** [return_consequences student consequence_list] takes in a student and
     a list of (attribute * float) tuples. It then takes in the tuples that are
     changed (if any) and then returns a new studnet based on the changes*)
-val match_consequences: Student.student -> (string * float) list -> Student.student
+val match_consequences: Student.student -> (string * float) list -> Student.decision -> Student.student
 
 
 (** [print_changes decision] takes in a given decision and prints the values
@@ -76,3 +76,5 @@ val print_changes: Student.decision -> choices -> unit
 
 (**Returns the choices of a given scenario *)
 val return_choices: scenario -> choices 
+
+val main_friend_function: Student.decision -> Friend.friend list

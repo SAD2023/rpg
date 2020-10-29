@@ -16,7 +16,7 @@ let rec play_game player scenario acc =
   let (decision: Student.decision) = String.uppercase_ascii (read_line ()) in 
 
   try 
-    let player = Scenario.match_consequences player (return_consequences decision choices) in 
+    let player = Scenario.match_consequences player (return_consequences decision choices) decision in 
     let next_scenario = Scenario.next_scenario decision choices in 
     Scenario.print_changes decision choices;
     play_game player next_scenario (acc+1)
