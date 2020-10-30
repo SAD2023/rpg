@@ -45,6 +45,11 @@ let rec print_string_list = function
   | [] -> ""
   | h :: t -> h ^ ", " ^ print_string_list t
 
+(** [get_list_of_names] returns all of the names in a list of friends *)
+let rec get_list_of_names = function
+  | [] -> []
+  | h :: t -> Friend.get_name h :: get_list_of_names t
+
 let print_characteristics student = 
   print_string ("Name: " ^ student.name ^ "\n");
   print_string ("Age: " ^ string_of_int student.age ^ "\n");
@@ -53,7 +58,7 @@ let print_characteristics student =
   print_string ("Social Life: " ^ string_of_float student.social_life ^ "\n");
   print_string ("Health: " ^ string_of_float student.health ^ "\n");
   print_string ("BRBs: " ^ string_of_float student.brbs ^ "\n");
-  print_string ("Friends: " ^ print_string_list student.friends)
+  print_string ("Friends: " ^ print_string_list (get_list_of_names student.friends))
 
 
 
