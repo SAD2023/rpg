@@ -39,6 +39,12 @@ let initial name =
     friends= [];
   }
 
+(** [print_string_list] prints out the elements of a string list. with a
+    comma and a space in between each element *)
+let rec print_string_list = function
+  | [] -> ""
+  | h :: t -> h ^ ", " ^ print_string_list t
+
 let print_characteristics student = 
   print_string ("Name: " ^ student.name ^ "\n");
   print_string ("Age: " ^ string_of_int student.age ^ "\n");
@@ -46,7 +52,10 @@ let print_characteristics student =
   print_string ("GPA: " ^ string_of_float student.gpa ^ "\n");
   print_string ("Social Life: " ^ string_of_float student.social_life ^ "\n");
   print_string ("Health: " ^ string_of_float student.health ^ "\n");
-  print_string ("BRBs: " ^ string_of_float student.brbs ^ "\n")
+  print_string ("BRBs: " ^ string_of_float student.brbs ^ "\n");
+  print_string ("Friends: " ^ print_string_list student.friends)
+
+
 
 
 
