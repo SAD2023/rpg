@@ -27,10 +27,11 @@ let rec play_game player scenario acc =
 
 
 let main () =
+  ANSITerminal.(print_string [red] (
+      "\n
+      Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.."));
   ANSITerminal.(print_string [green] (
       "\n
-      Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew..
-
       You're about to start your college life! From now on, you make your own 
       decisions and your decisions have consequences! 
 
