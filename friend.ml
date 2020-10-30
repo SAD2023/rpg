@@ -16,5 +16,6 @@ let make_friend name closeness worth = {
   worth = worth;
 }
 
+(**takes a friend instance and returns the name *)
 let get_name friend =
   friend.name

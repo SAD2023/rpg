@@ -38,6 +38,7 @@ let rec tuple_friend_helper tuple_list acc =
   | [] -> acc
   | h :: t -> tuple_friend_helper t (fst h :: acc) 
 
+(**Takes a decision and returns the string of the name of a friend or "NONE" *)
 let match_decision_to_friend (decision:string) =
   let decision_list = tuple_friend_helper Storage.scenario_friends_list [] in 
   let is_this_a_friend_decision = List.mem decision decision_list in 
@@ -46,7 +47,7 @@ let match_decision_to_friend (decision:string) =
     snd (get_element_out_of_list list_of_one_friend)
   else "NONE"
 
-
+(**takes a string of the name of a friend and returns a list with one friend instance *)
 let give_friend name_of_friend = 
   try 
     let friend_in_list = List.filter (fun x -> (Friend.get_name x) = name_of_friend) potential_friend_list in  
@@ -54,22 +55,12 @@ let give_friend name_of_friend =
   with InvalidInput "Wrong input" -> 
     []
 
+(**takes a decision string and returns a list with one friend instance *)
 let main_friend_function decision = 
   let name_of_friend = match_decision_to_friend decision in 
   let friend_list = give_friend name_of_friend in 
   friend_list
 
-let new_friend_finder = function
-  | [] -> jack
-  | h :: t -> h 
-
-
-
-
-
-
-
-(**TODO *)
 (** [match_input_to_input] matches a user's input; if it matches a valid
     decision pertaining to the given scenario, then it is a valid input but 
     if it isn't valid, it raises an exception. *)
@@ -233,6 +224,8 @@ let rec map_print_helper string_list =
   | [] -> ()
   | h :: t -> print_string h; map_print_helper t 
 
+(**takes a decision and choices and prints changes to all attributes,
+   including new friends! *)
 let print_changes decision choices = 
   let consequence_list = return_consequences decision choices in 
   let string_list = List.map print_tuple consequence_list in

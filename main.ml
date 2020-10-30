@@ -28,20 +28,21 @@ let rec play_game player scenario acc =
 
 let main () =
   ANSITerminal.(print_string [green] (
-      "\n\nWelcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew..\n
+      "\n
+      Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew..
 
       You're about to start your college life! From now on, you make your own 
-      decisions and your decisions have consequences! \n
+      decisions and your decisions have consequences! 
 
-      People will judge you on the following qualities: \n
+      People will judge you on the following qualities: 
 
-      Morality: how ethical you are. \n
+      Morality: how ethical you are. 
 
-      Social Life: how smashed you get on the weekends \n
+      Social Life: how smashed you get on the weekends 
 
-      Health: what is a broccoli? Have you seen it? \n
+      Health: what is a broccoli? Have you seen it? 
 
-      BRBS: do you own a canada goose jacket and a gucci belt? \n
+      BRBS: do you own a canada goose jacket and a gucci belt? 
 
       And most importantly, GPA: your entire self-worth, basically. \n
       "));
