@@ -81,6 +81,10 @@ type decision = string
     social_life, and 18 for the age*)
 val initial : string -> student
 
+(** [make_student] creates a new student with the given parameters, which are
+    inputted by the user *)
+val make_student : string -> int -> float -> float -> float -> float -> float -> Friend.friend list -> student
+
 (** [print_characteristics] prints out the characteristics (ex: gpa, morality,
     brbs, health etc) for a given student. *)
 val print_characteristics : student -> unit

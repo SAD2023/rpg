@@ -39,6 +39,19 @@ let initial name =
     friends= [];
   }
 
+(** [make_student] creates a new student with the given parameters *)
+let make_student name age morality gpa social_life health brbs friends =
+  {
+    name = name;
+    age = age;
+    morality = morality;
+    gpa = gpa;
+    social_life =social_life;
+    health = health;
+    brbs = brbs;
+    friends = friends;
+  }
+
 (** [print_string_list] prints out the elements of a string list. with a
     comma and a space in between each element *)
 let rec print_string_list = function
@@ -62,8 +75,6 @@ let print_characteristics student =
 
 
 
-
-
 let update_student student morality gpa social_life health brbs friends = 
   {
     name = student.name;
@@ -73,7 +84,7 @@ let update_student student morality gpa social_life health brbs friends =
     social_life = student.social_life +. social_life;
     health = student.health +. health;
     brbs = student.brbs +. brbs;
-    friends = friends @ student.friends;
+    friends = student.friends @ friends;
   }
 
 
