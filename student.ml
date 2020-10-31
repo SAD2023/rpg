@@ -73,17 +73,23 @@ let print_characteristics student =
   print_string ("BRBs: " ^ string_of_float student.brbs ^ "\n");
   print_string ("Friends: " ^ print_string_list (get_list_of_names student.friends))
 
+(**[bounds] checks to see if a value is between 0.0 and a given upper bound. If it is not, 
+   then it will return the upper or lower bound that it exceeding *)
+let bounds upper attribute =
+  if attribute > upper then upper 
+  else if attribute < 0.0 then 0.0 
+  else attribute
 
 
 let update_student student morality gpa social_life health brbs friends = 
   {
     name = student.name;
     age = student.age;
-    morality = student.morality +. morality;
-    gpa = student.gpa +. gpa;
-    social_life = student.social_life +. social_life;
-    health = student.health +. health;
-    brbs = student.brbs +. brbs;
+    morality = bounds 100.0 (student.morality +. morality);
+    gpa = bounds 4.0 (student.gpa +. gpa);
+    social_life = bounds 100.0 (student.social_life +. social_life);
+    health = bounds 100.0 (student.health +. health);
+    brbs = bounds 100.0 (student.brbs +. brbs);
     friends = student.friends @ friends;
   }
 
