@@ -1,7 +1,8 @@
 
 open Student
 
-let decision_consequence_list = [("single", [("gpa", 0.2)]);
+let decision_consequence_list = [("test", [("end", 0.0)]);
+                                 ("single", [("gpa", 0.2)]);
                                  ("double", [("brb", 2.0); ("social_life", 5.0)]);
                                  ("o Week", [("social_life", 5.0); ("health", 3.0)]);
                                  ("stay in", [("social_life",  -2.0); ("health", -2.0)]);
@@ -122,6 +123,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("snooze", "Clubfest");
                               ("go to class", "Clubfest");
                               ("fun club", "Halloween");
+                              ("test", "Canada Goose");
                               ("career club", "Halloween");        
                               ("charity club", "Halloween");
                               ("study", "study partner");

@@ -1,5 +1,6 @@
 open Storage 
 open Friend
+open Student
 
 let jack = make_friend "Jack" 5 0
 let nicola = make_friend "Nicola" 5 0
@@ -74,7 +75,7 @@ let starting_scenario = {
   name = "fresh start";
   prompt = "You are about to move into the low rises. Make sure you're ready 
   for a riot. Stay strapped at all times. Do you want a single or double?";
-  choices = ["double"; "single"];
+  choices = ["double"; "single"; "test"];
   hidden_choices = ["Triple"; "Live with happy dave"];
 }
 
@@ -313,13 +314,13 @@ let next_scenario decision choices =
   else raise (InvalidInput decision)
 
 (**Takes a decision and returns a list of consequences in the form [("gpa", 0.2)] *)
-let return_consequences decision choices = 
+let return_consequences decision choices player = 
   if List.mem decision choices then 
     let tuple_list = 
       List.filter (filter_helper decision) Storage.decision_consequence_list in 
     let consequence_list =  snd (get_element_out_of_list tuple_list) in
     if fst (get_element_out_of_list consequence_list) = "end" then  
-      (ANSITerminal.(print_string [magenta] "Your time at Cornell has come to an end. Goodbye! \n");
+      (Student.final_judgement player;
        exit 0) else  
       consequence_list
   else raise (InvalidInput decision)
@@ -373,8 +374,8 @@ let rec map_print_helper string_list =
 
 (**takes a decision and choices and prints changes to all attributes,
    including new friends! *)
-let print_changes decision choices = 
-  let consequence_list = return_consequences decision choices in 
+let print_changes decision choices player = 
+  let consequence_list = return_consequences decision choices player in 
   let string_list = List.map print_tuple consequence_list in
   let new_friend = match_decision_to_friend decision in  
   map_print_helper string_list;

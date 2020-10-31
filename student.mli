@@ -98,3 +98,5 @@ val update_student : student -> float -> float -> float -> float -> float -> Fri
     various attributes, depending on the actions that they have taken, and if they 
     are ethical or not *)
 val judgement: student -> unit
+
+val final_judgement: student -> unit

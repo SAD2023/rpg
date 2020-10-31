@@ -16,9 +16,9 @@ let rec play_game player scenario acc =
   let (decision: Student.decision) = String.uppercase_ascii (read_line ()) in 
 
   try 
-    let player = Scenario.match_consequences player (return_consequences decision choices) decision in 
+    let player = Scenario.match_consequences player (return_consequences decision choices player) decision in 
     let next_scenario = Scenario.next_scenario decision choices in 
-    Scenario.print_changes decision choices;
+    Scenario.print_changes decision choices player;
     play_game player next_scenario (acc+1)
 
   with InvalidInput decision -> ANSITerminal.(print_string [red] "\n Oops, wrong input playa. Please enter a valid choice \n \n");

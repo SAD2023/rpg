@@ -120,5 +120,27 @@ let judgement student =
   print_string "Got any friends? \n";
   if student.social_life <= 40.0 then print_string 
       "Get some friends loser \n \n"
-  else print_string ("Oh ma gosh you're so popular... \n \n");
+  else print_string ("Oh ma gosh you're so popular... \n \n")
+
+
+let final_judgement student =
+  print_string "\n";
+  print_characteristics student;
+  print_string "\n\nCongratulations! Your time at Cornell has come to an end. Now it's time to go out into the real world. \n";
+  if student.gpa > 3.7 && student.morality < 30.0 then print_string 
+      "\nYou were a terrible human being throughout your college life, but not a terrible student. Seems like you left your morals
+  somewhere along the lines. This is the perfect combination to become successful! You have been invited to intern at Goldman Sachs. \n
+  Good luck ripping people off. \n" 
+
+  else if student.gpa > 3.9 && student.social_life < 30.0 && student.health < 30.0 then print_string 
+      "You smell terrible and you have a 4.0 in all of your CS classes. You are also very lonely. \n
+  Congrats on your Google internship! \n"
+
+  else if student.gpa < 3.0 && student.social_life > 4.0 then print_string
+      "You changed your major from CS to communications. You are now a middle school English teacher in a room \n
+  full of screaming children. Enjoy your liberal arts degree! \n"
+
+  else print_string "\nYou're not ready for real life yet. You'll now go to grad school! \n\n"
+
+
 
