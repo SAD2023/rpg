@@ -106,9 +106,29 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("work on homework",[("social_life", -2.0);("gpa", 0.2)]);
                                  ("football game",[("social_life", 3.0);("morality", 2.0)]);
                                  ("cs project",[("social_life", -2.0);("gpa", 0.2)]);
-                                 ("canada goose jacket",[("end", 0.0)]);
-                                 ("jacket from tj maxx",[("end", 0.0);]);
-                                 ("freeze",[("end", 0.0)])
+                                 ("canada goose jacket",[("brbs", -10.0)]);
+                                 ("jacket from tj maxx",[("brbs", 5.0);]);
+                                 ("freeze",[("health", -10.0)]);
+                                 ("DING DING!", [("social_life", +5.0);("health", 5.0)]);
+                                 ("Stay cozy", [("social_life", -5.0)]);
+                                 ("Vote!", [("morality", 5.0)]);
+                                 ("What the fuck is a student assembly?", [("morality", -5.0)]);
+                                 ("Attend the partner social", [("social_life", 10.0); ("gpa", 0.2)]);
+                                 ("I don't need a partner", [("social_life", -5.0); ("gpa", -0.2)]);
+                                 ("Wow! I can't believe you've been teaching CS for 58 years!", [("gpa", 0.4)]);
+                                 ("Are you sure it's not 56?", [("gpa", -0.2)]);
+                                 ("58 years. 58 years. 58 years.", [("gpa", 0.2)]);
+                                 ("59 years. 59 years. 59 years.", [("gpa", 0.4)]);
+                                 ("Celebrate by throwing a party", [("brbs", -5.0); ("social_life", 5.0)]);
+                                 ("Go write some proofs", [("gpa", 0.4); ("social_life", -5.0)]);
+                                 ("Give swae his inhaler", [("morality", 10.0); ("social_life", 5.0)]);
+                                 ("Meh, Black beatles wasn't that good anyway", [("morality", -10.0)]);
+                                 ("Fuck me. I need some substances.", [("gpa", -0.5); ("health", -10.0)]);
+                                 ("I'll study super hard and get all As (really tho?)", [("gpa", 0.5); ("health", -10.0)]);
+                                 ("Head to collegetown", [("social_life", 10.0); ("health", 12.0); ("morality", 5.0)]);
+                                 ("I have no friends. Stay in the low rises.", [("social_life", -10.0); ("health", -6.0); ("morality", -5.0)]);
+                                 ("Apply for 1110-3110", [("end", 0.0)]);
+                                 ("Meh. I don't remember what I learned", [("end", 0.0)]);
                                 ]
 
 
@@ -123,7 +143,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("snooze", "Clubfest");
                               ("go to class", "Clubfest");
                               ("fun club", "Halloween");
-                              ("test", "Canada Goose");
+                              ("test", "ta apps");
                               ("career club", "Halloween");        
                               ("charity club", "Halloween");
                               ("study", "study partner");
@@ -200,7 +220,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("no never going to use it", "Friday Afternoon");
                               ("start your homework", "Career Fair Choice"); 
                               ("watch the office", "Career Fair Choice");
-                              ("go to  the gym", "Career Fair Choice");
+                              ("go to the gym", "Career Fair Choice");
                               ("do laundry", "Career Fair Choice");
                               ("career fair", "Career Fair");
                               ("not career fair", "Academic integrity"); 
@@ -214,9 +234,29 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("work on homework","Football Game");
                               ("football game","Canada Goose"); 
                               ("cs project","Canada Goose");
-                              ("canada goose jacket", "end");
-                              ("jacket from tj maxx", "end");
-                              ("freeze", "end");
+                              ("canada goose jacket", "Ring the bell");
+                              ("jacket from tj maxx", "Ring the bell");
+                              ("freeze", "Ring the bell");
+                              ("DING DING!", "SA elections"); 
+                              ("Stay cozy", "SA elections");
+                              ("Vote!", "Partner Social");
+                              ("What the fuck is a student assembly?", "Partner Social");
+                              ("Attend the partner social", "57 years");
+                              ("I don't a partner", "57 years");
+                              ("Wow! I can't believe you've been teaching CS for 58 years!", "God");
+                              ("Are you sure it's not 56?", "58 years");
+                              ("58 years. 58 years. 58 years.", "inhaler");
+                              ("58 years. 58 years. 58 years.", "inhaler");
+                              ("Celebrate by throwing a party", "inhaler");
+                              ("Go write some proofs", "inhaler");                     
+                              ("Give swae his inhaler", "finals sophomore");
+                              ("Meh, Black beatles wasn't that good anyway", "finals sophomore");
+                              ("Fuck me. I need some substances.", "senior week");
+                              ("I'll study super hard and get all As (really tho?)", "senior week");
+                              ("Head to collegetown", "Ta apps");
+                              ("I have no friends. Stay in the low rises.", "Ta apps");
+                              ("Apply for 1110-3110", "end");
+                              ("Meh. I don't remember what I learned", "end");
                              ]
 
 let scenario_friends_list = [
@@ -226,6 +266,7 @@ let scenario_friends_list = [
   ("HELP THEM HOME", "Nicola");
   ("FUN CLUB", "Lirinda");
   ("CAREER CLUB", "Maximillian the III");
-  ("CHARITY CLUB", "Gandhi")
+  ("CHARITY CLUB", "Gandhi");
+  ("ATTEND THE SOCIAL", "Sadman");
 
 ]

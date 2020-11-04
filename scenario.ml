@@ -9,7 +9,8 @@ let maximillian = make_friend "Maximillian the III" 5 0
 let lirinda = make_friend "Lirinda" 5 0 
 let sam = make_friend "Sam" 5 0
 let brad = make_friend "Brad" 5 0
-let potential_friend_list = [jack; nicola; gandhi; maximillian; lirinda; sam; brad]  
+let sadman = make_friend "Sadman" 5 0
+let potential_friend_list = [jack; nicola; gandhi; maximillian; lirinda; sam; brad; sadman]  
 
 exception Unimplemented 
 type prompt = string
@@ -287,6 +288,54 @@ let canada_goose = make_scenario "Canada Goose" "It's starting to get really
 cold out! You need to get a new winter jacket. Which should you buy?" 
     ["Canada Goose Jacket"; "Jacket from TJ Maxx"] ["Freeze"]
 
+let ring_the_bell = make_scenario "Ring the bell" "Your friend asks you to
+hike into the arboretum and ring the bell, which is one of the 161 things
+every Cornellian should do. It's kinda chilly out tho. What're you gonna do?" 
+    ["DING DING!"; "Stay cozy"] []
+
+let elections  = make_scenario "SA elections" "You get an email notifying you
+that the student assembly elections are today! Are you going to vote?" 
+    ["Vote!"; "What the fuck is a student assembly?"] []
+
+let wicc  = make_scenario "Partner Social" "WICC is holding a partner finding
+social for your cs class. Having a partner might be helpful for the tough
+assigments!" 
+    ["Attend the partner social"; "I don't need a partner"] []
+
+let professor  = make_scenario "57 years" "I have been teaching computer science for
+57 years - a man walks up to you and says." 
+    ["Wow! I can't believe you've been teaching CS for 58 years!"; 
+     "Are you sure it's not 56?"] []
+
+let professor2  = make_scenario "58 years" "I have been teaching computer science for
+58 years - the man adds 1 to the number. You can feel his immense intellect. You realize that
+you can not doubt his capabilities. He is an instance of the 'god' class. Bow down
+to his highness" 
+    ["58 years. 58 years. 58 years."; "59 years. 59 years. 59 years."] []
+
+let mission  = make_scenario "God" "The man smirks. He's impressed by your response.
+As he walks towards Gates doing breadth first search, you receive an email that your
+major declaration has been approved." 
+    ["Celebrate by throwing a party"; "Go write some proofs"] []
+
+let inhaler  = make_scenario "inhaler" "You wake up in your bed and realize that 
+Slope day is about to start! You head to the area but you hear that apparently swae lee 
+doesn't want to come out and perform. People are frantically looking around the stage for something.
+You notice an inhaler on the ground." 
+    ["Give swae his inhaler"; "Meh, Black beatles wasn't that good anyway"] []
+
+let finals_sophomore = make_scenario "finals sophomore" "It's .... uuuuuugggghhhhhhhhhhh...
+finals week." 
+    ["Fuck me. I need some substances."; "I'll study super hard and get all A's (really tho?)"] []
+
+let senior = make_scenario "senior week" "Finals are over!!!! It's senior week! 
+A lot of people you know are going to graduate this year. There won't be a lack of parties or darties!" 
+    ["Head to collegetown"; "I have no friends. Stay in the low rises."] []
+
+let ta_apps = make_scenario "Ta apps" "Sophomore year is in the books! Maybe you
+should apply to be a TA next semester."
+    ["Apply for 1110-3110."; "Meh. I don't remember what I learned"] []
+
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -298,7 +347,9 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      internship; spring_break; slope_day; slope_day_2; 
                      olin_finals; classes; major; gym_pass; friday_afternoon; 
                      career_fair_choice; career_fair; academic_integrity; 
-                     applications; football_game; canada_goose]
+                     applications; football_game; canada_goose; ring_the_bell; elections;
+                     wicc; professor; professor2; mission; inhaler; ta_apps; senior; finals_sophomore;
+                    ]
 
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
