@@ -115,6 +115,7 @@ let make_scenario name prompt choices hidden_choices =
     hidden_choices = hidden_choices;
   }
 
+(* ========================FRESHMAN FALL================================ *)
 
 let meet_brad =  make_scenario "Meet Brad" "You're doing laundry for the first time 
 and  you start talking to Brad, who lives  down the hall. He asks if you want 
@@ -212,6 +213,8 @@ let post_finals = make_scenario "Post Finals" "You finished your finals early, a
 a few days after to hang out stress-free. But your family called the other day mentioning how much they miss you, 
 and you realize you miss them alot too" ["Go back home"; "Stay in Ithaca"] []
 
+(*======================= FRESHMAN SPRING ================================= *)
+
 let rush = make_scenario "Rush" "Welcome to a new semester! You are now able to participate in frat sorority 
 recruitment. Would you like to rush?" ["Rush"; "Don't rush"] [] 
 
@@ -246,6 +249,8 @@ time?" ["Study most of the time"; "Mix of friends and books"; "Don't study at al
 let olin_finals = make_scenario "Olin finals" "You decide that the best environment to study for finals is at Olin library. However,
 you go inside and discover that the stacks as well as every other room in Olin is packed to the brim with busying students. 
 What do you do now?" ["Wait around for a seat"; "Study somewhere else"] []
+
+(* ============================SOPHOMORE FALL============================== *)
 
 let classes = make_scenario "Classes" "It's time to pick out your classes! But oh no! You really want to take the Ice Cream 
 class with your friend, but  it conflicts with CS 3110, which you need for your major!" ["Ice Cream Class"; "CS 3110"] []
@@ -287,6 +292,8 @@ to go, but you have a CS project due in a couple of days"
 let canada_goose = make_scenario "Canada Goose" "It's starting to get really 
 cold out! You need to get a new winter jacket. Which should you buy?" 
     ["Canada Goose Jacket"; "Jacket from TJ Maxx"] ["Freeze"]
+
+(* ======================SOPOMORE SPRING ================================ *)
 
 let ring_the_bell = make_scenario "Ring the bell" "Your friend asks you to
 hike into the arboretum and ring the bell, which is one of the 161 things
@@ -336,6 +343,85 @@ let ta_apps = make_scenario "Ta apps" "Sophomore year is in the books! Maybe you
 should apply to be a TA next semester."
     ["Apply for 1110-3110."; "Meh. I don't remember what I learned"] []
 
+let where_living = make_scenario "where living" "It's fall of junior year! You 
+probably should have thought about this earlier, but do you want to try to find
+ housing on campus somewhere (probably in a broom closet or something) or live 
+ off campus with fiends?" ["Broom closet"; "Apartment"; "House"] []
+
+let apartment_choice = make_scenario "apartment choice" "You are going to live
+ in an apartment with your pals! You get to the apartment before any of them.
+ Do you choose the biggest room or do you wait for them to get there."
+    ["Biggest room"; "Be a good roommate"] []
+
+let house_choice = make_scenario "house choice" "You are going to live
+ in a house with your pals! You get to the house before any of them.
+ Do you choose the biggest room or do you wait for them to get there."
+    ["Big room"; "Good roommate"] []
+
+let adopt_cat = make_scenario "adopt cat"  "The only campus housing you could find
+was a single in some weird building that used to be a chemical storage facility.
+You are very far away from everyone and lonely. Do you want to try and sneak in
+a cat from the SPCA of Thompkins County?" ["Meow"; "I'm allergic"] []
+
+let important_class = make_scenario "important class" "You need to take this one
+class to make progress toward your major. However, it is completely full. One 
+of your friends offers to sell you their spot."
+    ["Take the offer"; "Eh, get some electives done"] ["kill them"]
+
+let signs = make_scenario "signs" "You are walking to class 
+and you see an illuminati sign etched on the ground. You see another carved
+into a nearby tree! Then another arranged in fallen leaves on the ground.
+Do you keep following them?" ["Heck yeah!"; "No. I probably have homework... 
+or something..."] []
+
+let gates_tunnel = make_scenario "gates tunnel" "You follow the illuminati
+signs to the basement of Gates, where you find a maze of tunnels. You navigate
+through the maze using Prim's Algorithm. When you get to the final node, you
+see a collection of robed figures through a door. Do you go through or
+turn back?" ["Follow my destiny"; "That's a bit spooky for me"] []
+
+let secret_society = make_scenario "secret society" "You walk in. You hear
+ applause. 'Welcome, my child' says a voice. It's Martha Pollack!
+  Congratulations, you are now a member of one of Cornell's secret societies.
+  Too bad you can't put it on your resume." ["Tell your friends"; "It's called
+  secret for a reason!"] []
+
+let told_friends = make_scenario "told friends" "You told your friends. You
+   were immediately kicked out of the society and they don't even believe you.
+   Yikes! 
+
+   Anyway, the weekend's coming up. What are your plans?" ["Do that homework";
+                                                           "Attend a rager"] []
+
+let jr_weekend = make_scenario "jr weekend" "It's the weekend! What are your
+   plans?" ["Grind time"; "Party time"] []
+
+let pumpkins = make_scenario "pumpkins" "Wow! It's the pretty time of the year!
+The like 4 days in between t-shirts and seventeen jackets! Do you want to go
+pumpkin picking with your friend or study for your upcoming prelim?" [] []
+
+let answer_question = make_scenario "answer question" "Your professor asks
+a question in class. You think you know the answer, but you might be wrong.
+ Do you answer it?" ["Answer it"; "I'm scared"] []
+
+let did_answer = make_scenario "did answer" "Yikes, you answered it and it was
+ very wrong. Eveyone is laughing and pointing at you, especially the professor."
+    ["Time to cry"; "Tell them THEY'RE wrong"] []
+
+let did_not_answer = make_scenario "did not answer" "You didn't answer, and
+  the person sitting next to you did. The professor though that their solution
+  was so insightful and elegant that they immediately make them a TA, even
+   though they're still taking the class." ["Yell that it was your idea first";
+                                            "Cry into your pillow"] []
+
+let finals_already = make_scenario "finals already" "You know the drill by now.
+Do you study for finals or spend 8 hours at Target procrastinating" ["Stuuudy";
+                                                                     "Target"] []
+
+let friend_pack = make_scenario "friend pack" "It's time for winter break. You
+want to have one last look at the beautiful statue in front of the Statler
+before you go, but your friend asks for your help packing. What do you do?" 
+    ["Help friend"; "Statue"] []
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -349,7 +435,10 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      career_fair_choice; career_fair; academic_integrity; 
                      applications; football_game; canada_goose; ring_the_bell; elections;
                      wicc; professor; professor2; mission; inhaler; ta_apps; senior; finals_sophomore;
-                    ]
+                     where_living; apartment_choice; house_choice; adopt_cat;
+                     important_class; signs; gates_tunnel; secret_society; 
+                     told_friends; jr_weekend; pumpkins; answer_question; 
+                     did_answer; did_not_answer; finals_already; friend_pack]
 
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
