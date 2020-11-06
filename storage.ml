@@ -124,11 +124,11 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Give swae his inhaler", [("morality", 10.0); ("social_life", 5.0)]);
                                  ("Meh, Black beatles wasn't that good anyway", [("morality", -10.0)]);
                                  ("Fuck me. I need some substances.", [("gpa", -0.5); ("health", -10.0)]);
-                                 ("I'll study super hard and get all As (really tho?)", [("gpa", 0.5); ("health", -10.0)]);
+                                 ("I'll study super hard and get all A's (really tho?)", [("gpa", 0.5); ("health", -10.0)]);
                                  ("Head to collegetown", [("social_life", 10.0); ("health", 12.0); ("morality", 5.0)]);
                                  ("I have no friends. Stay in the low rises.", [("social_life", -10.0); ("health", -6.0); ("morality", -5.0)]);
                                  ("Apply for 1110-3110", [("gpa", 0.3)]);
-                                 ("Meh. I don't remember what I learned", []);
+                                 ("Meh. I don't remember what I learned", [("gpa", -0.3)]);
                                  ("Broom closet", [("social_life", -5.0); ("brbs", -15.0)]);
                                  ("Apartment", [("social_life", 10.0)]);
                                  ("House", [("social_life", 10.0)]);
@@ -140,10 +140,10 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("I'm allergic", [("Health",-1.0)]);
                                  ("Take the offer", [("brbs", - 20.0)]);
                                  ("Eh, get some electives done", [("gpa", -0.3)]);
-                                 ("Heck yeah", []);
+                                 ("Heck yeah", [("social_life", 10.0)]);
                                  ("No. I probably have homework... or something...", [("gpa",0.1)]);
                                  ("Follow my destiny", [("brbs", 20.0); ("social_life", 20.0)]);
-                                 ("That's a bit spooky for me", []);
+                                 ("That's a bit spooky for me", [("social_life", -5.0)]);
                                  ("Tell your friends", [("social_life", - 20.0)]);
                                  ("It's called secert for a reason!", [("social_life", 5.0)]);
                                  ("Do that homework", [("gpa", 0.2)]);
@@ -151,7 +151,7 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Grind time", [("gpa", 0.2)]);
                                  ("Party time", [("social_life", 4.0)]);
                                  ("Answer it", [("gpa", 0.2)]);
-                                 ("I'm scared",[]);
+                                 ("I'm scared",[("gpa", -0.2)]);
                                  ("Time to cry",[("social_life",-5.0)]);
                                  ("Tell them THEY'RE wrong",[("social_life", -5.0)]);
                                  ("Yell that it was your idea first",[("social_life",-5.0)]);
@@ -273,7 +273,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Vote!", "Partner Social");
                               ("What the fuck is a student assembly?", "Partner Social");
                               ("Attend the partner social", "57 years");
-                              ("I don't a partner", "57 years");
+                              ("I don't need a partner", "57 years");
                               ("Wow! I can't believe you've been teaching CS for 58 years!", "God");
                               ("Are you sure it's not 56?", "58 years");
                               ("58 years. 58 years. 58 years.", "inhaler");
@@ -283,7 +283,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Give swae his inhaler", "finals sophomore");
                               ("Meh, Black beatles wasn't that good anyway", "finals sophomore");
                               ("Fuck me. I need some substances.", "senior week");
-                              ("I'll study super hard and get all As (really tho?)", "senior week");
+                              ("I'll study super hard and get all A's (really tho?)", "senior week");
                               ("Head to collegetown", "Ta apps");
                               ("I have no friends. Stay in the low rises.", "Ta apps");
                               ("Apply for 1110-3110", "where living");
@@ -332,3 +332,10 @@ let scenario_friends_list = [
   ("ATTEND THE SOCIAL", "Sadman");
 
 ]
+let has_prereq = [
+  "Roommate and Brad"; 
+]
+
+let unlock_list = 
+  [("Roommate and Brad", ("double", "No Roommate and Brad"));
+  ]

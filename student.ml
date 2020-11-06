@@ -25,6 +25,7 @@ type student = {
   health: health;
   brbs: brbs;
   friends: Friend.friend list;
+  decision_list: decision list;
 }
 
 let initial name = 
@@ -37,10 +38,11 @@ let initial name =
     health = 0.0;
     brbs= 0.0;
     friends= [];
+    decision_list = [];
   }
 
 (** [make_student] creates a new student with the given parameters *)
-let make_student name age morality gpa social_life health brbs friends =
+let make_student name age morality gpa social_life health brbs friends decision=
   {
     name = name;
     age = age;
@@ -50,6 +52,7 @@ let make_student name age morality gpa social_life health brbs friends =
     health = health;
     brbs = brbs;
     friends = friends;
+    decision_list = decision;
   }
 
 (** [print_string_list] prints out the elements of a string list. with a
@@ -81,7 +84,7 @@ let bounds upper attribute =
   else attribute
 
 
-let update_student student morality gpa social_life health brbs friends = 
+let update_student student morality gpa social_life health brbs friends decision= 
   {
     name = student.name;
     age = student.age;
@@ -91,6 +94,7 @@ let update_student student morality gpa social_life health brbs friends =
     health = bounds 100.0 (student.health +. health);
     brbs = bounds 100.0 (student.brbs +. brbs);
     friends = student.friends @ friends;
+    decision_list = decision :: student.decision_list;
   }
 
 
@@ -143,4 +147,8 @@ let final_judgement student =
   else print_string "\nYou're not ready for real life yet. You'll now go to grad school! \n\n"
 
 
+let return_decisions student = 
+  student.decision_list
 
+let check_decisions decision student = 
+  List.mem decision student.decision_list

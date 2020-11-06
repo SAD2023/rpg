@@ -341,7 +341,7 @@ A lot of people you know are going to graduate this year. There won't be a lack 
 
 let ta_apps = make_scenario "Ta apps" "Sophomore year is in the books! Maybe you
 should apply to be a TA next semester."
-    ["Apply for 1110-3110."; "Meh. I don't remember what I learned"] []
+    ["Apply for 1110-3110"; "Meh. I don't remember what I learned"] []
 
 let where_living = make_scenario "where living" "It's fall of junior year! You 
 probably should have thought about this earlier, but do you want to try to find
@@ -440,9 +440,18 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      told_friends; jr_weekend; pumpkins; answer_question; 
                      did_answer; did_not_answer; finals_already; friend_pack]
 
+let rec go_through_unlocks lst name = 
+  match lst with 
+  | [] -> raise (InvalidInput name)
+  | h :: t -> if fst h = name then (snd h) else (go_through_unlocks t name)
+
+let check_prereq scenario= 
+  let name = scenario.name in 
+  if List.mem name Storage.has_prereq then go_through_unlocks Storage.unlock_list name else ("NOT IN HERE", "")
+
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
-let next_scenario decision choices = 
+let next_scenario decision choices student = 
   if List.mem decision choices then 
     let tuple_list = 
       List.filter (filter_helper decision) Storage.decision_scenario_name in
@@ -450,7 +459,12 @@ let next_scenario decision choices =
     let one_scenario_list = List.filter (fun x -> String.uppercase_ascii x.name = String.uppercase_ascii scenario_name)
         scenario_list in 
     let next_scenario_element = get_element_out_of_list one_scenario_list in 
-    next_scenario_element 
+    let prereq, alternative = check_prereq next_scenario_element in 
+    if prereq = "NOT IN HERE" then next_scenario_element  else 
+    if Student.check_decisions (String.uppercase_ascii prereq) student then next_scenario_element
+    else get_element_out_of_list( List.filter (fun x -> String.uppercase_ascii x.name = String.uppercase_ascii alternative)
+                                    scenario_list)
+
   else raise (InvalidInput decision)
 
 (**Takes a decision and returns a list of consequences in the form [("gpa", 0.2)] *)
@@ -482,7 +496,7 @@ let match_consequences student consequence_list decision =
   let health = tuple_helper "health" consequence_list in
   let social_life = tuple_helper "social_life" consequence_list in
   let friend = main_friend_function decision in 
-  Student.update_student student morality gpa social_life health brbs friend
+  Student.update_student student morality gpa social_life health brbs friend decision
 
 (** [change_tuple_helper] returns " increased by "  if the second value in
     a given tuple is positive, else returns " decreased by "  *)

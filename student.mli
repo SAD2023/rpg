@@ -83,7 +83,7 @@ val initial : string -> student
 
 (** [make_student] creates a new student with the given parameters, which are
     inputted by the user *)
-val make_student : string -> int -> float -> float -> float -> float -> float -> Friend.friend list -> student
+val make_student : string -> int -> float -> float -> float -> float -> float -> Friend.friend list -> decision list -> student
 
 (** [print_characteristics] prints out the characteristics (ex: gpa, morality,
     brbs, health etc) for a given student. *)
@@ -92,7 +92,7 @@ val print_characteristics : student -> unit
 (** [update_student student morality gpa social_life health brbs] takes in
     a student and creates a new student with the previous student's attributes
     added to the attributes given. *)
-val update_student : student -> float -> float -> float -> float -> float -> Friend.friend list -> student
+val update_student : student -> float -> float -> float -> float -> float -> Friend.friend list -> decision -> student
 
 (** [judgement student] takes in a student and prints out a string judging their 
     various attributes, depending on the actions that they have taken, and if they 
@@ -100,3 +100,7 @@ val update_student : student -> float -> float -> float -> float -> float -> Fri
 val judgement: student -> unit
 
 val final_judgement: student -> unit
+
+val return_decisions: student -> decision list
+
+val check_decisions: decision -> student -> bool

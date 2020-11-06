@@ -54,7 +54,7 @@ val print_prompt: scenario -> unit
 
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
-val next_scenario: Student.decision -> choices -> scenario
+val next_scenario: Student.decision -> choices -> Student.student -> scenario
 
 
 (** [return_conseses decision] returns a list of the consequences (changes of 
@@ -78,3 +78,7 @@ val print_changes: Student.decision -> choices -> Student.student -> unit
 val return_choices: scenario -> choices 
 
 val main_friend_function: Student.decision -> Friend.friend list
+
+val check_prereq: scenario -> string * string
+
+val go_through_unlocks: (choice * 'a) list -> choice -> 'a

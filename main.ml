@@ -3,6 +3,11 @@ open Student
 open Scenario
 open Storage
 
+let rec print_list lst = 
+  match lst with 
+  | [] -> ""
+  | h :: t -> h ^ ", " ^ print_list t 
+
 (** [play_game f] starts the adventure in file [f]. *)
 let rec play_game player scenario acc =
   (** 1. print prompt
@@ -17,8 +22,9 @@ let rec play_game player scenario acc =
 
   try 
     let player = Scenario.match_consequences player (return_consequences decision choices player) decision in 
-    let next_scenario = Scenario.next_scenario decision choices in 
-    Scenario.print_changes decision choices player;
+    let next_scenario = Scenario.next_scenario decision choices player in 
+    Scenario.print_changes decision choices player; (*
+    print_string(print_list (Student.return_decisions player)); *)
     play_game player next_scenario (acc+1)
 
   with InvalidInput decision -> ANSITerminal.(print_string [red] "\n Oops, wrong input playa. Please enter a valid choice \n \n");
