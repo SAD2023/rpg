@@ -483,7 +483,7 @@ all the time. What do you want to do?"
 let senior_classes = make_scenario "senior classes" "It's senior year! 
 It's time to decide whether you're going to catch an early case of 
 senioritis or stay hard at work" 
-    ["Early seniorities - easy classes"; "No seniorities, I'm hard working"] []
+    ["Early senioritis - easy classes"; "No senioritis, I'm hard working"] []
 
 let senior_car = make_scenario "senior car" "Now that the semester's about to 
 begin, you're considering bringing a car to campus. You get excited thinking 
@@ -496,6 +496,10 @@ The photography company's in town and it's time to take your yearbook picture,
 but the only appointment they had left was at 7 AM." 
     ["Sleep past your alarm"; "Work on hair and wear your best clothes"; "Get up and go"] []
 
+let campfire = make_scenario "campfire" "A couple of your friends want to go to 
+south hill cider and make s'mores around one of their firepits, but you're on 
+the phone consoling a home friend with a very important issue. What do you do?"
+    ["Continue consoling friend"; "The conversation's boring, TO THE FIREPIT"] []
 
 
 (** List of all the scenarios *)

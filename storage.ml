@@ -180,10 +180,16 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Na na na",[("morality", -10.0)]);
                                  ("Visit Cornell Health", [("health", 3.0); ("gpa", 0.1)]);
                                  ("I have no time for that", [("health", -3.0); ("gpa", -0.2)]);
-                                 ("Early seniorities - easy classes", [("health", 5.0); ("morality", -4.0); ("gpa", 0.3)]);
-                                 ("No seniorities, I'm hard working", [("health", -5.0); ("morality", 4.0); ("gpa", -0.1)]);
+                                 ("Early senioritis - easy classes", [("health", 5.0); ("morality", -4.0); ("gpa", 0.3)]);
+                                 ("No senioritis, I'm hard working", [("health", -5.0); ("morality", 4.0); ("gpa", -0.1)]);
                                  ("Bring car", [("health", 6.0); ("brbs", -15.0)]);
                                  ("Don't bring car", [("health", -2.0)]);
+                                 ("Sleep past your alarm", [("health", 5.0); ("social_life", -3.0)]);
+                                 ("Work on hair and wear your best clothes", [("social_life", 10.0)]);
+                                 ("Get up and go", [("social_life", -1.0)]);
+                                 ("Continue consoling friend", [("morality", 9.0)]);
+                                 ("The conversation's boring, TO THE FIREPIT", [("morality", -7.0); ("social_life", 6.0)]);
+
                                 ]
 
 
@@ -363,8 +369,13 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Na na na", "junior finals");
                               ("Visit Cornell Health", "senior classes");
                               ("I have no time for that", "senior classes");
-                              ("Early seniorities - easy classes", "senior car");
-                              ("No seniorities, I'm hard working", "senior car");
+                              ("Early senioritis - easy classes", "senior car");
+                              ("No senioritis, I'm hard working", "senior car");
+                              ("Bring car", "senior pic");
+                              ("Don't bring car", "senior pic");
+                              ("Sleep past your alarm", "campfire");
+                              ("Work on hair and wear your best clothes", "campfire");
+                              ("Get up and go", "campfire");
                              ]
 
 let scenario_friends_list = [
