@@ -402,7 +402,7 @@ let jr_weekend = make_scenario "jr weekend" "It's the weekend! What are your
 let pumpkins = make_scenario "pumpkins" "Wow! It's the pretty time of the year!
 The like 4 days in between t-shirts and seventeen jackets! Do you want to go
 pumpkin picking with your friend or study for your upcoming prelim?" 
-    ["Go pumkin picking"; "study instead of going"] []
+    ["Go pumpkin picking"; "study instead of going"] []
 
 let answer_question = make_scenario "answer question" "Your professor asks
 a question in class. You think you know the answer, but you might be wrong.
@@ -549,7 +549,7 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      all_black; all_black_part_2; after_party; after_party_part_2;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
-                     homecoming; campfire;]
+                     homecoming; campfire; relationship]
 
 let rec go_through_unlocks lst name = 
   match lst with 
