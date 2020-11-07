@@ -321,7 +321,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I'm allergic", "important class");
                               ("Take the offer", "signs");
                               ("Eh, get some electives done", "signs");
-                              ("Heck yeah", "gates tunnel");
+                              ("Heck yeah!", "gates tunnel");
                               ("No. I probably have homework... or something...", "jr weekend");
                               ("Follow my destiny", "secret society");
                               ("That's a bit spooky for me", "jr weekend");
