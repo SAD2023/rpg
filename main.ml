@@ -2,19 +2,27 @@ open Print
 open Student
 open Scenario
 open Storage
+open Minigames
+
+
+let word_to_scramble = "cornell"
 
 let rec print_list lst = 
   match lst with 
   | [] -> ""
   | h :: t -> h ^ ", " ^ print_list t 
 
-(** [play_game f] starts the adventure in file [f]. *)
+(** [play_game f] keeps the game playing. *)
 let rec play_game player scenario acc =
   (** 1. print prompt
       2. take input based on scenario
       3. update student based on input
       4. recall itself *)
   if (acc mod 3) = 2 then Student.judgement player;
+  if (acc mod 7) = 3 then (Minigames.scramble_intro word_to_scramble; 
+                           let input = (read_line ()) in if Minigames.scramble_engine word_to_scramble input = "Wrong!" then
+                             (print_string "\n WRONG! \n"; play_game player scenario acc) else print_string "\n Correct! Hurray! \n\n");
+
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
@@ -24,7 +32,7 @@ let rec play_game player scenario acc =
     let player = Scenario.match_consequences player (return_consequences decision choices player) decision in 
     let next_scenario = Scenario.next_scenario decision choices player in 
     Scenario.print_changes decision choices player; (*
-    print_string(print_list (Student.return_decisions player)); *)
+     print_string(print_list (Student.return_decisions player)); *)
     play_game player next_scenario (acc+1)
 
   with InvalidInput decision -> ANSITerminal.(print_string [red] "\n Oops, wrong input playa. Please enter a valid choice \n \n");

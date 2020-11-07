@@ -124,12 +124,12 @@ to go to an O-Week event with him and some friends. What do you want to do?"
     ["O Week"; "Stay in"; "Look at textbook"] []
 
 let roommate_and_brad = 
-  make_scenario "Roommate and Brad" "Your roommate comes with you, but 
+  make_scenario "Roommate and Brad" "Your roommate's friend comes with you, but 
   unfortunately needs a little help going home..." 
     ["Help them home"; "Leave without them"] []
 
 let no_roommate_and_brad = 
-  make_scenario "No Roommate and Brad" "You see someone (Aquinas) and they 
+  make_scenario "No Roommate and Brad" "You see someone (Nicola) and they 
    seem very lost. Do you help them or stay with Brad and see if they can find 
    their way by themselves?" ["Help them home"; "Leave without them"] []
 

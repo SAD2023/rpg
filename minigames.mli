@@ -22,3 +22,7 @@ type correct_answer
     indiating that the student has won the minigame or false indicating
     the student has not won the minigame. *)
 type win = bool
+
+val scramble_engine: string -> string -> string
+
+val scramble_intro: string -> unit
