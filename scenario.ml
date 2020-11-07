@@ -10,7 +10,8 @@ let lirinda = make_friend "Lirinda" 5 0
 let sam = make_friend "Sam" 5 0
 let brad = make_friend "Brad" 5 0
 let sadman = make_friend "Sadman" 5 0
-let potential_friend_list = [jack; nicola; gandhi; maximillian; lirinda; sam; brad; sadman]  
+let charlie = make_friend "Charlie" 5 0
+let potential_friend_list = [jack; nicola; gandhi; maximillian; lirinda; sam; brad; sadman; charlie]  
 
 exception Unimplemented 
 type prompt = string
@@ -343,6 +344,9 @@ let ta_apps = make_scenario "Ta apps" "Sophomore year is in the books! Maybe you
 should apply to be a TA next semester."
     ["Apply for 1110-3110"; "Meh. I don't remember what I learned"] []
 
+(* ====================== JUNIOR FALL ================================ *)
+
+
 let where_living = make_scenario "where living" "It's fall of junior year! You 
 probably should have thought about this earlier, but do you want to try to find
  housing on campus somewhere (probably in a broom closet or something) or live 
@@ -423,6 +427,60 @@ want to have one last look at the beautiful statue in front of the Statler
 before you go, but your friend asks for your help packing. What do you do?" 
     ["Help friend"; "Statue"] []
 
+(* ====================== JUNIOR SPRING ================================ *)
+
+let all_black = make_scenario "all black" "It's the start of a new semester 
+and you want a lit start. The Alpha house is holding their annual all 
+black party at the Southside Community Center. You tryna pull up or nah? "
+    ["We in this"; "Not feeling it"] []
+
+let all_black_part_2 = make_scenario "all black part 2" "You're with your 
+friends wildin out. You had a great time but the party is ending. 
+However, there's an after party at the Alpha house. Do you want to 
+continue the fun or retire home early?" 
+    ["not tired yet"; "I want to go home"] []
+
+let after_party = make_scenario "after party" "You pull up to the house and 
+get back to dancing. You turn your head and notice someone is looking at 
+you. Sha'll we persuit a dance with our secret admirer?" 
+    ["They type cute"; "not feelin their vibe"] []
+
+let after_party_part_2 = make_scenario "after party part 2" "The party is 
+close to ending and people are starting to head out. You had a good time 
+dancing with them. Do you want to ask for their snap?" 
+    ["get their snap"; "not that interested"] []
+
+let valentines_day = make_scenario "valentines day" "Ah, the holiday of
+ love. You've been vibing with the person you met at the party. 
+ Would you like to ask them to be your valentine or just spend the day alone?" 
+    ["Spend it with them"; "Spend it alone"] []
+
+let valentines_day_2 = make_scenario "valentines day 2" "You are so 
+desperately alone. But good news is that Cornell is holding a Valentines 
+Day matching service!!! Do you want to participate?" 
+    ["Find me love"; "Single like a pringle"] []
+
+let cs_visit = make_scenario "cs visit" "Being that you'll be a senior visit; 
+you think about visiting your CS advisor to get advice on plans for the 
+summer and next year. Schedule an appointment?" 
+    ["I need help choosing courses"; "I don't need their help"] []
+
+let love = make_scenario "love" "Oop, things seem to be getting serious <3. 
+Would you like to make things official with them ?" 
+    ["I'm falling for them"; "I have commitment issues"] []
+
+let junior_slope_day = make_scenario "junior slope day" "SLOPE DAYYYYYY!!! 
+A BOOGIE WITH DA HOODIEEEE is coming to play for slope day." 
+    ["Steppin on puddles with my timbs on"; "Na na na"] []
+
+let junior_finals = make_scenario "junior finals" "You are so incredibly 
+stressed out for finals that your skipping meals and feeling light headed 
+all the time. What do you want to do?" 
+    ["Visit Cornell Health"; "I have no time for that"] []
+
+(* ====================== SENIOR FALL ================================ *)
+
+
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      first_day; clubfest; halloween; club_meeting; study_partner; 
@@ -438,7 +496,10 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      where_living; apartment_choice; house_choice; adopt_cat;
                      important_class; signs; gates_tunnel; secret_society; 
                      told_friends; jr_weekend; pumpkins; answer_question; 
-                     did_answer; did_not_answer; finals_already; friend_pack]
+                     did_answer; did_not_answer; finals_already; friend_pack;
+                     all_black; all_black_part_2; after_party; after_party_part_2;
+                     valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
+                     junior_finals]
 
 let rec go_through_unlocks lst name = 
   match lst with 

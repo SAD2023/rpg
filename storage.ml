@@ -160,6 +160,28 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Target",[("gpa", -0.4); ("health", 10.0)]);
                                  ("Help friend",[("morality", 15.0); ("end", 0.0)]);
                                  ("Statue",[("health", 14.0); ("end", 0.0)]);
+                                 ("We in this", [("social_life", 5.0); ("brbs", -10.0)]);
+                                 ("Not feeling it",[("social_life", -5.0); ("brbs", 10.0)]);
+                                 ("not tired yet", [("social_life", 5.0); ("health", -3.0)]);
+                                 ("I want to go home", [("social_life", -5.0); ("health", 3.0)]);
+                                 ("They type cute", [("social_life", 5.0)]);
+                                 ("not feelin their vibe", [("social_life", -5.0)]);
+                                 ("get their snap", [("social_life", 5.0)]);
+                                 ("not that interested", [("social_life", -5.0)]);
+                                 ("Spend it with them", [("social_life", 3.0)]);
+                                 ("Spend it alone", [("social_life", -3.0)]);
+                                 ("Find me love", [("social_life", 4.0); ("health", 2.0)]);
+                                 ("Single like a pringle", [("social_life", -4.0); ("health", -3.0)]);
+                                 ("I need help choosing courses", [("gpa", 0.1)]);
+                                 ("I don't need their help", [("gpa", -0.1)]);
+                                 ("I'm falling for them", [("social_life", 4.0); ("health", 3.0); ("brbs", -3.0)]);
+                                 ("I have commitment issues", [("social_life", -4.0); ("health", -3.0); ("brbs", 25.0)]);
+                                 ("Steppin on puddles with my timbs on", [("morality", 10.0)]);
+                                 ("Na na na",[("morality", -10.0)]);
+                                 ("Visit Cornell Health", [("health", 3.0); ("gpa", 0.1)]);
+                                 ("I have no time for that", [("health", -3.0); ("gpa", -0.2)])
+
+
                                 ]
 
 
@@ -317,8 +339,28 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Cry into your pillow","finals already");
                               ("Stuuudy","friend pack");
                               ("Target","friend pack");
-                              ("Help friend","end");
-                              ("Statue","end");
+                              ("Help friend","all black");
+                              ("Statue","all black");
+                              ("We in this", "all black part 2");
+                              ("Not feeling it", "valentines day 2");
+                              ("not tired yet", "after party");
+                              ("I want to go home", "valentines day 2");
+                              ("They type cute", "after party part 2");
+                              ("not feelin their vibe", "valentines day 2");
+                              ("get their snap", "valentines day");
+                              ("not that interested", "valentines day 2");
+                              ("Spend it with them", "cs visit");
+                              ("Spend it alone", "cs visit");
+                              ("Find me love", "cs visit");
+                              ("Single like a pringle", "cs visit");
+                              ("I need help choosing courses", "junior slope day");
+                              ("I don't need their help", "junior slope day");
+                              ("I'm falling for them", "junior slope day");
+                              ("I have commitment issues", "junior slope day");
+                              ("Steppin on puddles with my timbs on", "junior finals");
+                              ("Na na na", "junior finals");
+                              ("Visit Cornell Health", "end");
+                              ("I have no time for that", "end")
                              ]
 
 let scenario_friends_list = [
@@ -330,12 +372,15 @@ let scenario_friends_list = [
   ("CAREER CLUB", "Maximillian the III");
   ("CHARITY CLUB", "Gandhi");
   ("ATTEND THE SOCIAL", "Sadman");
+  ("GET THEIR SNAP", "Charlie")
 
 ]
 let has_prereq = [
   "Roommate and Brad"; 
+  "love";
 ]
 
 let unlock_list = 
   [("Roommate and Brad", ("double", "No Roommate and Brad"));
+   ("love", ("get their snap", "junior slope day"))
   ]
