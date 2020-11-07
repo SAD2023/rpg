@@ -502,6 +502,8 @@ the phone consoling a home friend with a very important issue. What do you do?"
     ["Continue consoling friend"; "The conversation's boring, TO THE FIREPIT"] []
 
 
+
+
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      first_day; clubfest; halloween; club_meeting; study_partner; 
