@@ -189,7 +189,18 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Get up and go", [("social_life", -1.0)]);
                                  ("Continue consoling friend", [("morality", 9.0)]);
                                  ("The conversation's boring, TO THE FIREPIT", [("morality", -7.0); ("social_life", 6.0)]);
-
+                                 ("I can get new friends", [("health", 5.0); ("social_life", -6.0)]);
+                                 ("Pictures can hold these memories", [("social_life", 6.0)]);
+                                 ("prelims are my priority", [("gpa", 0.6); ("health", -2.0)]);
+                                 ("Go to homecoming", [("gpa", -0.3)]);
+                                 ("break up", [("health", -7.0)]);
+                                 ("go with the flow", [("health", 5.0)]);
+                                 ("Buy pictures", [("brbs", -9.0)]);
+                                 ("It's too expensive", [("brbs", 11.0)]);
+                                 ("graduate early", [("end", 0.0)]); (* ENDING *)
+                                 ("enroll in another semester", [("gpa", 0.4); ("health", 5.0)]);
+                                 ("ski time", [("end"), 0.0]);
+                                 ("I'm studious", [("end"), 0.0]);
                                 ]
 
 
@@ -376,6 +387,20 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Sleep past your alarm", "campfire");
                               ("Work on hair and wear your best clothes", "campfire");
                               ("Get up and go", "campfire");
+                              ("Continue consoling friend", "autumn nostalgia");
+                              ("The conversation's boring, TO THE FIREPIT", "autumn nostalgia");
+                              ("I can get new friends", "homecoming");
+                              ("Pictures can hold these memories", "homecoming");
+                              ("Go to homecoming", "relationship");
+                              ("prelims are my priority", "relationship");
+                              ("break up", "senior pic ready 2");
+                              ("go with the flow", "senior pic ready 2"); (* senior pics ready 2 HAS PREREQ *)
+                              ("Buy pictures", "graduate early"); 
+                              ("It's too expensive", "graduate early"); 
+                              ("graduate early", "end"); (** ENDING *)
+                              ("enroll in another semester", "ditch finals");
+                              ("ski time", "end");
+                              ("I'm studious", "end");
                              ]
 
 let scenario_friends_list = [

@@ -501,8 +501,34 @@ south hill cider and make s'mores around one of their firepits, but you're on
 the phone consoling a home friend with a very important issue. What do you do?"
     ["Continue consoling friend"; "The conversation's boring, TO THE FIREPIT"] []
 
+let autumn_nostalgia = make_scenario "autumn nostalgia" "Every time you pass by 
+campus, you start to think about all the memories and things you're going to 
+miss about it after you graduate. You want to spend more time just walking 
+through campus, but your friends always want to stay in collegetown. "
+    ["I can get new friends"; "Pictures can hold these memories"] []
 
+let homecoming = make_scenario "homecoming" "As the fall semester settles into 
+October, you realize you've never been to a Cornell homecoming game. 
+Unfortunately, your professors don't care and you have three prelims the same 
+week."
+    ["Go to homecoming"; "prelims are my priority"] []
 
+let relationship = make_scenario "relationship" "You and your significant other 
+are from different sides of the country, and you don't know what's going to 
+happen after college."
+    ["break up"; "Go with the flow"] []
+
+let senior_pic_ready_2 = make_scenario "senior pic ready 2" "Your senior 
+pictures are ready! It seems like they've been purposefully blurred online 
+and there's a watermark across them. You could buy them to fix these issues, but 
+these packages are very expensive."
+    ["Buy pictures"; "It's too expensive"] []
+
+let graduate_early = make_scenario "graduate early" "It seems like alot of your friends are graduating early. You've completed all of your course requirements to graduate, and so you can potentially graduate earlier. However, another semester would allow you build up your gpa a little more, while also just having fun."
+    ["graduate early"; "enroll in another semester"] []
+
+let ditch_finals = make_scenario "ditch finals" "It's the end of your senior fall semester, and your fellow senior friends would like to ditch finals week and spend the snowy week traveling to Colorado to ski."
+    ["Ski time"; "I'm studious"] []
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -522,7 +548,8 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      did_answer; did_not_answer; finals_already; friend_pack;
                      all_black; all_black_part_2; after_party; after_party_part_2;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
-                     junior_finals]
+                     junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
+                     homecoming; campfire;]
 
 let rec go_through_unlocks lst name = 
   match lst with 
