@@ -140,7 +140,7 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("I'm allergic", [("Health",-1.0)]);
                                  ("Take the offer", [("brbs", - 20.0)]);
                                  ("Eh, get some electives done", [("gpa", -0.3)]);
-                                 ("Heck yeah", [("social_life", 10.0)]);
+                                 ("Heck yeah!", [("social_life", 10.0)]);
                                  ("No. I probably have homework... or something...", [("gpa",0.1)]);
                                  ("Follow my destiny", [("brbs", 20.0); ("social_life", 20.0)]);
                                  ("That's a bit spooky for me", [("social_life", -5.0)]);
