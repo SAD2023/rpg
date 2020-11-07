@@ -375,8 +375,7 @@ of your friends offers to sell you their spot."
 let signs = make_scenario "signs" "You are walking to class 
 and you see an illuminati sign etched on the ground. You see another carved
 into a nearby tree! Then another arranged in fallen leaves on the ground.
-Do you keep following them?" ["Heck yeah!"; "No. I probably have homework... 
-or something..."] []
+Do you keep following them?" ["Heck yeah!"; "No I have homework"] []
 
 let gates_tunnel = make_scenario "gates tunnel" "You follow the illuminati
 signs to the basement of Gates, where you find a maze of tunnels. You navigate
@@ -402,7 +401,8 @@ let jr_weekend = make_scenario "jr weekend" "It's the weekend! What are your
 
 let pumpkins = make_scenario "pumpkins" "Wow! It's the pretty time of the year!
 The like 4 days in between t-shirts and seventeen jackets! Do you want to go
-pumpkin picking with your friend or study for your upcoming prelim?" [] []
+pumpkin picking with your friend or study for your upcoming prelim?" 
+    ["Go pumkin picking"; "study instead of going"] []
 
 let answer_question = make_scenario "answer question" "Your professor asks
 a question in class. You think you know the answer, but you might be wrong.
