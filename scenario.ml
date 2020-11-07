@@ -549,7 +549,7 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      all_black; all_black_part_2; after_party; after_party_part_2;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
-                     homecoming; campfire; relationship]
+                     homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals]
 
 let rec go_through_unlocks lst name = 
   match lst with 
