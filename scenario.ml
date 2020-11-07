@@ -480,6 +480,23 @@ all the time. What do you want to do?"
 
 (* ====================== SENIOR FALL ================================ *)
 
+let senior_classes = make_scenario "senior classes" "It's senior year! 
+It's time to decide whether you're going to catch an early case of 
+senioritis or stay hard at work" 
+    ["Early seniorities - easy classes"; "No seniorities, I'm hard working"] []
+
+let senior_car = make_scenario "senior car" "Now that the semester's about to 
+begin, you're considering bringing a car to campus. You get excited thinking 
+about all the fun places you can visit with a car on campus, but parking is so 
+expensive in Collegetown." 
+    ["Bring car"; "Don't bring car"] []
+
+let senior_pic = make_scenario "senior pic" "It's that time of year!
+The photography company's in town and it's time to take your yearbook picture,
+but the only appointment they had left was at 7 AM." 
+    ["Sleep past your alarm"; "Work on hair and wear your best clothes"; "Get up and go"] []
+
+
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;

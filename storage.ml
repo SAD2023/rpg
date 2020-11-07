@@ -179,9 +179,11 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Steppin on puddles with my timbs on", [("morality", 10.0)]);
                                  ("Na na na",[("morality", -10.0)]);
                                  ("Visit Cornell Health", [("health", 3.0); ("gpa", 0.1)]);
-                                 ("I have no time for that", [("health", -3.0); ("gpa", -0.2)])
-
-
+                                 ("I have no time for that", [("health", -3.0); ("gpa", -0.2)]);
+                                 ("Early seniorities - easy classes", [("health", 5.0); ("morality", -4.0); ("gpa", 0.3)]);
+                                 ("No seniorities, I'm hard working", [("health", -5.0); ("morality", 4.0); ("gpa", -0.1)]);
+                                 ("Bring car", [("health", 6.0); ("brbs", -15.0)]);
+                                 ("Don't bring car", [("health", -2.0)]);
                                 ]
 
 
@@ -359,8 +361,10 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I have commitment issues", "junior slope day");
                               ("Steppin on puddles with my timbs on", "junior finals");
                               ("Na na na", "junior finals");
-                              ("Visit Cornell Health", "end");
-                              ("I have no time for that", "end")
+                              ("Visit Cornell Health", "senior classes");
+                              ("I have no time for that", "senior classes");
+                              ("Early seniorities - easy classes", "senior car");
+                              ("No seniorities, I'm hard working", "senior car");
                              ]
 
 let scenario_friends_list = [
