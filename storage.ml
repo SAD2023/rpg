@@ -372,7 +372,9 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("not feelin their vibe", "valentines day 2");
                               ("get their snap", "valentines day");
                               ("not that interested", "valentines day 2");
-                              ("Spend it with them", "cs visit");
+                              ("Spend it with them", "love");
+                              ("I'm falling for them", "cs visit");                              
+                              ("I have commitment issues", "cs visit");
                               ("Spend it alone", "cs visit");
                               ("Find me love", "cs visit");
                               ("Single like a pringle", "cs visit");
@@ -426,5 +428,5 @@ let has_prereq = [
 
 let unlock_list = 
   [("Roommate and Brad", ("double", "No Roommate and Brad"));
-   ("love", ("get their snap", "junior slope day"))
+   ("love", ("spend it with them", "junior slope day"))
   ]
