@@ -201,8 +201,12 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("It's too expensive", [("brbs", 11.0)]);
                                  ("graduate early", [("end", 0.0)]); (* ENDING *)
                                  ("enroll in another semester", [("gpa", 0.4); ("health", 5.0)]);
-                                 ("ski time", [("end"), 0.0]);
-                                 ("I'm studious", [("end"), 0.0]);
+                                 ("ski time", [("gpa", -0.2); ("social_life", 8.0)]);
+                                 ("I'm studious", [("gpa", 0.2)]);
+                                 ("Startup", [("brbs", 10.0); ("gpa", -0.1)]);
+                                 ("Meh. I would only work for Google", [("gpa", 0.1)]);
+                                 ("Grad school", [("end", 0.3)]); (*Replace end with gpa *)
+                                 ("Industry", [("end", 20.0)]); (*Replace end with brbs *)
                                 ]
 
 
@@ -405,8 +409,12 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("It's too expensive", "graduate early"); 
                               ("graduate early", "end"); (** ENDING *)
                               ("enroll in another semester", "ditch finals");
-                              ("ski time", "end");
-                              ("I'm studious", "end");
+                              ("ski time", "startup");
+                              ("I'm studious", "startup");
+                              ("Startup", "grad school");
+                              ("Meh. I would only work for Google", "grad school");
+                              ("Grad school", "end");
+                              ("Industry", "end");
                              ]
 
 let scenario_friends_list = [
@@ -428,5 +436,6 @@ let has_prereq = [
 
 let unlock_list = 
   [("Roommate and Brad", ("double", "No Roommate and Brad"));
-   ("love", ("spend it with them", "junior slope day"))
+   ("love", ("spend it with them", "junior slope day"));
+   ("startup", ("career club", "grad school"));
   ]

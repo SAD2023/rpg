@@ -524,11 +524,26 @@ and there's a watermark across them. You could buy them to fix these issues, but
 these packages are very expensive."
     ["Buy pictures"; "It's too expensive"] []
 
-let graduate_early = make_scenario "graduate early" "It seems like alot of your friends are graduating early. You've completed all of your course requirements to graduate, and so you can potentially graduate earlier. However, another semester would allow you build up your gpa a little more, while also just having fun."
+let graduate_early = make_scenario "graduate early" "It seems like alot of your 
+friends are graduating early. You've completed all of your course requirements to 
+graduate, and so you can potentially graduate earlier. However, another semester 
+would allow you build up your gpa a little more, while also just having fun."
     ["graduate early"; "enroll in another semester"] []
 
-let ditch_finals = make_scenario "ditch finals" "It's the end of your senior fall semester, and your fellow senior friends would like to ditch finals week and spend the snowy week traveling to Colorado to ski."
+let ditch_finals = make_scenario "ditch finals" "It's the end of your senior fall 
+semester, and your fellow senior friends would like to ditch finals week and spend 
+the snowy week traveling to Colorado to ski."
     ["Ski time"; "I'm studious"] []
+
+let grad_school =  make_scenario "grad school" "Grad school applications are starting
+to be due. Would you like to apply to a grad school?"
+    ["Grad school"; "Industry"] []
+
+let startup =  make_scenario "startup" "Your friend Maximillian the III is making
+a startup as a side hustle. Do you wanna be a part of it? It might take some time
+out of your semester but it'll definitely look good on your resume."
+    ["Startup"; "Meh. I would only work for Google"] []
+
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -549,7 +564,8 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      all_black; all_black_part_2; after_party; after_party_part_2;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
-                     homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals]
+                     homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals;
+                     grad_school]
 
 let rec go_through_unlocks lst name = 
   match lst with 
