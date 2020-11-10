@@ -568,6 +568,16 @@ with your fellow seniors before you graduate. However, you just got a last
 minute interview for a full time job after college"
     ["SENIOR DAYS"; "Go for the interview"] []
 
+let last_day_of_classes = make_scenario "last day of classes" "Finally, it is 
+your last day of classes of your whole college career! However, you don't think 
+that your professor is going to say anything important, and besides, skipping
+oneeee class doesn't make a difference, right?"
+    ["Go to class! It's the last day"; "Skip"] []
+
+let final_finals = make_scenario "final finals" "It is your last finals period
+ ever! Do you want to actually try?"
+    ["Actually try"; "Nah, not worth it"] []
+
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -589,7 +599,8 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
                      homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals;
-                     grad_school; wines; tower; first_dam; senior_days]
+                     grad_school; wines; tower; first_dam; senior_days; last_day_of_classes;
+                     final_finals]
 
 let rec go_through_unlocks lst name = 
   match lst with 

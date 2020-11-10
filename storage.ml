@@ -215,6 +215,10 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("I'm scared of the water", [("health", 6.0)]);
                                  ("SENIOR DAYS", [("social_life", 7.0)]);
                                  ("Go for the interview", [("brbs", 14.0)]);
+                                 ("Go to class! It's the last day", [("gpa", 0.1)]);
+                                 ("skip", [("social_life", 10.0); ("gpa", -0.01)]);
+                                 ("Actually try", [("end", 0.0)]);
+                                 ("Nah, not worth it", [("end", 0.0)])
                                 ]
 
 
@@ -429,9 +433,12 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Yes views", "first dam");
                               ("Time to cliff dive", "senior days");
                               ("I'm scared of the water", "senior days");
-                              ("SENIOR DAYS", "end");
-                              ("Go for the interview", "end");
-
+                              ("SENIOR DAYS", "last day of classes");
+                              ("Go for the interview", "last day of classes");
+                              ("Go to class! It's the last day", "final finals");
+                              ("skip", "final finals");
+                              ("Actually try", "end");
+                              ("Nah, not worth it", "end")
                              ]
 
 let scenario_friends_list = [
