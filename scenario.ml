@@ -544,6 +544,18 @@ a startup as a side hustle. Do you wanna be a part of it? It might take some tim
 out of your semester but it'll definitely look good on your resume."
     ["Startup"; "Meh. I would only work for Google"] []
 
+(* ====================== SENIOR SPRING ================================ *)
+
+let wines = make_scenario "wines" "It is your very last semester at Cornell!! 
+This means that this is your last chance to take any course before you leave. 
+Everyone talks about taking the wine course at Cornell. Shall we raise a 
+glass?" ["White wine please"; "I don't drink"] [] 
+
+let tower = make_scenario "tower" "It is basically a tradition to climb all
+161 steps to the top of McGraw Tower. Who knows when you'll even happen
+to be in Ithaca again; plus the views would be amazing. Would you like 
+to climb the tower?" ["Too many steps"; "Yes views"] [] 
+
 
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
@@ -565,7 +577,7 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
                      homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals;
-                     grad_school]
+                     grad_school; wines; tower]
 
 let rec go_through_unlocks lst name = 
   match lst with 

@@ -207,6 +207,12 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Meh. I would only work for Google", [("gpa", 0.1)]);
                                  ("Grad school", [("end", 0.3)]); (*Replace end with gpa *)
                                  ("Industry", [("end", 20.0)]); (*Replace end with brbs *)
+                                 ("White wine please", [("health", 15.0)]);
+                                 ("I don't drink", [("health", -5.0)]);
+                                 ("Too many steps", [("health", 10.0); ("morality", 10.0)]);
+                                 ("Yes views", [("morality", -10.0)])
+
+
                                 ]
 
 
@@ -413,8 +419,14 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I'm studious", "startup");
                               ("Startup", "grad school");
                               ("Meh. I would only work for Google", "grad school");
-                              ("Grad school", "end");
-                              ("Industry", "end");
+                              ("Grad school", "wines");
+                              ("Industry", "wines");
+                              ("White wine please", "tower");
+                              ("I don't drink", "tower");
+                              ("Too many steps", "end");
+                              ("Yes views", "end")
+
+
                              ]
 
 let scenario_friends_list = [
