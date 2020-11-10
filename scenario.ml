@@ -535,6 +535,8 @@ semester, and your fellow senior friends would like to ditch finals week and spe
 the snowy week traveling to Colorado to ski."
     ["Ski time"; "I'm studious"] []
 
+(* ====================== SENIOR SPRING ================================ *)
+
 let grad_school =  make_scenario "grad school" "Grad school applications are starting
 to be due. Would you like to apply to a grad school?"
     ["Grad school"; "Industry"] []
@@ -543,8 +545,6 @@ let startup =  make_scenario "startup" "Your friend Maximillian the III is makin
 a startup as a side hustle. Do you wanna be a part of it? It might take some time
 out of your semester but it'll definitely look good on your resume."
     ["Startup"; "Meh. I would only work for Google"] []
-
-(* ====================== SENIOR SPRING ================================ *)
 
 let wines = make_scenario "wines" "It is your very last semester at Cornell!! 
 This means that this is your last chance to take any course before you leave. 
@@ -555,6 +555,18 @@ let tower = make_scenario "tower" "It is basically a tradition to climb all
 161 steps to the top of McGraw Tower. Who knows when you'll even happen
 to be in Ithaca again; plus the views would be amazing. Would you like 
 to climb the tower?" ["Too many steps"; "Yes views"] [] 
+
+let first_dam = make_scenario "first dam" "The weather is finally nice out and 
+you're feeling relatively stress-free as a second semester senior. You realize 
+you've never been to first dam and your friends ask if you want to go for a 
+swim"
+    ["Time to cliff dive"; "I'm scared of the water"] []
+
+let senior_days = make_scenario "senior days" "It's senior week! Classes and 
+finals are all over and you have the time to participate in some amazing events 
+with your fellow seniors before you graduate. However, you just got a last 
+minute interview for a full time job after college"
+    ["SENIOR DAYS"; "Go for the interview"] []
 
 
 (** List of all the scenarios *)
@@ -577,7 +589,7 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
                      homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals;
-                     grad_school; wines; tower]
+                     grad_school; wines; tower; first_dam; senior_days]
 
 let rec go_through_unlocks lst name = 
   match lst with 

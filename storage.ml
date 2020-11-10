@@ -210,9 +210,11 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("White wine please", [("health", 15.0)]);
                                  ("I don't drink", [("health", -5.0)]);
                                  ("Too many steps", [("health", 10.0); ("morality", 10.0)]);
-                                 ("Yes views", [("morality", -10.0)])
-
-
+                                 ("Yes views", [("morality", -10.0)]);
+                                 ("Time to cliff dive", [("social_life", 6.0)]);
+                                 ("I'm scared of the water", [("health", 6.0)]);
+                                 ("SENIOR DAYS", [("social_life", 7.0)]);
+                                 ("Go for the interview", [("brbs", 14.0)]);
                                 ]
 
 
@@ -423,9 +425,12 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Industry", "wines");
                               ("White wine please", "tower");
                               ("I don't drink", "tower");
-                              ("Too many steps", "end");
-                              ("Yes views", "end")
-
+                              ("Too many steps", "first dam");
+                              ("Yes views", "first dam");
+                              ("Time to cliff dive", "senior days");
+                              ("I'm scared of the water", "senior days");
+                              ("SENIOR DAYS", "end");
+                              ("Go for the interview", "end");
 
                              ]
 
