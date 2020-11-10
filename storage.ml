@@ -205,8 +205,8 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("I'm studious", [("gpa", 0.2)]);
                                  ("Startup", [("brbs", 10.0); ("gpa", -0.1)]);
                                  ("Meh. I would only work for Google", [("gpa", 0.1)]);
-                                 ("Grad school", [("end", 0.3)]); (*Replace end with gpa *)
-                                 ("Industry", [("end", 20.0)]); (*Replace end with brbs *)
+                                 ("Grad school", [("gpa", 0.3)]); 
+                                 ("Industry", [("brbs", 20.0)]); 
                                  ("White wine please", [("health", 15.0)]);
                                  ("I don't drink", [("health", -5.0)]);
                                  ("Too many steps", [("health", 10.0); ("morality", 10.0)]);
