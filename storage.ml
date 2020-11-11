@@ -217,8 +217,9 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Go for the interview", [("brbs", 14.0)]);
                                  ("Go to class! It's the last day", [("gpa", 0.1)]);
                                  ("skip", [("social_life", 10.0); ("gpa", -0.01)]);
-                                 ("Actually try", [("end", 0.0)]);
-                                 ("Nah, not worth it", [("end", 0.0)])
+                                 ("Actually try", [("gpa", 0.2)]);
+                                 ("Nah, not worth it", [("gpa", -0.2)]);
+                                 ("Spread your wings and fly", [("end", 0.0)]);
                                 ]
 
 
@@ -431,14 +432,15 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I don't drink", "tower");
                               ("Too many steps", "first dam");
                               ("Yes views", "first dam");
-                              ("Time to cliff dive", "senior days");
-                              ("I'm scared of the water", "senior days");
-                              ("SENIOR DAYS", "last day of classes");
-                              ("Go for the interview", "last day of classes");
+                              ("Time to cliff dive", "last day of classes");
+                              ("I'm scared of the water", "last day of classes");
+                              ("SENIOR DAYS", "graduation");
+                              ("Go for the interview", "graduation");
                               ("Go to class! It's the last day", "final finals");
                               ("skip", "final finals");
-                              ("Actually try", "end");
-                              ("Nah, not worth it", "end")
+                              ("Actually try", "senior days");
+                              ("Nah, not worth it", "senior days");
+                              ("Spread your wings and fly", "end")
                              ]
 
 let scenario_friends_list = [

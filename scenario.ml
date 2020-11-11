@@ -562,11 +562,9 @@ you've never been to first dam and your friends ask if you want to go for a
 swim"
     ["Time to cliff dive"; "I'm scared of the water"] []
 
-let senior_days = make_scenario "senior days" "It's senior week! Classes and 
-finals are all over and you have the time to participate in some amazing events 
-with your fellow seniors before you graduate. However, you just got a last 
-minute interview for a full time job after college"
-    ["SENIOR DAYS"; "Go for the interview"] []
+let final_finals = make_scenario "final finals" "It is your last finals period
+ ever! Do you want to actually try?"
+    ["Actually try"; "Nah, not worth it"] []
 
 let last_day_of_classes = make_scenario "last day of classes" "Finally, it is 
 your last day of classes of your whole college career! However, you don't think 
@@ -574,9 +572,23 @@ that your professor is going to say anything important, and besides, skipping
 oneeee class doesn't make a difference, right?"
     ["Go to class! It's the last day"; "Skip"] []
 
-let final_finals = make_scenario "final finals" "It is your last finals period
- ever! Do you want to actually try?"
-    ["Actually try"; "Nah, not worth it"] []
+let senior_days = make_scenario "senior days" "It's senior week! Classes and 
+finals are all over and you have the time to participate in some amazing events 
+with your fellow seniors before you graduate. However, you just got a last 
+minute interview for a full time job after college"
+    ["SENIOR DAYS"; "Go for the interview"] []
+
+
+
+let graduation = make_scenario "graduation" "*Pomp and circumstances plays* \n\n
+All of your friends are in fancy robes. Ed Helms, Bill Nye, and Martha Pollack are speaking. 
+They point to you and say 'alumni pls donate money. we r broke' "
+    ["Spread your wings and fly"] []
+
+
+
+
+
 
 
 (** List of all the scenarios *)
