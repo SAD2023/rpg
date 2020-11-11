@@ -585,12 +585,6 @@ All of your friends are in fancy robes. Ed Helms, Bill Nye, and Martha Pollack a
 They point to you and say 'alumni pls donate money. we r broke' "
     ["Spread your wings and fly"] []
 
-
-
-
-
-
-
 (** List of all the scenarios *)
 let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      first_day; clubfest; halloween; club_meeting; study_partner; 
