@@ -1,7 +1,7 @@
 
 open Student
 
-let decision_consequence_list = [("test", [("end", 0.0)]);
+let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("single", [("gpa", 0.2)]);
                                  ("double", [("brb", 2.0); ("social_life", 5.0)]);
                                  ("o Week", [("social_life", 5.0); ("health", 3.0)]);
@@ -145,7 +145,7 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
                                  ("Follow my destiny", [("brbs", 20.0); ("social_life", 20.0)]);
                                  ("That's a bit spooky for me", [("social_life", -5.0)]);
                                  ("Tell your friends", [("social_life", - 20.0)]);
-                                 ("It's called secert for a reason!", [("social_life", 5.0)]);
+                                 ("It's called secret for a reason!", [("social_life", 5.0)]);
                                  ("Do that homework", [("gpa", 0.2)]);
                                  ("Attend a rager", [("social_life", 4.0)]);
                                  ("Grind time", [("gpa", 0.2)]);
@@ -224,6 +224,7 @@ let decision_consequence_list = [("test", [("end", 0.0)]);
 
 
 let decision_scenario_name = [("single", "Meet Brad");
+                              ("test", "ditch finals");
                               ("double", "Meet Brad");
                               ("o Week", "Roommate and Brad"); 
                               ("o Week", "No Roommate and Brad");
@@ -364,7 +365,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Follow my destiny", "secret society");
                               ("That's a bit spooky for me", "jr weekend");
                               ("Tell your friends", "told friends");
-                              ("It's called secert for a reason!", "jr weekend");
+                              ("It's called secret for a reason!", "jr weekend");
                               ("Do that homework", "pumpkins");
                               ("Attend a rager", "pumpkins");
                               ("Grind time", "pumpkins");
@@ -458,6 +459,7 @@ let scenario_friends_list = [
 let has_prereq = [
   "Roommate and Brad"; 
   "love";
+  "startup";
 ]
 
 let unlock_list = 

@@ -121,7 +121,7 @@ let make_scenario name prompt choices hidden_choices =
 let meet_brad =  make_scenario "Meet Brad" "You're doing laundry for the first time 
 and  you start talking to Brad, who lives  down the hall. He asks if you want 
 to go to an O-Week event with him and some friends. What do you want to do?" 
-    ["O Week"; "Stay in"; "Look at textbook"] []
+    ["O Week"; "Stay in"; "Look at textbook"; "test"] []
 
 let roommate_and_brad = 
   make_scenario "Roommate and Brad" "Your roommate's friend comes with you, but 
@@ -611,8 +611,8 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      valentines_day; valentines_day_2; cs_visit; love; junior_slope_day;
                      junior_finals; senior_classes; senior_car; senior_pic; autumn_nostalgia;
                      homecoming; campfire; relationship; senior_pic_ready_2; graduate_early; ditch_finals;
-                     grad_school; wines; tower; first_dam; senior_days; last_day_of_classes;
-                     final_finals]
+                     grad_school; wines; tower; first_dam; senior_days; last_day_of_classes; graduation;
+                     final_finals; startup]
 
 let rec go_through_unlocks lst name = 
   match lst with 
