@@ -121,7 +121,7 @@ let make_scenario name prompt choices hidden_choices =
 let meet_brad =  make_scenario "Meet Brad" "You're doing laundry for the first time 
 and  you start talking to Brad, who lives  down the hall. He asks if you want 
 to go to an O-Week event with him and some friends. What do you want to do?" 
-    ["O Week"; "Stay in"; "Look at textbook"; "test"] []
+    ["O Week"; "Stay in"; "Look at textbook"] []
 
 let roommate_and_brad = 
   make_scenario "Roommate and Brad" "Your roommate's friend comes with you, but 
