@@ -1,4 +1,4 @@
-MODULES= main print student scenario friend minigames storage
+MODULES= main print student scenario friend minigames storage test author 
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
 MLIS=$(MODULES:=.mli)
