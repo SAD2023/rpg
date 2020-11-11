@@ -19,9 +19,9 @@ let rec play_game player scenario acc =
       3. update student based on input
       4. recall itself *)
   if (acc mod 3) = 2 then Student.judgement player;
-  if (acc mod 7) = 3 then (Minigames.scramble_intro word_to_scramble; 
-                           let input = (read_line ()) in if Minigames.scramble_engine word_to_scramble input = "Wrong!" then
-                             (print_string "\n WRONG! \n"; play_game player scenario acc) else print_string "\n Correct! Hurray! \n\n");
+  if (acc mod 20) = 7 then (Minigames.scramble_intro word_to_scramble; 
+                            let input = (read_line ()) in if Minigames.scramble_engine word_to_scramble input = "Wrong!" then
+                              (print_string "\n WRONG! \n"; play_game player scenario acc) else print_string "\n Correct! Hurray! \n\n");
 
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
