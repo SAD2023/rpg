@@ -6,6 +6,13 @@ open Minigames
 
 
 let word_to_scramble = "cornell"
+let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; "slope"; "beebeelake"; 
+                         "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
+
+let word_picker lst_of_words = 
+  let index  = Random.int (List.length lst_of_words) in
+  List.nth lst_of_words index 
+
 
 let rec print_list lst = 
   match lst with 
@@ -19,9 +26,12 @@ let rec play_game player scenario acc =
       3. update student based on input
       4. recall itself *)
   if (acc mod 3) = 2 then Student.judgement player;
-  if (acc mod 20) = 7 then (Minigames.scramble_intro word_to_scramble; 
-                            let input = (read_line ()) in if Minigames.scramble_engine word_to_scramble input = "Wrong!" then
-                              (print_string "\n WRONG! \n"; play_game player scenario acc) else print_string "\n Correct! Hurray! \n\n");
+  if (acc mod 4) = 2 then (let word =  word_picker words_to_scramble  in (Minigames.scramble_intro word); 
+                           let input = (read_line ()) in begin 
+                             if Minigames.scramble_engine word input = "Wrong!" then
+                               (print_string "\n WRONG! Let's try a different word...\n"; play_game player scenario acc) else 
+                               print_string "\n Correct! Hurray! You get 3 bucks! \n\n"; 
+                             let player = Student.give_money player in play_game player scenario (acc+1) end); 
 
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in

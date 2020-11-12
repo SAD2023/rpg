@@ -152,3 +152,16 @@ let return_decisions student =
 
 let check_decisions decision student = 
   List.mem decision student.decision_list
+
+let give_money student = 
+  {
+    name = student.name;
+    age = student.age;
+    morality = student.morality;
+    gpa = student.gpa;
+    social_life = student.social_life;
+    health = student.health;
+    brbs = student.brbs +. 3.0;
+    friends = student.friends;
+    decision_list = student.decision_list;
+  }

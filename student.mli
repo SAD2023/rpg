@@ -104,3 +104,5 @@ val final_judgement: student -> unit
 val return_decisions: student -> decision list
 
 val check_decisions: decision -> student -> bool
+
+val give_money: student -> student
