@@ -83,12 +83,15 @@ let starting_scenario = {
 
 type next_scenarios = scenario list
 
+let list_of_letters = ["A"; "B"; "C"; "D"; "E"]
+
 (** [print_choices] prints the choices pertaining to a given scenario to 
     the terminal. *)
-let rec print_choices choices =
+let rec print_choices choices acc =
   match choices with 
   | [] -> ""
-  | h :: t -> "\n -" ^ h ^ (print_choices t) 
+  | h :: t -> "\n " ^ (List.nth list_of_letters acc) ^ ") " ^ h ^ (print_choices t (acc+1)) 
+
 
 
 let return_choices scenario = 
@@ -98,7 +101,7 @@ let return_choices scenario =
     the terminal. *)
 let print_prompt scenario = 
   ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
-  ANSITerminal.(print_string [yellow] (print_choices scenario.choices ^ "\n"))
+  ANSITerminal.(print_string [yellow] (print_choices scenario.choices 0 ^ "\n"))
 
 (**[filter_helper] is a helper function to filter. *)
 let filter_helper a b = 
@@ -704,3 +707,12 @@ let print_changes decision choices player =
   if new_friend = "NONE" then () else
     print_string("\n You gained a new friend: " ^ new_friend ^ "\n \n")
 
+let update_age scenario_name student = 
+  if scenario_name = "Classes" 
+  || scenario_name = "where living" 
+  || scenario_name = "senior classes"
+  then Student.update_age student
+  else student
+
+let return_scenario_name scenario = 
+  scenario.name

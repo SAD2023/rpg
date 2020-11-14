@@ -82,3 +82,7 @@ val main_friend_function: Student.decision -> Friend.friend list
 val check_prereq: scenario -> string * string
 
 val go_through_unlocks: (choice * 'a) list -> choice -> 'a
+
+val update_age: string -> Student.student -> Student.student
+
+val return_scenario_name: scenario -> string

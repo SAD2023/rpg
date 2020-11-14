@@ -99,6 +99,7 @@ let update_student student morality gpa social_life health brbs friends decision
 
 
 let judgement student = 
+  print_string ("AGE: " ^ string_of_int student.age);
   print_string "\nHmm... time to judge your character! \n";
   print_string "First, let's look at your gpa. ";
   if student.gpa <= 1.5 then print_string ("ew your gpa is " ^ (string_of_float student.gpa) ^ " Move to info sci \n \n") 
@@ -157,6 +158,19 @@ let give_money student =
   {
     name = student.name;
     age = student.age;
+    morality = student.morality;
+    gpa = student.gpa;
+    social_life = student.social_life;
+    health = student.health;
+    brbs = student.brbs +. 3.0;
+    friends = student.friends;
+    decision_list = student.decision_list;
+  }
+
+let update_age student= 
+  {
+    name = student.name;
+    age = student.age + 1;
     morality = student.morality;
     gpa = student.gpa;
     social_life = student.social_life;
