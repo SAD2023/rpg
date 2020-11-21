@@ -469,7 +469,9 @@ let unlock_list =
   ]
 
 let friend_closeness_list = 
-  [ ("I'M FALLING FOR THEM", ("Charlie", 5));
+  [ ("STAY IN", ("Sam", -5));
+    ("O WEEK", ("Sam", 5));
+    ("I'M FALLING FOR THEM", ("Charlie", 5));
     ("I HAVE COMMITMENT ISSUES",("Charlie", -5));
     ("STARTUP", ("Maximillian the III", 5));
     ("MEH. I WOULD ONLY WORK FOR GOOGLE",("Maximillian the III", -5))]

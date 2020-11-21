@@ -59,7 +59,7 @@ type health = float
 *)
 type brbs = float
 
-
+exception Poor of brbs
 (**  
    (** The abstract type of values representing friends (other characters)
  *)

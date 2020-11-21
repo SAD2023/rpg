@@ -86,3 +86,5 @@ val go_through_unlocks: (choice * 'a) list -> choice -> 'a
 val update_age: string -> Student.student -> Student.student
 
 val return_scenario_name: scenario -> string
+
+val remove_friend: string -> Friend.friend list -> Friend.friend list

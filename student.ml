@@ -36,7 +36,7 @@ let initial name =
     gpa = 0.0;
     social_life= 0.0;
     health = 0.0;
-    brbs= 0.0;
+    brbs= 50.0;
     friends= [];
     decision_list = [];
   }
@@ -83,6 +83,12 @@ let bounds upper attribute =
   else if attribute < 0.0 then 0.0 
   else attribute
 
+exception Poor of float
+
+let brb_bounds attribute = 
+  if attribute > 100.0 then 100.0
+  else if attribute < 0.0 then raise (Poor attribute)
+  else attribute
 
 let update_student student morality gpa social_life health brbs friends_list decision= 
   {
@@ -92,7 +98,7 @@ let update_student student morality gpa social_life health brbs friends_list dec
     gpa = bounds 4.0 (student.gpa +. gpa);
     social_life = bounds 100.0 (student.social_life +. social_life);
     health = bounds 100.0 (student.health +. health);
-    brbs = bounds 100.0 (student.brbs +. brbs);
+    brbs = brb_bounds (student.brbs +. brbs);
     friends = friends_list;
     decision_list = decision :: student.decision_list;
   }

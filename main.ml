@@ -27,6 +27,36 @@ let give_number letter =
   else 4
 
 
+let friend_minigame player = 
+  let player_friend_list = Student.friend_list_getter player in 
+  let lonely_list = List.filter (fun x -> Friend.get_closeness x < 1) player_friend_list in  (*
+  print_string (string_of_int (List.length lonely_list)); *)
+  if List.length lonely_list > 0 then 
+    let lonely_friend = List.hd lonely_list in 
+    print_string ("\nYou haven't spent much time with your friend " ^ Friend.get_name (lonely_friend) ^ 
+                  ". \nDo you want to play a quick game with them? \n\nA)Yes\nB)No \n\n");
+    let input =  String.uppercase_ascii (read_line ()) in 
+    if input = "A" || input = "YES" then 
+      (print_string "How do you spell cornell? Hint: it's cornell \n";
+       let input = String.uppercase_ascii (read_line ()) in 
+       (begin if input = "CORNELL" then print_string "WOW! Smartie Pants! \n\n"
+         else print_string "\nEwww Dumbass \n\n" end);
+       let friend = lonely_friend in 
+       let name = Friend.get_name friend in   
+       let updated_friend_list = Scenario.remove_friend name (Student.friend_list_getter player) in 
+       let updated_friend = Friend.update_friend friend 5 0 in 
+       Student.update_friend_list_only player (updated_friend :: updated_friend_list))
+    else(
+      let friend = lonely_friend in 
+      let name = Friend.get_name friend in   
+      let updated_friend_list = Scenario.remove_friend name (Student.friend_list_getter player) in  
+      let player = Student.update_friend_list_only player updated_friend_list in 
+      (print_string ("You're no longer friends with " ^ Friend.get_name lonely_friend ^ ". Your current list of friends are: " ^
+                     "\n\n"); List.iter (fun x -> print_string(Friend.get_name x)) (Student.friend_list_getter player)); 
+      player)
+
+  else player 
+
 (** [play_game f] keeps the game playing. *)
 let rec play_game player scenario acc =
   (** 1. print prompt
@@ -34,6 +64,7 @@ let rec play_game player scenario acc =
       3. update student based on input
       4. recall itself *)
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) player in
+  let player = friend_minigame player in 
   if (acc mod 3) = 2 then Student.judgement player;
   if (acc mod 500) = 20 then (let word =  word_picker words_to_scramble  in 
                               (Minigames.scramble_intro word); 
@@ -50,37 +81,42 @@ let rec play_game player scenario acc =
   try 
     let (decision: Student.decision) = List.nth choices (give_number(String.uppercase_ascii (read_line ()))) in 
     let player = Scenario.match_consequences player (return_consequences decision choices player) decision in 
+
     let next_scenario = Scenario.next_scenario decision choices player in 
     Scenario.print_changes decision choices player; (*
    print_string(print_list (Student.return_decisions player)); *)
     play_game player next_scenario (acc+1)
 
-  with Failure(string) ->
+  with | Failure(string) ->
     ANSITerminal.(print_string [red] "\n Oops, wrong input playa. Please enter a valid choice \n \n");
     play_game player scenario acc
+       | Student.Poor(float) ->
+         ANSITerminal.(print_string [red] "\n Oops, you're too poor. Please enter a valid choice poor person \n \n");
+         play_game player scenario acc
+
 
 
 let main () =
   ANSITerminal.(print_string [red] (
       "\n
-      Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.."));
+    Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.."));
   ANSITerminal.(print_string [green] (
       "\n
-      You're about to start your college life! From now on, you make your own 
-      decisions and your decisions have consequences! 
+    You're about to start your college life! From now on, you make your own 
+    decisions and your decisions have consequences! 
 
-      People will judge you on the following qualities: 
+    People will judge you on the following qualities: 
 
-      Morality: how ethical you are. 
+    Morality: how ethical you are. 
 
-      Social Life: how smashed you get on the weekends 
+    Social Life: how smashed you get on the weekends 
 
-      Health: what is a broccoli? Have you seen it? 
+    Health: what is a broccoli? Have you seen it? 
 
-      BRBS: do you own a canada goose jacket and a gucci belt? 
+    BRBS: do you own a canada goose jacket and a gucci belt? 
 
-      And most importantly, GPA: your entire self-worth, basically. \n
-      "));
+    And most importantly, GPA: your entire self-worth, basically. \n
+    "));
   ANSITerminal.(print_string [blue] "What's your name kid?\n");
   print_string  "\n > ";
   let player = Student.initial (read_line ()) in
