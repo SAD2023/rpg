@@ -84,7 +84,7 @@ let bounds upper attribute =
   else attribute
 
 
-let update_student student morality gpa social_life health brbs friends decision= 
+let update_student student morality gpa social_life health brbs friends_list decision= 
   {
     name = student.name;
     age = student.age;
@@ -93,9 +93,25 @@ let update_student student morality gpa social_life health brbs friends decision
     social_life = bounds 100.0 (student.social_life +. social_life);
     health = bounds 100.0 (student.health +. health);
     brbs = bounds 100.0 (student.brbs +. brbs);
-    friends = student.friends @ friends;
+    friends = friends_list;
     decision_list = decision :: student.decision_list;
   }
+
+let update_friend_list_only student friends_list = 
+  {
+    name = student.name;
+    age = student.age;
+    morality = student.morality;
+    gpa = student.gpa ;
+    social_life = student.social_life;
+    health = student.health;
+    brbs = student.brbs;
+    friends = friends_list;
+    decision_list = student.decision_list;
+  }
+
+let friend_list_getter student = 
+  student.friends
 
 
 let judgement student = 
@@ -125,7 +141,12 @@ let judgement student =
   print_string "Got any friends? \n";
   if student.social_life <= 40.0 then print_string 
       "Get some friends loser \n \n"
-  else print_string ("Oh ma gosh you're so popular... \n \n")
+  else print_string ("Oh ma gosh you're so popular... \n \n");
+
+  List.iter (fun x -> print_string(Friend.get_name x ^ " " ^ string_of_int (Friend.get_closeness x) ^ " \n\n")) student.friends
+
+
+
 
 
 let final_judgement student =

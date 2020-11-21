@@ -467,3 +467,9 @@ let unlock_list =
    ("love", ("spend it with them", "junior slope day"));
    ("startup", ("career club", "grad school"));
   ]
+
+let friend_closeness_list = 
+  [ ("I'M FALLING FOR THEM", ("Charlie", 5));
+    ("I HAVE COMMITMENT ISSUES",("Charlie", -5));
+    ("STARTUP", ("Maximillian the III", 5));
+    ("MEH. I WOULD ONLY WORK FOR GOOGLE",("Maximillian the III", -5))]

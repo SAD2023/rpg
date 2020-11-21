@@ -108,3 +108,7 @@ val check_decisions: decision -> student -> bool
 val give_money: student -> student
 
 val update_age: student -> student
+
+val friend_list_getter: student -> Friend.friend list
+
+val update_friend_list_only: student -> Friend.friend list -> student

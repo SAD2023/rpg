@@ -41,6 +41,14 @@ let rec tuple_friend_helper tuple_list acc =
   | [] -> acc
   | h :: t -> tuple_friend_helper t (fst h :: acc) 
 
+let friend_list_filter_helper name (friend:Friend.friend) = 
+  name <> Friend.get_name friend
+
+(**Takes the name of a friend and a friend_list and removes the friend with the
+   name from the friend_list *)
+let remove_friend name (friend_list:Friend.friend list)= 
+  List.filter (friend_list_filter_helper name) friend_list
+
 (**Takes a decision and returns the string of the name of a friend or "NONE" *)
 let match_decision_to_friend (decision:string) =
   let decision_list = tuple_friend_helper Storage.scenario_friends_list [] in 
@@ -658,6 +666,22 @@ let rec tuple_helper attribute tuple_list =
   | [] -> 0.0
   | h :: t -> if fst h = attribute then snd h else tuple_helper attribute t 
 
+let rec closeness_helper decision list = 
+  match list with 
+  | [] -> ("false", 0)
+  | h :: t -> if fst h = decision then snd h else closeness_helper decision t 
+
+let main_closeness_function decision student = 
+  let tuple = closeness_helper decision Storage.friend_closeness_list in 
+  if fst tuple = "false" then student else 
+    let name_of_friend = fst tuple in 
+    let friend_list = Student.friend_list_getter student in 
+    let friend = get_element_out_of_list (List.filter (fun x -> Friend.get_name x = name_of_friend) friend_list) in 
+    let new_friend = Friend.update_friend friend (snd tuple) 0 in  
+    let updated_friend_list = new_friend :: (remove_friend (Friend.get_name friend) friend_list) in 
+    Student.update_friend_list_only student updated_friend_list
+
+
 (**Takes a student and a list of consequences in the form [("gpa", 0.2)] and 
    creates a new student instance. *)
 let match_consequences student consequence_list decision = 
@@ -666,8 +690,10 @@ let match_consequences student consequence_list decision =
   let brbs = tuple_helper "brbs" consequence_list in
   let health = tuple_helper "health" consequence_list in
   let social_life = tuple_helper "social_life" consequence_list in
-  let friend = main_friend_function decision in 
-  Student.update_student student morality gpa social_life health brbs friend decision
+  let friend = Student.friend_list_getter student @ (main_friend_function decision) in 
+  let new_student = Student.update_student student morality gpa social_life health brbs friend decision in 
+  main_closeness_function decision new_student 
+
 
 (** [change_tuple_helper] returns " increased by "  if the second value in
     a given tuple is positive, else returns " decreased by "  *)

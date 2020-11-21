@@ -21,3 +21,7 @@ val make_friend: string -> closeness -> worth -> friend
 
 
 val get_name: friend -> string
+
+val update_friend: friend -> closeness -> worth -> friend
+
+val get_closeness: friend -> closeness
