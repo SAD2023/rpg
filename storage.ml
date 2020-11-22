@@ -1,4 +1,3 @@
-
 open Student
 
 let decision_consequence_list = [("test", [("gpa", 0.0)]);
@@ -388,7 +387,6 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("Nah, not worth it", [("gpa", -0.2)]);
                                  ("Spread your wings and fly", [("end", 0.0)]);
                                 ]
-
 
 let decision_scenario_name = [("single", "Meet Brad");
                               ("test", "ditch finals");
