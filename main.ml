@@ -35,12 +35,14 @@ let friend_minigame player =
     print_string ("\nYou haven't spent much time with your friend " ^ 
                   Friend.get_name (lonely_friend) ^ 
                   ". \nDo you want to play a quick game with them? \n\n
-                  A)Yes\nB)No \n\n");
+ A)Yes\n
+ B)No \n\n");
     let input =  String.uppercase_ascii (read_line ()) in 
     if input = "A" || input = "YES" then 
       (print_string "How do you spell cornell? Hint: it's cornell \n";
        let input = String.uppercase_ascii (read_line ()) in 
-       (begin if input = "CORNELL" then print_string "WOW! Smartie Pants! \n\n"
+       (begin if input = "CORNELL" then print_string 
+             "\n WOW! Smartie Pants! \n\n"
          else print_string "\nEwww Dumbass \n\n" end);
        let friend = lonely_friend in 
        let name = Friend.get_name friend in   
