@@ -3,220 +3,387 @@ open Student
 
 let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("single", [("gpa", 0.2)]);
-                                 ("double", [("brb", 2.0); ("social_life", 5.0)]);
-                                 ("o Week", [("social_life", 5.0); ("health", 3.0)]);
-                                 ("stay in", [("social_life",  -2.0); ("health", -2.0)]);
-                                 ("look at textbook", [("social_life", -5.0); ("gpa", 0.4)]);
-                                 ("leave without them", [("social_life", -3.0); ("morality", -10.0)]);
+                                 ("double", [("brb", 2.0); 
+                                             ("social_life", 5.0)]);
+                                 ("o Week", [("social_life", 5.0); 
+                                             ("health", 3.0)]);
+                                 ("stay in", [("social_life",  -2.0); 
+                                              ("health", -2.0)]);
+                                 ("look at textbook", [("social_life", -5.0); 
+                                                       ("gpa", 0.4)]);
+                                 ("leave without them", [("social_life", -3.0); 
+                                                         ("morality", -10.0)]);
                                  ("help them home", [("morality", 5.0)]);
                                  ("snooze", [("gpa", -0.5); ("health", 3.0)]);
-                                 ("go to class", [("gpa", 0.2); ("health", -2.0); ("social_life", 4.0)]);
+                                 ("go to class", [("gpa", 0.2); 
+                                                  ("health", -2.0); 
+                                                  ("social_life", 4.0)]);
                                  ("fun club", [("health", 10.0)]);                       
                                  ("career club", [("gpa", 0.2); ("brbs", 5.0)]);                    
                                  ("charity club", [("morality", 6.0)]);
-                                 ("study", [("gpa", 0.2); ("social_life", -5.0)]);
-                                 ("go trick or treating", [("gpa", -0.2); ("social_life", 5.0)]);
-                                 ("sign up", [("gpa", 0.2); ("social_life", 5.0)]);
-                                 ("nah I'm good", [("gpa", -0.2); ("social_life", -5.0); ("health", -3.0)]);
+                                 ("study", [("gpa", 0.2); 
+                                            ("social_life", -5.0)]);
+                                 ("go trick or treating", [("gpa", -0.2); 
+                                                           ("social_life", 
+                                                            5.0)]);
+                                 ("sign up", [("gpa", 0.2); 
+                                              ("social_life", 5.0)]);
+                                 ("nah I'm good", [("gpa", -0.2); 
+                                                   ("social_life", -5.0); 
+                                                   ("health", -3.0)]);
                                  ("do the right thing", [("morality", 10.0)]); 
                                  ("fuck okies", [("morality", -7.0)]);
                                  ("unmask the bear man", [("morality", 10.0)]);
-                                 ("make a reddit post about it", [("morality", -7.0); ("social_life", -5.0)]);
-                                 ("attend the social", [("social_life", 10.0); ("health", 5.0)]);
-                                 ("binge watch youtube", [("health", -5.0); ("social_life", -8.0)]);
-                                 ("do some pushups", [("health", 11.0); ("social_life", -8.0)]);
-                                 ("lower the course load",[("health", 5.0); ("gpa", 0.3)]);
-                                 ("keep current course load", [("health", -5.0); ("social_life", -5.0); ("gpa",-0.2)]);
-                                 ("go to dinner", [("health", 7.0); ("social_life", 5.0); ("brbs", -10.0)]);
-                                 ("stay home and be lonely", [("health", -5.0); ("social_life", -5.0)]); 
-                                 ("sacrifice mental health for gpa", [("health", -8.0); ("gpa", 0.5)]); 
-                                 ("fail the assignment", [("health", 8.0); ("gpa", -0.5)]);
-                                 ("join the frisbee team", [("health", 10.0); ("social_life", 10.0)]);
-                                 ("don't join", [("health", -8.0); ("gpa", 0.3)]);
-                                 ("ignore it. It's college", [("morality", 6.0); ("social_life", 4.0)]);
-                                 ("report it to the RA", [("morality", -8.0); ("social_life", -9.0)]);
-                                 ("get a bike", [("health", 8.0); ("brbs", -10.0); ("gpa", 0.2)]);
-                                 ("Keep walking", [("health", 3.0); ("gpa", -0.3)]);
-                                 ("start using the bus pass", [("health", -4.0); ("gpa", 0.2)]);
-                                 ("Accompany your friend", [("social_life", 5.0); ("health", -2.0)]);
-                                 ("Jam out", [("social_life", -5.0); ("health", 2.0)]);
-                                 ("Stop and take a pic with touchdown", [("gpa", -0.3); ("social life", 3.0)]);
+                                 ("make a reddit post about it", 
+                                  [("morality", -7.0); ("social_life", -5.0)]);
+                                 ("attend the social", [("social_life", 10.0); 
+                                                        ("health", 5.0)]);
+                                 ("binge watch youtube", [("health", -5.0); 
+                                                          ("social_life", 
+                                                           -8.0)]);
+                                 ("do some pushups", [("health", 11.0); 
+                                                      ("social_life", -8.0)]);
+                                 ("lower the course load",[("health", 5.0); 
+                                                           ("gpa", 0.3)]);
+                                 ("keep current course load", [("health", -5.0); 
+                                                               ("social_life", 
+                                                                -5.0); 
+                                                               ("gpa",-0.2)]);
+                                 ("go to dinner", [("health", 7.0); 
+                                                   ("social_life", 5.0); 
+                                                   ("brbs", -10.0)]);
+                                 ("stay home and be lonely", [("health", -5.0); 
+                                                              ("social_life", 
+                                                               -5.0)]); 
+                                 ("sacrifice mental health for gpa", 
+                                  [("health", -8.0); ("gpa", 0.5)]); 
+                                 ("fail the assignment", [("health", 8.0); 
+                                                          ("gpa", -0.5)]);
+                                 ("join the frisbee team", [("health", 10.0); 
+                                                            ("social_life", 
+                                                             10.0)]);
+                                 ("don't join", [("health", -8.0);
+                                                 ("gpa", 0.3)]);
+                                 ("ignore it. It's college", [("morality", 6.0); 
+                                                              ("social_life", 
+                                                               4.0)]);
+                                 ("report it to the RA", [("morality", -8.0); 
+                                                          ("social_life", 
+                                                           -9.0)]);
+                                 ("get a bike", [("health", 8.0); 
+                                                 ("brbs", -10.0); ("gpa",
+                                                                   0.2)]);
+                                 ("Keep walking", [("health", 3.0); 
+                                                   ("gpa", -0.3)]);
+                                 ("start using the bus pass", [("health", -4.0); 
+                                                               ("gpa", 0.2)]);
+                                 ("Accompany your friend", 
+                                  [("social_life", 5.0); ("health", -2.0)]);
+                                 ("Jam out", [("social_life", -5.0); 
+                                              ("health", 2.0)]);
+                                 ("Stop and take a pic with touchdown", 
+                                  [("gpa", -0.3); ("social life", 3.0)]);
                                  ("Rush to class", [("gpa", 0.5)]);
-                                 ("Cook with roommate", [("social life", 5.0); ("morality", 8.0)]);
-                                 ("Onion rings and chicken tenders from Nasties", [("health", -10.0); ("brbs", -10.0)]);
-                                 ("Build an igloo", [("social life", 5.0); ("gpa", -0.4)]);
+                                 ("Cook with roommate", [("social life", 5.0); 
+                                                         ("morality", 8.0)]);
+                                 ("Onion rings and chicken tenders from Nasties"
+                                 , [("health", -10.0); ("brbs", -10.0)]);
+                                 ("Build an igloo", [("social life", 5.0); 
+                                                     ("gpa", -0.4)]);
                                  ("Study for prelim", [("gpa", 0.5)]);
-                                 ("Netflix and hot chocolate",[("health", 5.0); ("gpa", -0.4)]);
-                                 ("Take the sign",[("morality", -5.0); ("health", -5.0)]);
+                                 ("Netflix and hot chocolate",[("health", 5.0); 
+                                                               ("gpa", -0.4)]);
+                                 ("Take the sign",[("morality", -5.0); (
+                                      "health", -5.0)]);
                                  ("Leave it",[("morality", 5.0)]);
                                  ("Put the sign back",[("morality", 5.0)]);
                                  ("Keep going",[("morality", -10.0)]);
-                                 ("Visit Denice Cassaro",[("social_life", 2.0)]);
+                                 ("Visit Denice Cassaro",[("social_life", 
+                                                           2.0)]);
                                  ("Okenshield's",[("health", 3.0)]);
                                  ("watch a movie", ["health", 3.0]);
                                  ("Popcorn",[("health", 10.0)]);
                                  ("Go back home", [("health", 6.0)]);
                                  ("Stay in Ithaca", [("social_life", 8.0)]);
-                                 ("Enjoy the great weather",[("gpa", -0.9);("health", 10.0)]);
+                                 ("Enjoy the great weather",[("gpa", -0.9);
+                                                             ("health", 10.0)]);
                                  ("Continue to study",[("gpa", 1.0)]);
                                  ("Rush", [("social_life", 10.0) ]);
                                  ("Don't rush", [("social_life", -3.0)]);
                                  ("Take the bid", [("brbs", -5.0)]);
                                  ("Don't take the bid", [("brbs", 2.5)]);
-                                 ("Snuggle up with friends", [("social_life", 1.0)]);
-                                 ("Slide down the slope", [("social_life", 1.0); ("health", -1.0)]);
+                                 ("Snuggle up with friends", [("social_life",
+                                                               1.0)]);
+                                 ("Slide down the slope", [("social_life", 1.0);
+                                                           ("health", -1.0)]);
                                  ("Watch lectures", [("gpa", 1.5)]);
-                                 ("Talk to a caps counselor", [("health", 2.0)]);
-                                 ("binge on junk food and netflix shows", [("health", -1.0)]);
-                                 ("hang out with friends", [("social_life", 1.5)]);
+                                 ("Talk to a caps counselor", [("health", 
+                                                                2.0)]);
+                                 ("binge on junk food and netflix shows", 
+                                  [("health", -1.0)]);
+                                 ("hang out with friends", [("social_life", 
+                                                             1.5)]);
                                  ("Go to the career center", [("gpa", 0.2)]);
                                  ("Just apply next year", [("gpa", -0.1)]);
                                  ("Stay on campus", [("gpa", 0.1)]);
                                  ("Go home", [("morality", 4.0)]);
-                                 ("Vacation with friends", [("morality", -2.0); ("social_life", 1.0)]);
+                                 ("Vacation with friends", [("morality", -2.0);
+                                                            ("social_life",
+                                                             1.0)]);
                                  ("go to the slope", [("social_life", 1.5)]);
                                  ("start studying early", [("gpa", 0.1)]);
                                  ("sleep", [("health", 1.0)]);
                                  ("Sneak it in", [("morality", -3.0)]);
                                  ("Don't sneak it in", [("morality", 3.0)]);
                                  ("Study most of the time", [("gpa", 0.2)]);
-                                 ("Mix of friends and books", [("gpa", 0.1); ("social_life", 2.0)]);
+                                 ("Mix of friends and books", [("gpa", 0.1); 
+                                                               ("social_life", 
+                                                                2.0)]);
                                  ("Don't study at all", [("morality", -3.0)]);
-                                 ("Wait around for a seat", [("morality", -1.0)]);
+                                 ("Wait around for a seat", [("morality", 
+                                                              -1.0)]);
                                  ("Study somewhere else", [("morality", 1.0)]);
-                                 ("ice cream class", [("health", -5.0); ("social_life", 7.0)]); ("cs3110", [("health", -3.0); ("social_life", -3.0); ("brbs", 7.0)]);
-                                 ("cs 3110",[("social_life", -5.0); ("gpa", 0.2)]);
+                                 ("ice cream class", [("health", -5.0); 
+                                                      ("social_life", 7.0)]); 
+                                 ("cs3110", [("health", -3.0); ("social_life", 
+                                                                -3.0); ("brbs", 
+                                                                        7.0)]);
+                                 ("cs 3110",[("social_life", -5.0); ("gpa", 
+                                                                     0.2)]);
                                  ("commit",[("gpa", 0.2);("brbs", 5.0)]);
                                  ("later", [("gpa", -0.2)]);
-                                 ("get a gym pass",[("brbs", -15.0);("health", 6.0)]);
-                                 ("no never going to use it",[("health", -2.0)]);
+                                 ("get a gym pass",[("brbs", -15.0);("health", 
+                                                                     6.0)]);
+                                 ("no never going to use it",[("health", 
+                                                               -2.0)]);
                                  ("start your homework",[("gpa", 0.3)]);
                                  ("watch the office",[("health", 3.0)]);
                                  ("go to the gym",[("health", 6.0)]);
                                  ("do laundry",[("health", 3.0)]);
-                                 ("not career fair",[("gpa", 0.3);("brbs", -5.0)]);
+                                 ("not career fair",[("gpa", 0.3);("brbs", 
+                                                                   -5.0)]);
                                  ("career fair",[("brbs", 10.0);("gpa", -0.1)]);
                                  ("big tech company",[("brbs", 5.0)]);
                                  ("small start up",[("brbs", 3.0)]);
                                  ("non profit",[("morality", 10.0)]);
-                                 ("help them",[("morality", 7.0);("social_life", 7.0)]);
-                                 ("i would never",[("social_life", -4.0); ("morality", 0.5)]);
-                                 ("apply to internships",[("brbs", 5.0);("social_life", -2.0);("gpa", -0.1)]);
-                                 ("spend time with friends",[("social_life", 3.0);("gpa", -0.1)]);
-                                 ("work on homework",[("social_life", -2.0);("gpa", 0.2)]);
-                                 ("football game",[("social_life", 3.0);("morality", 2.0)]);
-                                 ("cs project",[("social_life", -2.0);("gpa", 0.2)]);
+                                 ("help them",[("morality", 7.0);("social_life",
+                                                                  7.0)]);
+                                 ("i would never",[("social_life", -4.0);
+                                                   ("morality", 0.5)]);
+                                 ("apply to internships",[("brbs", 5.0);
+                                                          ("social_life", -2.0);
+                                                          ("gpa", -0.1)]);
+                                 ("spend time with friends",[("social_life",
+                                                              3.0);("gpa", 
+                                                                    -0.1)]);
+                                 ("work on homework",[("social_life", -2.0);
+                                                      ("gpa", 0.2)]);
+                                 ("football game",[("social_life", 3.0);
+                                                   ("morality", 2.0)]);
+                                 ("cs project",[("social_life", -2.0);
+                                                ("gpa", 0.2)]);
                                  ("canada goose jacket",[("brbs", -10.0)]);
                                  ("jacket from tj maxx",[("brbs", 5.0);]);
                                  ("freeze",[("health", -10.0)]);
-                                 ("DING DING!", [("social_life", +5.0);("health", 5.0)]);
+                                 ("DING DING!", [("social_life", +5.0);(
+                                      "health", 5.0)]);
                                  ("Stay cozy", [("social_life", -5.0)]);
                                  ("Vote!", [("morality", 5.0)]);
-                                 ("What the fuck is a student assembly?", [("morality", -5.0)]);
-                                 ("Attend the partner social", [("social_life", 10.0); ("gpa", 0.2)]);
-                                 ("I don't need a partner", [("social_life", -5.0); ("gpa", -0.2)]);
-                                 ("Wow! I can't believe you've been teaching CS for 58 years!", [("gpa", 0.4)]);
+                                 ("What the fuck is a student assembly?", 
+                                  [("morality", -5.0)]);
+                                 ("Attend the partner social", [("social_life",
+                                                                 10.0); ("gpa",
+                                                                         0.2)]);
+                                 ("I don't need a partner", [("social_life", 
+                                                              -5.0); ("gpa", 
+                                                                      -0.2)]);
+                                 ("Wow! I can't believe you've been teaching CS 
+                                 for 58 years!", [("gpa", 0.4)]);
                                  ("Are you sure it's not 56?", [("gpa", -0.2)]);
-                                 ("58 years. 58 years. 58 years.", [("gpa", 0.2)]);
-                                 ("59 years. 59 years. 59 years.", [("gpa", 0.4)]);
-                                 ("Celebrate by throwing a party", [("brbs", -5.0); ("social_life", 5.0)]);
-                                 ("Go write some proofs", [("gpa", 0.4); ("social_life", -5.0)]);
-                                 ("Give swae his inhaler", [("morality", 10.0); ("social_life", 5.0)]);
-                                 ("Meh, Black beatles wasn't that good anyway", [("morality", -10.0)]);
-                                 ("Fuck me. I need some substances.", [("gpa", -0.5); ("health", -10.0)]);
-                                 ("I'll study super hard and get all A's (really tho?)", [("gpa", 0.5); ("health", -10.0)]);
-                                 ("Head to collegetown", [("social_life", 10.0); ("health", 12.0); ("morality", 5.0)]);
-                                 ("I have no friends. Stay in the low rises.", [("social_life", -10.0); ("health", -6.0); ("morality", -5.0)]);
+                                 ("58 years. 58 years. 58 years.", [("gpa", 
+                                                                     0.2)]);
+                                 ("59 years. 59 years. 59 years.", [("gpa", 
+                                                                     0.4)]);
+                                 ("Celebrate by throwing a party", [("brbs", 
+                                                                     -5.0); 
+                                                                    ("social_l
+                                                                    ife", 
+                                                                     5.0)]);
+                                 ("Go write some proofs", [("gpa", 0.4); 
+                                                           ("social_life", 
+                                                            -5.0)]);
+                                 ("Give swae his inhaler", [("morality", 10.0);
+                                                            ("social_life", 
+                                                             5.0)]);
+                                 ("Meh, Black beatles wasn't that good anyway", 
+                                  [("morality", -10.0)]);
+                                 ("Fuck me. I need some substances.", [("gpa", 
+                                                                        -0.5); 
+                                                                       ("
+                                                                       health", 
+                                                                        -10.0)
+                                                                      ]);
+                                 ("I'll study super hard and get all A's (
+                                   really tho?)", [("gpa", 0.5); ("health", 
+                                                                  -10.0)]);
+                                 ("Head to collegetown", [("social_life", 10.0);
+                                                          ("health", 12.0); 
+                                                          ("morality", 5.0)]);
+                                 ("I have no friends. Stay in the low rises.", 
+                                  [("social_life", -10.0); ("health", -6.0); 
+                                   ("morality", -5.0)]);
                                  ("Apply for 1110-3110", [("gpa", 0.3)]);
-                                 ("Meh. I don't remember what I learned", [("gpa", -0.3)]);
-                                 ("Broom closet", [("social_life", -5.0); ("brbs", -15.0)]);
+                                 ("Meh. I don't remember what I learned", 
+                                  [("gpa", -0.3)]);
+                                 ("Broom closet", [("social_life", -5.0); 
+                                                   ("brbs", -15.0)]);
                                  ("Apartment", [("social_life", 10.0)]);
                                  ("House", [("social_life", 10.0)]);
-                                 ("Biggest room", [("morality", - 7.0); "social_life", -7.0]);
-                                 ("Be a good roommate", [("morality", 7.0); ("social_life", 7.0)]);
-                                 ("Big room", [("morality", - 7.0); "social_life", -7.0]);
-                                 ("Good roommate", [("morality", 7.0); ("social_life", 7.0)]);
+                                 ("Biggest room", [("morality", - 7.0); 
+                                                   "social_life", -7.0]);
+                                 ("Be a good roommate", [("morality", 7.0); 
+                                                         ("social_life", 7.0)]);
+                                 ("Big room", [("morality", - 7.0); 
+                                               "social_life", -7.0]);
+                                 ("Good roommate", [("morality", 7.0); 
+                                                    ("social_life", 7.0)]);
                                  ("Meow", [("health", 15.0)]);
                                  ("I'm allergic", [("Health",-1.0)]);
                                  ("Take the offer", [("brbs", - 20.0)]);
-                                 ("Eh, get some electives done", [("gpa", -0.3)]);
+                                 ("Eh, get some electives done", [("gpa", 
+                                                                   -0.3)]);
                                  ("Heck yeah!", [("social_life", 10.0)]);
                                  ("No I have homework", [("gpa",0.1)]);
-                                 ("Follow my destiny", [("brbs", 20.0); ("social_life", 20.0)]);
-                                 ("That's a bit spooky for me", [("social_life", -5.0)]);
-                                 ("Tell your friends", [("social_life", - 20.0)]);
-                                 ("It's called secret for a reason!", [("social_life", 5.0)]);
+                                 ("Follow my destiny", [("brbs", 20.0); 
+                                                        ("social_life", 20.0)]);
+                                 ("That's a bit spooky for me", [(
+                                      "social_life", -5.0)]);
+                                 ("Tell your friends", [("social_life",
+                                                         - 20.0)]);
+                                 ("It's called secret for a reason!",
+                                  [("social_life", 5.0)]);
                                  ("Do that homework", [("gpa", 0.2)]);
                                  ("Attend a rager", [("social_life", 4.0)]);
                                  ("Grind time", [("gpa", 0.2)]);
                                  ("Party time", [("social_life", 4.0)]);
-                                 ("Go pumpkin picking", [("social_life", 10.0)]);
+                                 ("Go pumpkin picking", [("social_life", 
+                                                          10.0)]);
                                  ("Study instead of going", [("gpa", 0.2)]);
                                  ("Answer it", [("gpa", 0.2)]);
                                  ("I'm scared",[("gpa", -0.2)]);
                                  ("Time to cry",[("social_life",-5.0)]);
-                                 ("Tell them THEY'RE wrong",[("social_life", -5.0)]);
-                                 ("Yell that it was your idea first",[("social_life",-5.0)]);
-                                 ("Cry into your pillow",[("social_life", -5.0)]);
+                                 ("Tell them THEY'RE wrong",[("social_life", 
+                                                              -5.0)]);
+                                 ("Yell that it was your idea first",[(
+                                      "social_life",-5.0)]);
+                                 ("Cry into your pillow",[("social_life", 
+                                                           -5.0)]);
                                  ("Stuuudy",[("gpa", 0.3)]);
                                  ("Target",[("gpa", -0.4); ("health", 10.0)]);
-                                 ("Help friend",[("morality", 15.0); ("end", 0.0)]);
+                                 ("Help friend",[("morality", 15.0); ("end", 
+                                                                      0.0)]);
                                  ("Statue",[("health", 14.0); ("end", 0.0)]);
-                                 ("We in this", [("social_life", 5.0); ("brbs", -10.0)]);
-                                 ("Not feeling it",[("social_life", -5.0); ("brbs", 10.0)]);
-                                 ("not tired yet", [("social_life", 5.0); ("health", -3.0)]);
-                                 ("I want to go home", [("social_life", -5.0); ("health", 3.0)]);
+                                 ("We in this", [("social_life", 5.0); ("brbs",
+                                                                        -10.0)
+                                                ]);
+                                 ("Not feeling it",[("social_life", -5.0); 
+                                                    ("brbs", 10.0)]);
+                                 ("not tired yet", [("social_life", 5.0); 
+                                                    ("health", -3.0)]);
+                                 ("I want to go home", [("social_life", -5.0); 
+                                                        ("health", 3.0)]);
                                  ("They type cute", [("social_life", 5.0)]);
-                                 ("not feelin their vibe", [("social_life", -5.0)]);
+                                 ("not feelin their vibe", [("social_life", 
+                                                             -5.0)]);
                                  ("get their snap", [("social_life", 5.0)]);
-                                 ("not that interested", [("social_life", -5.0)]);
+                                 ("not that interested", [("social_life", 
+                                                           -5.0)]);
                                  ("Spend it with them", [("social_life", 3.0)]);
                                  ("Spend it alone", [("social_life", -3.0)]);
-                                 ("Find me love", [("social_life", 4.0); ("health", 2.0)]);
-                                 ("Single like a pringle", [("social_life", -4.0); ("health", -3.0)]);
-                                 ("I need help choosing courses", [("gpa", 0.1)]);
+                                 ("Find me love", [("social_life", 4.0); (
+                                      "health", 2.0)]);
+                                 ("Single like a pringle", [("social_life", 
+                                                             -4.0); ("health",
+                                                                     -3.0)]);
+                                 ("I need help choosing courses", [("gpa", 
+                                                                    0.1)]);
                                  ("I don't need their help", [("gpa", -0.1)]);
-                                 ("I'm falling for them", [("social_life", 4.0); ("health", 3.0); ("brbs", -3.0)]);
-                                 ("I have commitment issues", [("social_life", -4.0); ("health", -3.0); ("brbs", 25.0)]);
-                                 ("Steppin on puddles with my timbs on", [("morality", 10.0)]);
+                                 ("I'm falling for them", [("social_life", 4.0); 
+                                                           ("health", 3.0); 
+                                                           ("brbs", -3.0)]);
+                                 ("I have commitment issues", [("social_life",
+                                                                -4.0); (
+                                                                 "health", 
+                                                                 -3.0); 
+                                                               ("brbs", 25.0)]);
+                                 ("Steppin on puddles with my timbs on", 
+                                  [("morality", 10.0)]);
                                  ("Na na na",[("morality", -10.0)]);
-                                 ("Visit Cornell Health", [("health", 3.0); ("gpa", 0.1)]);
-                                 ("I have no time for that", [("health", -3.0); ("gpa", -0.2)]);
-                                 ("Early senioritis - easy classes", [("health", 5.0); ("morality", -4.0); ("gpa", 0.3)]);
-                                 ("No senioritis, I'm hard working", [("health", -5.0); ("morality", 4.0); ("gpa", -0.1)]);
-                                 ("Bring car", [("health", 6.0); ("brbs", -15.0)]);
+                                 ("Visit Cornell Health", [("health", 3.0); 
+                                                           ("gpa", 0.1)]);
+                                 ("I have no time for that", [("health", -3.0); 
+                                                              ("gpa", -0.2)]);
+                                 ("Early senioritis - easy classes", [("health", 
+                                                                       5.0); 
+                                                                      ("moral
+                                                                      ity", 
+                                                                       -4.0);
+                                                                      ("gpa", 
+                                                                       0.3)]);
+                                 ("No senioritis, I'm hard working", 
+                                  [("health", -5.0); ("morality", 4.0); 
+                                   ("gpa", -0.1)]);
+                                 ("Bring car", [("health", 6.0); ("brbs", 
+                                                                  -15.0)]);
                                  ("Don't bring car", [("health", -2.0)]);
-                                 ("Sleep past your alarm", [("health", 5.0); ("social_life", -3.0)]);
-                                 ("Work on hair and wear your best clothes", [("social_life", 10.0)]);
+                                 ("Sleep past your alarm", [("health", 5.0); 
+                                                            ("social_life", 
+                                                             -3.0)]);
+                                 ("Work on hair and wear your best clothes", 
+                                  [("social_life", 10.0)]);
                                  ("Get up and go", [("social_life", -1.0)]);
-                                 ("Continue consoling friend", [("morality", 9.0)]);
-                                 ("The conversation's boring, TO THE FIREPIT", [("morality", -7.0); ("social_life", 6.0)]);
-                                 ("I can get new friends", [("health", 5.0); ("social_life", -6.0)]);
-                                 ("Pictures can hold these memories", [("social_life", 6.0)]);
-                                 ("prelims are my priority", [("gpa", 0.6); ("health", -2.0)]);
+                                 ("Continue consoling friend", [("morality",
+                                                                 9.0)]);
+                                 ("The conversation's boring, TO THE FIREPIT", 
+                                  [("morality", -7.0); ("social_life", 6.0)]);
+                                 ("I can get new friends", [("health", 5.0); 
+                                                            ("social_life",
+                                                             -6.0)]);
+                                 ("Pictures can hold these memories", 
+                                  [("social_life", 6.0)]);
+                                 ("prelims are my priority", [("gpa", 0.6); 
+                                                              ("health", 
+                                                               -2.0)]);
                                  ("Go to homecoming", [("gpa", -0.3)]);
                                  ("break up", [("health", -7.0)]);
                                  ("go with the flow", [("health", 5.0)]);
                                  ("Buy pictures", [("brbs", -9.0)]);
                                  ("It's too expensive", [("brbs", 11.0)]);
-                                 ("graduate early", [("end", 0.0)]); (* ENDING *)
-                                 ("enroll in another semester", [("gpa", 0.4); ("health", 5.0)]);
-                                 ("ski time", [("gpa", -0.2); ("social_life", 8.0)]);
+                                 ("graduate early", [("end", 0.0)]); (*ENDING*)
+                                 ("enroll in another semester", [("gpa", 0.4); 
+                                                                 ("health", 
+                                                                  5.0)]);
+                                 ("ski time", [("gpa", -0.2); ("social_life", 
+                                                               8.0)]);
                                  ("I'm studious", [("gpa", 0.2)]);
                                  ("Startup", [("brbs", 10.0); ("gpa", -0.1)]);
-                                 ("Meh. I would only work for Google", [("gpa", 0.1)]);
+                                 ("Meh. I would only work for Google", [("gpa", 
+                                                                         0.1)]);
                                  ("Grad school", [("gpa", 0.3)]); 
                                  ("Industry", [("brbs", 20.0)]); 
                                  ("White wine please", [("health", 15.0)]);
                                  ("I don't drink", [("health", -5.0)]);
-                                 ("Too many steps", [("health", 10.0); ("morality", 10.0)]);
+                                 ("Too many steps", [("health", 10.0); (
+                                      "morality", 10.0)]);
                                  ("Yes views", [("morality", -10.0)]);
                                  ("Time to cliff dive", [("social_life", 6.0)]);
                                  ("I'm scared of the water", [("health", 6.0)]);
                                  ("SENIOR DAYS", [("social_life", 7.0)]);
                                  ("Go for the interview", [("brbs", 14.0)]);
-                                 ("Go to class! It's the last day", [("gpa", 0.1)]);
-                                 ("skip", [("social_life", 10.0); ("gpa", -0.01)]);
+                                 ("Go to class! It's the last day", [("gpa", 
+                                                                      0.1)]);
+                                 ("skip", [("social_life", 10.0); ("gpa", 
+                                                                   -0.01)]);
                                  ("Actually try", [("gpa", 0.2)]);
                                  ("Nah, not worth it", [("gpa", -0.2)]);
                                  ("Spread your wings and fly", [("end", 0.0)]);
@@ -253,7 +420,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("keep current course load", "dinner out");
                               ("go to dinner", "office hours");
                               ("stay home and be lonely", "office hours");
-                              ("sacrifice mental health for gpa", "frisbee team");
+                              ("sacrifice mental health for gpa", 
+                               "frisbee team");
                               ("fail the assignment", "frisbee team");
                               ("join the frisbee team", "snitching");
                               ("don't join", "snitching");
@@ -277,7 +445,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("put the sign back", "seasonal depression");
                               ("keep going", "seasonal depression");
                               ("talk to a caps counselor", "internship");
-                              ("binge on junk food and netflix shows", "internship");
+                              ("binge on junk food and netflix shows", 
+                               "internship");
                               ("hang out with friends", "internship");
                               ("go to the career center", "touchdown");
                               ("just apply next year", "touchdown");
@@ -288,7 +457,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("watch a movie", "nasties run");
                               ("popcorn", "nasties run"); 
                               ("cook with roommate", "spring break");
-                              ("onion rings and chicken tenders from nasties", "spring break");
+                              ("onion rings and chicken tenders from nasties",
+                               "spring break");
                               ("stay on campus", "slope day");
                               ("go home", "slope day");
                               ("vacation with friends", "slope day");
@@ -332,23 +502,30 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("DING DING!", "SA elections"); 
                               ("Stay cozy", "SA elections");
                               ("Vote!", "Partner Social");
-                              ("What the fuck is a student assembly?", "Partner Social");
+                              ("What the fuck is a student assembly?", 
+                               "Partner Social");
                               ("Attend the partner social", "57 years");
                               ("I don't need a partner", "57 years");
-                              ("Wow! I can't believe you've been teaching CS for 58 years!", "God");
+                              ("Wow! I can't believe you've been teaching CS 
+                              for 58 years!", "God");
                               ("Are you sure it's not 56?", "58 years");
                               ("58 years. 58 years. 58 years.", "inhaler");
                               ("59 years. 59 years. 59 years.", "inhaler");
                               ("Celebrate by throwing a party", "inhaler");
                               ("Go write some proofs", "inhaler");                     
                               ("Give swae his inhaler", "finals sophomore");
-                              ("Meh, Black beatles wasn't that good anyway", "finals sophomore");
-                              ("Fuck me. I need some substances.", "senior week");
-                              ("I'll study super hard and get all A's (really tho?)", "senior week");
+                              ("Meh, Black beatles wasn't that good anyway", 
+                               "finals sophomore");
+                              ("Fuck me. I need some substances.", 
+                               "senior week");
+                              ("I'll study super hard and get all A's 
+                              (really tho?)", "senior week");
                               ("Head to collegetown", "Ta apps");
-                              ("I have no friends. Stay in the low rises.", "Ta apps");
+                              ("I have no friends. Stay in the low rises.", 
+                               "Ta apps");
                               ("Apply for 1110-3110", "where living");
-                              ("Meh. I don't remember what I learned", "where living");
+                              ("Meh. I don't remember what I learned",
+                               "where living");
                               ("Broom closet", "adopt cat");
                               ("Apartment", "apartment choice");
                               ("House", "house choice");
@@ -365,7 +542,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Follow my destiny", "secret society");
                               ("That's a bit spooky for me", "jr weekend");
                               ("Tell your friends", "told friends");
-                              ("It's called secret for a reason!", "jr weekend");
+                              ("It's called secret for a reason!", 
+                               "jr weekend");
                               ("Do that homework", "pumpkins");
                               ("Attend a rager", "pumpkins");
                               ("Grind time", "pumpkins");
@@ -376,7 +554,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I'm scared", "did not answer");
                               ("Time to cry","finals already");
                               ("Tell them THEY'RE wrong","finals already");
-                              ("Yell that it was your idea first","finals already");
+                              ("Yell that it was your idea first","finals 
+                              already");
                               ("Cry into your pillow","finals already");
                               ("Stuuudy","friend pack");
                               ("Target","friend pack");
@@ -396,11 +575,13 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Spend it alone", "cs visit");
                               ("Find me love", "cs visit");
                               ("Single like a pringle", "cs visit");
-                              ("I need help choosing courses", "junior slope day");
+                              ("I need help choosing courses", "junior 
+                              slope day");
                               ("I don't need their help", "junior slope day");
                               ("I'm falling for them", "junior slope day");
                               ("I have commitment issues", "junior slope day");
-                              ("Steppin on puddles with my timbs on", "junior finals");
+                              ("Steppin on puddles with my timbs on", "junior 
+                              finals");
                               ("Na na na", "junior finals");
                               ("Visit Cornell Health", "senior classes");
                               ("I have no time for that", "senior classes");
@@ -409,16 +590,20 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Bring car", "senior pic");
                               ("Don't bring car", "senior pic");
                               ("Sleep past your alarm", "campfire");
-                              ("Work on hair and wear your best clothes", "campfire");
+                              ("Work on hair and wear your best clothes", 
+                               "campfire");
                               ("Get up and go", "campfire");
                               ("Continue consoling friend", "autumn nostalgia");
-                              ("The conversation's boring, TO THE FIREPIT", "autumn nostalgia");
+                              ("The conversation's boring, TO THE FIREPIT", 
+                               "autumn nostalgia");
                               ("I can get new friends", "homecoming");
-                              ("Pictures can hold these memories", "homecoming");
+                              ("Pictures can hold these memories", 
+                               "homecoming");
                               ("Go to homecoming", "relationship");
                               ("prelims are my priority", "relationship");
                               ("break up", "senior pic ready 2");
-                              ("go with the flow", "senior pic ready 2"); (* senior pics ready 2 HAS PREREQ *)
+                              ("go with the flow", "senior pic ready 2"); 
+                              (* senior pics ready 2 HAS PREREQ *)
                               ("Buy pictures", "graduate early"); 
                               ("It's too expensive", "graduate early"); 
                               ("graduate early", "end"); (** ENDING *)
@@ -426,7 +611,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("ski time", "startup");
                               ("I'm studious", "startup");
                               ("Startup", "grad school");
-                              ("Meh. I would only work for Google", "grad school");
+                              ("Meh. I would only work for Google", "grad 
+                              school");
                               ("Grad school", "wines");
                               ("Industry", "wines");
                               ("White wine please", "tower");
@@ -434,10 +620,12 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Too many steps", "first dam");
                               ("Yes views", "first dam");
                               ("Time to cliff dive", "last day of classes");
-                              ("I'm scared of the water", "last day of classes");
+                              ("I'm scared of the water", "last day of 
+                              classes");
                               ("SENIOR DAYS", "graduation");
                               ("Go for the interview", "graduation");
-                              ("Go to class! It's the last day", "final finals");
+                              ("Go to class! It's the last day", "final 
+                              finals");
                               ("skip", "final finals");
                               ("Actually try", "senior days");
                               ("Nah, not worth it", "senior days");
