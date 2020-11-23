@@ -61,12 +61,14 @@ val next_scenario: Student.decision -> choices -> Student.student -> scenario
     a player's attributes) based on the decision they made. If it is the end of
     the game, then "Your time at Cornell has come to an end. Goodbye! \n" is
     printed, and the game terminates *)
-val return_consequences: Student.decision -> choices -> Student.student -> (string * float) list
+val return_consequences: Student.decision -> choices -> Student.student ->
+  (string * float) list
 
 (** [return_consequences student consequence_list] takes in a student and
     a list of (attribute * float) tuples. It then takes in the tuples that are
     changed (if any) and then returns a new studnet based on the changes*)
-val match_consequences: Student.student -> (string * float) list -> Student.decision -> Student.student
+val match_consequences: Student.student -> (string * float) list ->
+  Student.decision -> Student.student
 
 
 (** [print_changes decision] takes in a given decision and prints the values
