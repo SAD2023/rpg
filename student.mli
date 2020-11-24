@@ -65,9 +65,8 @@ exception Poor of brbs
  *)
    type friends = friend list
 
-   (** The abstract type of values representing the decisions a student makes when
-    given a certain scenario
- *)
+   (** The abstract type of values representing the decisions a student makes 
+   when given a certain scenario *)
    type decisions = Scenario.choice list 
 
 *)
@@ -83,7 +82,8 @@ val initial : string -> student
 
 (** [make_student] creates a new student with the given parameters, which are
     inputted by the user *)
-val make_student : string -> int -> float -> float -> float -> float -> float -> Friend.friend list -> decision list -> student
+val make_student : string -> int -> float -> float -> float -> float -> float 
+  -> Friend.friend list -> decision list -> student
 
 (** [print_characteristics] prints out the characteristics (ex: gpa, morality,
     brbs, health etc) for a given student. *)
@@ -92,23 +92,39 @@ val print_characteristics : student -> unit
 (** [update_student student morality gpa social_life health brbs] takes in
     a student and creates a new student with the previous student's attributes
     added to the attributes given. *)
-val update_student : student -> float -> float -> float -> float -> float -> Friend.friend list -> decision -> student
+val update_student : student -> float -> float -> float -> float -> float -> 
+  Friend.friend list -> decision -> student
 
 (** [judgement student] takes in a student and prints out a string judging their 
-    various attributes, depending on the actions that they have taken, and if they 
-    are ethical or not *)
+    various attributes, depending on the actions that they have taken, and if 
+    they are ethical or not *)
 val judgement: student -> unit
 
+(** [final_judgement student] takes in a student and prints out a string judging 
+    their various final attributes, depending on the actions that they have taken, 
+    and if they are ethical or not. It also determines their future career. *)
 val final_judgement: student -> unit
 
+(** [return_decisions student] returns all of the decisions that a student has
+    made. *)
 val return_decisions: student -> decision list
 
+(** check_decisions decision student returns true if the given decision is one
+    that the student has made, and false if not *)
 val check_decisions: decision -> student -> bool
 
+(** [give_money student] returns a new student with the same qualities but with
+    three more BRBs than the old student. *)
 val give_money: student -> student
 
+(** [update_age student] returns  new student with the same qualities but one 
+    year older than the old student. *)
 val update_age: student -> student
 
+(** [friend_list_getter student] returns all of the friends that a student has
+    made. *)
 val friend_list_getter: student -> Friend.friend list
 
+(** [update_friend_list_only student friends_list] returns a student identical
+    to the previous student but with the friend list friends_list *)
 val update_friend_list_only: student -> Friend.friend list -> student

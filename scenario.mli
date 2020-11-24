@@ -47,8 +47,8 @@ exception InvalidInput of choice
     has just moved into the low rises and needs to choose a roommate*)
 val starting_scenario: scenario
 
-(** [print_prompt scenario] takes in a given scenario (in blue) and prints out the
-    prompt and then prints out the choices (in yellow), separated by a new
+(** [print_prompt scenario] takes in a given scenario (in blue) and prints out
+    the prompt and then prints out the choices (in yellow), separated by a new
     line each time *)
 val print_prompt: scenario -> unit
 
@@ -76,13 +76,21 @@ val match_consequences: Student.student -> (string * float) list ->
 
 val print_changes: Student.decision -> choices -> Student.student -> unit
 
-(**Returns the choices of a given scenario *)
+(**[return_choices scenario] returns the choices of a given scenario *)
 val return_choices: scenario -> choices 
 
+(** [main_friend_function decision] takes a decision string and returns a list
+    with one friend instance, that is the friend that is gained in the given
+    scenario *)
 val main_friend_function: Student.decision -> Friend.friend list
 
+(** [check_prereq scenario] checks to see if a student has made the required 
+    choice to advance to a given scenario*)
 val check_prereq: scenario -> string * string
 
+(** [go_through_unlocks lst name] goes through a list and checks to see if the
+    first element in one of the elements is equal to choice. If this is true, it 
+    will return *)
 val go_through_unlocks: (choice * 'a) list -> choice -> 'a
 
 val update_age: string -> Student.student -> Student.student

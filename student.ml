@@ -188,9 +188,11 @@ let final_judgement student =
 
   else if student.gpa < 3.0 && student.social_life > 4.0 then print_string
       "You changed your major from CS to communications. You are now a middle
-       school English teacher in a room full of screaming children. Enjoy your liberal arts degree! \n"
+       school English teacher in a room full of screaming children. Enjoy your
+        liberal arts degree! \n"
 
-  else print_string "\nYou're not ready for real life yet. You'll now go to grad school! \n\n"
+  else print_string "\nYou're not ready for real life yet. You'll now go to 
+  grad school! \n\n"
 
 
 let return_decisions student = 
