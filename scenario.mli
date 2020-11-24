@@ -90,11 +90,19 @@ val check_prereq: scenario -> string * string
 
 (** [go_through_unlocks lst name] goes through a list and checks to see if the
     first element in one of the elements is equal to choice. If this is true, it 
-    will return *)
+    will return  the first element of the list. Otherwise, it will raise 
+    InvalidException  *)
 val go_through_unlocks: (choice * 'a) list -> choice -> 'a
 
+(** [update_age scenario_name student] takes a scenario name and determines if
+    it is one of the scenarios where the student has a birthday. If so, it
+    returns a student identical to student, but with student.age as one year
+    older, but if not, it just returns student. *)
 val update_age: string -> Student.student -> Student.student
 
+(** [return_scenario_name scenario] returns the name of the given scenario *)
 val return_scenario_name: scenario -> string
 
+(** [remove_friend name friend_list] Takes the name of a friend and a 
+    friend_list and removes the friend with the name from the friend_list  *)
 val remove_friend: string -> Friend.friend list -> Friend.friend list
