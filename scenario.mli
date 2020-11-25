@@ -3,8 +3,8 @@
 type scenario
 
 (** This is the prompt that shows up when a student is given a certain scenario.
-    It is a description of the event taking place. E.g. Brad asks you to hang out
-    on Saturday.
+    It is a description of the event taking place. E.g. Brad asks you to hang 
+    out on Saturday.
 *)
 type prompt = string
 

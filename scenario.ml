@@ -480,8 +480,8 @@ let did_not_answer = make_scenario "did not answer" "You didn't answer, and
                                             "Cry into your pillow"] []
 
 let finals_already = make_scenario "finals already" "You know the drill by now.
-Do you study for finals or spend 8 hours at Target procrastinating" ["Stuuudy";
-                                                                     "Target"] []
+Do you study for finals or spend 8 hours at Target procrastinating" 
+    ["Stuuudy"; "Target"] []
 
 let friend_pack = make_scenario "friend pack" "It's time for winter break. You
 want to have one last look at the beautiful statue in front of the Statler

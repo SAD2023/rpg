@@ -95,14 +95,15 @@ val print_characteristics : student -> unit
 val update_student : student -> float -> float -> float -> float -> float -> 
   Friend.friend list -> decision -> student
 
-(** [judgement student] takes in a student and prints out a string judging their 
-    various attributes, depending on the actions that they have taken, and if 
-    they are ethical or not *)
+(** [judgement student] takes in a student and prints out a string judging 
+    their various attributes, depending on the actions that they have taken, 
+    and if they are ethical or not *)
 val judgement: student -> unit
 
-(** [final_judgement student] takes in a student and prints out a string judging 
-    their various final attributes, depending on the actions that they have taken, 
-    and if they are ethical or not. It also determines their future career. *)
+(** [final_judgement student] takes in a student and prints out a string 
+    judging their various final attributes, depending on the actions that they 
+    have taken, and if they are ethical or not. It also determines their future 
+    career. *)
 val final_judgement: student -> unit
 
 (** [return_decisions student] returns all of the decisions that a student has
