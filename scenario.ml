@@ -316,7 +316,7 @@ let major = make_scenario "Major" "Your advisor asks if you want to commit to
 let gym_pass = make_scenario "Gym Pass" "You know that you have a busy
  semester coming up, but you also think that this is the year that you'll
   get a 7 pack of abs. Should you get a gym pass?" 
-    ["Get a gym pass"; "No, never going to use it"] []
+    ["Get a gym pass"; "No never going to use it"] []
 
 let friday_afternoon = make_scenario "Friday Afternoon" "Wow! You actually have
  a bit of free time this afternoon! You have plans with friends later,

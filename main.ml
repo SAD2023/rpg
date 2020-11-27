@@ -59,8 +59,9 @@ let friend_minigame player =
       let player = Student.update_friend_list_only player updated_friend_list in 
       (print_string ("You're no longer friends with " ^ Friend.get_name 
                        lonely_friend ^ ". Your current list of friends are: " ^
-                     "\n\n"); List.iter (fun x -> 
-          print_string(Friend.get_name x)) (Student.friend_list_getter player)); 
+                     "\n\n"); 
+       List.iter (fun x -> 
+           print_string(Friend.get_name x)) (Student.friend_list_getter player)); 
       player)
 
   else player 
