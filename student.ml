@@ -123,6 +123,10 @@ let friend_list_getter student =
   student.friends
 
 
+let see_if_you_have_friend name student = 
+  let list_of_names = List.map Friend.get_name (friend_list_getter student) in 
+  List.mem name list_of_names 
+
 let judgement student = 
   print_string ("AGE: " ^ string_of_int student.age);
   print_string "\nHmm... time to judge your character! \n";

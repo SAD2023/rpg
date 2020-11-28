@@ -4,6 +4,10 @@ open Scenario
 open Storage
 open Minigames
 
+(*1. Hangman
+  2. tic tac toe
+  3. cornell trivia
+  4.  *)
 let word_to_scramble = "cornell"
 let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
                          "slope"; "beebeelake"; 
@@ -73,8 +77,8 @@ let rec play_game player scenario acc =
       3. update student based on input
       4. recall itself *)
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
-      player in
-  let player = friend_minigame player in 
+      player in 
+  let player = friend_minigame player in  
   if (acc mod 3) = 2 then Student.judgement player;
   if (acc mod 500) = 20 then (let word =  word_picker words_to_scramble  in 
                               (Minigames.scramble_intro word); 

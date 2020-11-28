@@ -129,3 +129,6 @@ val friend_list_getter: student -> Friend.friend list
 (** [update_friend_list_only student friends_list] returns a student identical
     to the previous student but with the friend list friends_list *)
 val update_friend_list_only: student -> Friend.friend list -> student
+
+
+val see_if_you_have_friend: string -> student -> bool 

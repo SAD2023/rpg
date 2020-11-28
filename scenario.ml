@@ -68,7 +68,7 @@ let give_friend name_of_friend =
       List.filter 
         (fun x -> (Friend.get_name x) = name_of_friend) potential_friend_list in  
     friend_in_list
-  with InvalidInput "Wrong input" -> 
+  with InvalidInput "Wrong input!" -> 
     []
 
 (**takes a decision string and returns a list with one friend instance *)
@@ -147,8 +147,9 @@ let roommate_and_brad =
     ["Help them home"; "Leave without them"] []
 
 let no_roommate_and_brad = 
-  make_scenario "No Roommate and Brad" "You see someone (Nicola) and they 
-   seem very lost. Do you help them or stay with Brad and see if they can find 
+  make_scenario "No Roommate and Brad" "You see someone (Nicola) and they \
+                                        seem very lost. Do you help them or \
+                                        stay with Brad and see if they can find 
    their way by themselves?" ["Help them home"; "Leave without them"] []
 
 
@@ -169,13 +170,15 @@ let club_meeting = make_scenario "Club Meeting" "Your club has a meeting!
 However, your friend invited you to go hiking. What do you do?" 
     ["Go to club meeting"; "Go hiking"] []
 
-let study_partner = make_scenario "study partner" "You start studying but the 
-material is really hard! Do you want to sign up for the study partner program
- and find someone else to study with?" ["Sign up"; "Nah I'm good"] []
+let study_partner = make_scenario "study partner" 
+    "You start studying but the material is really hard! Do you want to sign up 
+    for the study partner program and find someone else to study with?" 
+    ["Sign up"; "Nah I'm good"] []
 
-let stir_fry = make_scenario "stir fry" "You go to Okenshields to see 
-Happy Dave's beautiful face, but you notice an ECE major coughing into the 
-stir fry. Perhaps you should investigate this grave injustice to the
+let stir_fry = make_scenario "stir fry" 
+    "You go to Okenshields to see Happy Dave's beautiful face, but you notice an 
+    ECE major coughing into the stir fry. Perhaps you should investigate this 
+    grave injustice to the
  Cornell community. "    ["Do the right thing"; "Fuck Okies"] []
 
 let investigation = make_scenario "investigation" "You find a man in a bear
@@ -194,11 +197,12 @@ let dinner = make_scenario "dinner out" "Your friends want to go to Antlers
  for dinner on Friday.They ask whether you want to join them "
     ["Go to dinner"; "Stay home and be lonely"] []
 
-let office_hours = make_scenario "office hours" "Your professor gave you
- an assignment and didn't teach several concepts needed to solve it. Maybe 
- you should go to office hours to figure it out (note: it will be crowded like
-  a fish market, you will be #135 on the queue,and will likely have a mental
-   breakdown" ["Sacrifice mental health for gpa"; "Fail the assignment"] []
+let office_hours = make_scenario "office hours" 
+    "Your professor gave you an assignment and didn't teach several concepts 
+    needed to solve it. Maybe you should go to office hours to figure it out 
+    (note: it will be crowded like a fish market, you will be #135 on the queue,
+    and will likely have a mental breakdown" 
+    ["Sacrifice mental health for gpa"; "Fail the assignment"] []
 
 let frisbee = make_scenario "frisbee team" "One of your friends is in the 
 frisbee team and invites you to join. It might be some good exercise"
@@ -732,13 +736,15 @@ let rec tuple_helper attribute tuple_list =
   | [] -> 0.0
   | h :: t -> if fst h = attribute then snd h else tuple_helper attribute t 
 
-let rec closeness_helper decision list = 
+let rec closeness_helper decision list student= 
   match list with 
   | [] -> ("false", 0)
-  | h :: t -> if fst h = decision then snd h else closeness_helper decision t 
+  | h :: t -> if fst h = decision && Student.see_if_you_have_friend (fst (snd h)) 
+                   student then snd h else closeness_helper decision t student
 
 let main_closeness_function decision student = 
-  let tuple = closeness_helper decision Storage.friend_closeness_list in 
+  let tuple = closeness_helper decision Storage.friend_closeness_list student in 
+  print_string (fst tuple);
   if fst tuple = "false" then student else 
     let name_of_friend = fst tuple in 
     let friend_list = Student.friend_list_getter student in 
@@ -780,13 +786,13 @@ let change_tuple_helper tuple =
 let print_tuple tuple =  
   if fst tuple = "gpa" then
     " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
-    string_of_float (snd tuple) ^ "!!" 
+    string_of_float (snd tuple) ^ "!! \n\n" 
   else
     " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
-    string_of_int (abs (int_of_float (snd tuple))) ^ "!! 
-  " (* Prints an int so that there is no situation when it would print
-         out "Your social life changed by 5.!!" with a period and then 
-         exclamation points which looks weird *)
+    string_of_int (abs (int_of_float (snd tuple))) ^ "!! \n\n" 
+(* Prints an int so that there is no situation when it would print
+     out "Your social life changed by 5.!!" with a period and then 
+     exclamation points which looks weird *)
 
 (** [map_print_helper] is a helper function to print_changes which takes
     in a string list and prints out all of the values in the list.*)
