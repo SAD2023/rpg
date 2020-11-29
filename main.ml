@@ -3,6 +3,8 @@ open Student
 open Scenario
 open Storage
 open Minigames
+open Graphics
+
 
 (*1. Hangman
   2. tic tac toe
