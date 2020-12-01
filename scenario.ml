@@ -567,112 +567,123 @@ all the time. What do you want to do?"
 
 (* ====================== SENIOR FALL ================================ *)
 
-let senior_classes = make_scenario "senior classes" "It's senior year! 
-It's time to decide whether you're going to catch an early case of 
-senioritis or stay hard at work" 
+let senior_classes = make_scenario "senior classes" 
+    "It's senior year! It's time to decide whether you're going to catch an 
+    early case of senioritis or stay hard at work" 
     ["Early senioritis - easy classes"; "No senioritis, I'm hard working"] []
 
-let senior_car = make_scenario "senior car" "Now that the semester's about to 
-begin, you're considering bringing a car to campus. You get excited thinking 
-about all the fun places you can visit with a car on campus, but parking is so 
-expensive in Collegetown." 
+let senior_car = make_scenario "senior car" 
+    "Now that the semester's about to begin, you're considering bringing a car 
+    to campus. You get excited thinking about all the fun places you can visit 
+    with a car on campus, but parking is so expensive in Collegetown." 
     ["Bring car"; "Don't bring car"] []
 
-let senior_pic = make_scenario "senior pic" "It's that time of year!
-The photography company's in town and it's time to take your yearbook picture,
-but the only appointment they had left was at 7 AM." 
+let senior_pic = make_scenario "senior pic" 
+    "It's that time of year! The photography company's in town and it's time to 
+    take your yearbook picture, but the only appointment they had left was at 7 
+    AM." 
     ["Sleep past your alarm"; "Work on hair and wear your best clothes"; 
      "Get up and go"] []
 
-let campfire = make_scenario "campfire" "A couple of your friends want to go to 
-south hill cider and make s'mores around one of their firepits, but you're on 
-the phone consoling a home friend with a very important issue. What do you do?"
+let campfire = make_scenario "campfire" 
+    "A couple of your friends want to go to south hill cider and make s'mores 
+    around one of their firepits, but you're on the phone consoling a home 
+    friend with a very important issue. What do you do?"
     ["Continue consoling friend"; 
      "The conversation's boring, TO THE FIREPIT"] []
 
-let autumn_nostalgia = make_scenario "autumn nostalgia" "Every time you pass by 
-campus, you start to think about all the memories and things you're going to 
-miss about it after you graduate. You want to spend more time just walking 
-through campus, but your friends always want to stay in collegetown. "
+let autumn_nostalgia = make_scenario "autumn nostalgia" 
+    "Every time you pass by campus, you start to think about all the memories 
+    and things you're going to miss about it after you graduate. You want to 
+    spend more time just walking through campus, but your friends always want 
+    to stay in collegetown."
     ["I can get new friends"; "Pictures can hold these memories"] []
 
-let homecoming = make_scenario "homecoming" "As the fall semester settles into 
-October, you realize you've never been to a Cornell homecoming game. 
-Unfortunately, your professors don't care and you have three prelims the same 
-week."
+let homecoming = make_scenario "homecoming" 
+    "As the fall semester settles into October, you realize you've never been 
+    to a Cornell homecoming game. Unfortunately, your professors don't care and 
+    you have three prelims the same week."
     ["Go to homecoming"; "prelims are my priority"] []
 
-let relationship = make_scenario "relationship" "You and your significant other 
-are from different sides of the country, and you don't know what's going to 
-happen after college."
+let relationship = make_scenario "relationship" 
+    "You and your significant other are from different sides of the country, 
+    and you don't know what's going to happen after college."
     ["break up"; "Go with the flow"] []
 
-let senior_pic_ready_2 = make_scenario "senior pic ready 2" "Your senior 
-pictures are ready! It seems like they've been purposefully blurred online 
-and there's a watermark across them. You could buy them to fix these issues, but 
-these packages are very expensive."
+let senior_pic_ready_2 = make_scenario "senior pic ready 2" 
+    "Your senior pictures are ready! It seems like they've been purposefully 
+    blurred online and there's a watermark across them. You could buy them to 
+    fix these issues, but these packages are very expensive."
     ["Buy pictures"; "It's too expensive"] []
 
-let graduate_early = make_scenario "graduate early" "It seems like alot of your 
-friends are graduating early. You've completed all of your course requirements
- to graduate, and so you can potentially graduate earlier. However, another 
- semester would allow you build up your gpa a little more, while also 
- just having fun."    ["graduate early"; "enroll in another semester"] []
+let graduate_early = make_scenario "graduate early" 
+    "It seems like alot of your friends are graduating early. You've completed 
+    all of your course requirements to graduate, and so you can potentially 
+    graduate earlier. However, another semester would allow you build up your 
+    gpa a little more, while also just having fun."
+    ["graduate early"; "enroll in another semester"] []
 
-let ditch_finals = make_scenario "ditch finals" "It's the end of your 
-senior fall semester, and your fellow senior friends would like to ditch
- finals week and spend the snowy week traveling to Colorado to ski."
+let ditch_finals = make_scenario "ditch finals" 
+    "It's the end of your senior fall semester, and your fellow senior friends 
+    would like to ditch finals week and spend the snowy week traveling to 
+    Colorado to ski."
     ["Ski time"; "I'm studious"] []
 
 (* ====================== SENIOR SPRING ================================ *)
 
-let grad_school =  make_scenario "grad school" "Grad school applications are
- starting to be due. Would you like to apply to a grad school?"
+let grad_school =  make_scenario "grad school" 
+    "Grad school applications are starting to be due. Would you like to apply 
+    to a grad school?"
     ["Grad school"; "Industry"] []
 
-let startup =  make_scenario "startup" "Your friend Maximillian the III is
- making a startup as a side hustle. Do you wanna be a part of it? It might 
- take some time out of your semester but it'll definitely look good on 
- your resume."
+let startup =  make_scenario "startup" 
+    "Your friend Maximillian the III is making a startup as a side hustle. 
+    Do you wanna be a part of it? It might take some time out of your semester 
+    but it'll definitely look good on your resume."
     ["Startup"; "Meh. I would only work for Google"] []
 
-let wines = make_scenario "wines" "It is your very last semester at Cornell!! 
-This means that this is your last chance to take any course before you leave. 
-Everyone talks about taking the wine course at Cornell. Shall we raise a 
-glass?" ["White wine please"; "I don't drink"] [] 
+let wines = make_scenario "wines" 
+    "It is your very last semester at Cornell!! This means that this is your 
+    last chance to take any course before you leave. Everyone talks about 
+    taking the wine course at Cornell. Shall we raise a glass?" 
+    ["White wine please"; "I don't drink"] [] 
 
-let tower = make_scenario "tower" "It is basically a tradition to climb all
-161 steps to the top of McGraw Tower. Who knows when you'll even happen
-to be in Ithaca again; plus the views would be amazing. Would you like 
-to climb the tower?" ["Too many steps"; "Yes views"] [] 
+let tower = make_scenario "tower" 
+    "It is basically a tradition to climb all 161 steps to the top of McGraw 
+    Tower. Who knows when you'll even happen to be in Ithaca again; plus the 
+    views would be amazing. Would you like to climb the tower?" 
+    ["Too many steps"; "Yes views"] [] 
 
-let first_dam = make_scenario "first dam" "The weather is finally nice out and 
-you're feeling relatively stress-free as a second semester senior. You realize 
-you've never been to first dam and your friends ask if you want to go for a 
-swim"
+let first_dam = make_scenario "first dam" 
+    "The weather is finally nice out and you're feeling relatively stress-free 
+    as a second semester senior. You realize you've never been to first dam and 
+    your friends ask if you want to go for a swim"
     ["Time to cliff dive"; "I'm scared of the water"] []
 
-let final_finals = make_scenario "final finals" "It is your last finals period
- ever! Do you want to actually try?"
+let final_finals = make_scenario "final finals" 
+    "It is your last finals period ever! Do you want to actually try?"
     ["Actually try"; "Nah, not worth it"] []
 
-let last_day_of_classes = make_scenario "last day of classes" "Finally, it is 
-your last day of classes of your whole college career! However, you don't think 
-that your professor is going to say anything important, and besides, skipping
-oneeee class doesn't make a difference, right?"
+let last_day_of_classes = make_scenario "last day of classes" 
+    "Finally, it is your last day of classes of your whole college career! 
+    However, you don't think that your professor is going to say anything 
+    important, and besides, skipping oneeee class doesn't make a difference, 
+    right?"
     ["Go to class! It's the last day"; "Skip"] []
 
-let senior_days = make_scenario "senior days" "It's senior week! Classes and 
-finals are all over and you have the time to participate in some amazing events 
-with your fellow seniors before you graduate. However, you just got a last 
-minute interview for a full time job after college"
+let senior_days = make_scenario "senior days" 
+    "It's senior week! Classes and finals are all over and you have the time to 
+    participate in some amazing events with your fellow seniors before you 
+    graduate. However, you just got a last minute interview for a full time 
+    job after college"
     ["SENIOR DAYS"; "Go for the interview"] []
 
 
 
-let graduation = make_scenario "graduation" "*Pomp and circumstances plays* \n\n
-All of your friends are in fancy robes. Ed Helms, Bill Nye, and Martha Pollack 
-are speaking. They point to you and say 'alumni pls donate money. we r broke' "
+let graduation = make_scenario "graduation" 
+    "*Pomp and circumstances plays* \n\n All of your friends are in fancy robes. 
+    Ed Helms, Bill Nye, and Martha Pollack are speaking. They point to you and 
+    say 'alumni pls donate money. we r broke' "
     ["Spread your wings and fly"] []
 
 (** List of all the scenarios *)
