@@ -436,16 +436,17 @@ should apply to be a TA next semester."
 let where_living = make_scenario "where living" "It's fall of junior year! You 
 probably should have thought about this earlier, but do you want to try to find
  housing on campus somewhere (probably in a broom closet or something) or live 
- off campus with fiends?" ["Broom closet"; "Apartment"; "House"] []
+ off campus with fiends?" 
+    ["Broom closet"; "Apartment"; "House"] []
 
 let apartment_choice = make_scenario "apartment choice" "You are going to live
  in an apartment with your pals! You get to the apartment before any of them.
  Do you choose the biggest room or do you wait for them to get there."
     ["Biggest room"; "Be a good roommate"] []
 
-let house_choice = make_scenario "house choice" "You are going to live
- in a house with your pals! You get to the house before any of them.
- Do you choose the biggest room or do you wait for them to get there."
+let house_choice = make_scenario "house choice" "You are going to live in a 
+house with your pals! You get to the house before any of them. Do you choose 
+the biggest room or do you wait for them to get there."
     ["Big room"; "Good roommate"] []
 
 let adopt_cat = make_scenario "adopt cat"  "The only campus housing you could 
@@ -468,23 +469,25 @@ let gates_tunnel = make_scenario "gates tunnel" "You follow the illuminati
 signs to the basement of Gates, where you find a maze of tunnels. You navigate
 through the maze using Prim's Algorithm. When you get to the final node, you
 see a collection of robed figures through a door. Do you go through or
-turn back?" ["Follow my destiny"; "That's a bit spooky for me"] []
+turn back?" 
+    ["Follow my destiny"; "That's a bit spooky for me"] []
 
 let secret_society = make_scenario "secret society" "You walk in. You hear
  applause. 'Welcome, my child' says a voice. It's Martha Pollack!
   Congratulations, you are now a member of one of Cornell's secret societies.
-  Too bad you can't put it on your resume." ["Tell your friends"; "It's called
-  secret for a reason!"] []
+  Too bad you can't put it on your resume." 
+    ["Tell your friends"; "It's called secret for a reason!"] []
 
 let told_friends = make_scenario "told friends" "You told your friends. You
    were immediately kicked out of the society and they don't even believe you.
    Yikes! 
 
-   Anyway, the weekend's coming up. What are your plans?" ["Do that homework";
-                                                           "Attend a rager"] []
+   Anyway, the weekend's coming up. What are your plans?" 
+    ["Do that homework"; "Attend a rager"] []
 
 let jr_weekend = make_scenario "jr weekend" "It's the weekend! What are your
-   plans?" ["Grind time"; "Party time"] []
+   plans?" 
+    ["Grind time"; "Party time"] []
 
 let pumpkins = make_scenario "pumpkins" "Wow! It's the pretty time of the year!
 The like 4 days in between t-shirts and seventeen jackets! Do you want to go
@@ -493,7 +496,8 @@ pumpkin picking with your friend or study for your upcoming prelim?"
 
 let answer_question = make_scenario "answer question" "Your professor asks
 a question in class. You think you know the answer, but you might be wrong.
- Do you answer it?" ["Answer it"; "I'm scared"] []
+ Do you answer it?" 
+    ["Answer it"; "I'm scared"] []
 
 let did_answer = make_scenario "did answer" "Yikes, you answered it and it was
  very wrong. Eveyone is laughing and pointing at you, especially the professor."
@@ -502,8 +506,8 @@ let did_answer = make_scenario "did answer" "Yikes, you answered it and it was
 let did_not_answer = make_scenario "did not answer" "You didn't answer, and
   the person sitting next to you did. The professor though that their solution
   was so insightful and elegant that they immediately make them a TA, even
-   though they're still taking the class." ["Yell that it was your idea first";
-                                            "Cry into your pillow"] []
+   though they're still taking the class." 
+    ["Yell that it was your idea first"; "Cry into your pillow"] []
 
 let finals_already = make_scenario "finals already" "You know the drill by now.
 Do you study for finals or spend 8 hours at Target procrastinating" 
