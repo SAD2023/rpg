@@ -42,7 +42,7 @@ let rec tuple_friend_helper tuple_list acc =
   | [] -> acc
   | h :: t -> tuple_friend_helper t (fst h :: acc) 
 
-let friend_list_filter_helper name (friend:Friend.friend) = 
+let friend_list_filter_helper name (friend:Friend.friend) =  
   name <> Friend.get_name friend
 
 (**Takes the name of a friend and a friend_list and removes the friend with the
@@ -136,38 +136,44 @@ let make_scenario name prompt choices hidden_choices =
 
 (* ========================FRESHMAN FALL================================ *)
 
-let meet_brad =  make_scenario "Meet Brad" "You're doing laundry for the first
- time and you start talking to Brad, who lives  down the hall. He asks if you 
- want to go to an O-Week event with him and some friends. What do you want to 
- do?"["O Week"; "Stay in"; "Look at textbook"; "test"] []
+let meet_brad =  make_scenario "Meet Brad" 
+    "You're doing laundry for the first time and you start talking to Brad, who 
+    lives  down the hall. He asks if you want to go to an O-Week event with him 
+    and some friends. What do you want to do?"
+    ["O Week"; "Stay in"; "Look at textbook"; "test"] []
 
 let roommate_and_brad = 
-  make_scenario "Roommate and Brad" "Your roommate's friend comes with you, but 
-  unfortunately needs a little help going home..." 
+  make_scenario "Roommate and Brad" 
+    "Your roommate's friend comes with you, but unfortunately needs a little 
+    help going home..." 
     ["Help them home"; "Leave without them"] []
 
 let no_roommate_and_brad = 
-  make_scenario "No Roommate and Brad" "You see someone (Nicola) and they \
-                                        seem very lost. Do you help them or \
-                                        stay with Brad and see if they can find 
-   their way by themselves?" ["Help them home"; "Leave without them"] []
+  make_scenario "No Roommate and Brad" 
+    "You see someone (Nicola) and they seem very lost. Do you help them or stay 
+    with Brad and see if they can find their way by themselves?" 
+    ["Help them home"; "Leave without them"] []
 
 
-let first_day = make_scenario "First Day" "It's the first day of classes! 
-Your alarm buzzes  WAAAY too early. Do you snooze or go to your first class?" 
+let first_day = make_scenario "First Day" 
+    "It's the first day of classes! Your alarm buzzes  WAAAY too early. Do you 
+    snooze or go to your first class?" 
     ["Snooze"; "Go to class"] []
 
 let clubfest = 
-  make_scenario "Clubfest" "It's Clubfest! Choose a club and decide whether 
-    or not you actually show up to the first meeting here:" 
+  make_scenario "Clubfest" 
+    "It's Clubfest! Choose a club and decide whether or not you actually show up 
+    to the first meeting here:" 
     ["Fun Club"; "Career Club"; "Charity Club"] []
 
-let halloween = make_scenario "Halloween" "It's Halloween! You want to go 
-trick-or-treating, but you have a prelim the next morning. Do you…" 
+let halloween = make_scenario "Halloween" 
+    "It's Halloween! You want to go trick-or-treating, but you have a prelim 
+    the next morning. Do you…" 
     ["Go Trick or Treating"; "Study"] []
 
-let club_meeting = make_scenario "Club Meeting" "Your club has a meeting! 
-However, your friend invited you to go hiking. What do you do?" 
+let club_meeting = make_scenario "Club Meeting" 
+    "Your club has a meeting! However, your friend invited you to go hiking. 
+    What do you do?" 
     ["Go to club meeting"; "Go hiking"] []
 
 let study_partner = make_scenario "study partner" 
@@ -178,23 +184,25 @@ let study_partner = make_scenario "study partner"
 let stir_fry = make_scenario "stir fry" 
     "You go to Okenshields to see Happy Dave's beautiful face, but you notice an 
     ECE major coughing into the stir fry. Perhaps you should investigate this 
-    grave injustice to the
- Cornell community. "    ["Do the right thing"; "Fuck Okies"] []
+    grave injustice to the Cornell community. "    
+    ["Do the right thing"; "Fuck Okies"] []
 
-let investigation = make_scenario "investigation" "You find a man in a bear
- costume trying to find a table at Okies (an impossible task, as you are 
- aware. Do what you must " 
+let investigation = make_scenario "investigation" 
+    "You find a man in a bear costume trying to find a table at Okies (an 
+    impossible task, as you are aware. Do what you must " 
     ["Unmask the bear man"; "Make a reddit post about it"] []
 
-let club_social = make_scenario "social event" "A club you signed up for is 
-hosting a social event for new members! " 
+let club_social = make_scenario "social event" 
+    "A club you signed up for is hosting a social event for new members! " 
     ["Attend the social"; "Binge watch youtube"; "do some pushups"] []
 
-let drop = make_scenario "drop" "The deadline to drop a class is
-almost here! " ["Lower the course load"; "Keep current course load"] []
+let drop = make_scenario "drop" 
+    "The deadline to drop a class is almost here! " 
+    ["Lower the course load"; "Keep current course load"] []
 
-let dinner = make_scenario "dinner out" "Your friends want to go to Antlers
- for dinner on Friday.They ask whether you want to join them "
+let dinner = make_scenario "dinner out" 
+    "Your friends want to go to Antlers for dinner on Friday. They ask whether 
+    you want to join them "
     ["Go to dinner"; "Stay home and be lonely"] []
 
 let office_hours = make_scenario "office hours" 
@@ -204,21 +212,24 @@ let office_hours = make_scenario "office hours"
     and will likely have a mental breakdown" 
     ["Sacrifice mental health for gpa"; "Fail the assignment"] []
 
-let frisbee = make_scenario "frisbee team" "One of your friends is in the 
-frisbee team and invites you to join. It might be some good exercise"
+let frisbee = make_scenario "frisbee team" 
+    "One of your friends is in the frisbee team and invites you to join. It 
+    might be some good exercise"
     ["Join the frisbee team"; "Don't join"] []
 
-let snitch = make_scenario "snitching" "You see a beer can in one of your 
-suitemate's wastebasket. What should you do?" 
+let snitch = make_scenario "snitching" 
+    "You see a beer can in one of your suitemate's wastebasket. What should you 
+    do?" 
     ["Ignore it. It's college"; "Report it to the RA"] []
 
-let transport =  make_scenario "transport" "It's starting to snow and it's not
- much harder to walk. You've been late to lectures a couple of times already. 
- It might be smart to get a bike"
+let transport =  make_scenario "transport" 
+    "It's starting to snow and it's not much harder to walk. You've been late 
+    to lectures a couple of times already. It might be smart to get a bike"
     ["Get a bike"; "Keep walking"; "Start using the bus pass"] []
 
-let touchdown = make_scenario "Touchdown" "On your way to class, you run into
- touchdown, Cornell's Big Red Mascot! But it seems you're running late." 
+let touchdown = make_scenario "Touchdown" 
+    "On your way to class, you run into touchdown, Cornell's Big Red Mascot! 
+    But it seems you're running late." 
     ["Stop and take a pic with touchdown"; "Rush to class"] []
 
 let nasties_run  = make_scenario "Nasties Run" 
@@ -226,85 +237,96 @@ let nasties_run  = make_scenario "Nasties Run"
     really craving some ~unhealthy~ food from nasties." 
     ["Cook with roommate"; "Onion rings and chicken tenders from Nasties"] []
 
-let igloo = make_scenario "Igloo" "It seems like some of your floormates are 
-heading out to make use of the huge snowstorm and build an igloo in the 
-CKB quad. Staring at your study sheet for a prelim that's in a few days, you 
-wonder what you should do." 
+let igloo = make_scenario "Igloo" 
+    "It seems like some of your floormates are heading out to make use of the 
+    huge snowstorm and build an igloo in the CKB quad. Staring at your study 
+    sheet for a prelim that's in a few days, you wonder what you should do." 
     ["Build an igloo"; "Study for prelim"; "Netflix and hot chocolate"] []
 
-let winter_sign  = make_scenario "Winter Sign" "On your way back to north, 
-you notice a ‘no winter maintenance' sign in front of you. You know it's a
- tradition to ‘borrow' one of these at least once while at Cornell." 
+let winter_sign  = make_scenario "Winter Sign" 
+    "On your way back to north, you notice a ‘no winter maintenance' sign in 
+    front of you. You know it's a tradition to ‘borrow' one of these at least 
+    once while at Cornell." 
     ["Take the sign"; "Leave it"] []
 
-let winter_sign_fall = make_scenario "Winter Sign Fall" "As soon as you get the 
-sign off the ground, you fall into a slippery, icy patch right next to it. 
-Recognizing the irony of what just happened, you wonder if you should put the
-sign back so others can avoid injury" ["Put the sign back"; "Keep going"] []
+let winter_sign_fall = make_scenario "Winter Sign Fall" 
+    "As soon as you get the sign off the ground, you fall into a slippery, icy 
+    patch right next to it. Recognizing the irony of what just happened, you 
+    wonder if you should put the sign back so others can avoid injury" 
+    ["Put the sign back"; "Keep going"] []
 
-let wsh = make_scenario "WSH" "Surprisingly, this is the first time you've 
-set foot in Willard Straight Hall. Why are you here?"
+let wsh = make_scenario "WSH" 
+    "Surprisingly, this is the first time you've set foot in Willard Straight 
+    Hall. Why are you here?"
     ["Visit Denice Cassaro"; "Okenshield's"; "Watch a movie" ] ["Popcorn"]
 
-let post_finals = make_scenario "Post Finals" "You finished your finals early,
- and some of your friends are staying a few days after to hang out stress-free.
-  But your family called the other day mentioning how much they miss you, 
-and you realize you miss them alot too" ["Go back home"; "Stay in Ithaca"] []
+let post_finals = make_scenario "Post Finals" 
+    "You finished your finals early, and some of your friends are staying a few 
+    days after to hang out stress-free. But your family called the other day 
+    mentioning how much they miss you, and you realize you miss them alot too" 
+    ["Go back home"; "Stay in Ithaca"] []
 
 (*======================= FRESHMAN SPRING ================================= *)
 
-let rush = make_scenario "Rush" "Welcome to a new semester! You are now able
- to participate in frat sorority recruitment. Would you like to rush?" 
+let rush = make_scenario "Rush" 
+    "Welcome to a new semester! You are now able to participate in frat sorority 
+    recruitment. Would you like to rush?" 
     ["Rush"; "Don't rush"] [] 
 
-let rush_2 = make_scenario "Rush pt 2" "YAYYYY, you've gotten a bid!! 
-Do you wish to take it?" ["Take the bid"; "Don't take the bid"] []
+let rush_2 = make_scenario "Rush pt 2" 
+    "YAYYYY, you've gotten a bid!! Do you wish to take it?" 
+    ["Take the bid"; "Don't take the bid"] []
 
-let snow_slide = make_scenario "Snow slide" "Let Ithaca snow, let Ithaca snow!!! 
-A snowstorm hits Ithaca which means Martha has cancelled classes but more
- importantly, the slope is covered in a nice coat of snow. How do you spend your 
- day of no classes? How about you grab a sled and head down the slope!" 
+let snow_slide = make_scenario "Snow slide" 
+    "Let Ithaca snow, let Ithaca snow!!! A snowstorm hits Ithaca which means 
+    Martha has cancelled classes but more importantly, the slope is covered in 
+    a nice coat of snow. How do you spend your day of no classes? How about you 
+    grab a sled and head down the slope!" 
     ["Slide down the slope"; "Snuggle up with friends"; "Watch lectures"] []
 
-let seasonal_depression = make_scenario "Seasonal depression" "You're going 
-through the semester and at a time of prime Ithaca winter weather, you start
- to catch seasonal depression and the semester seems to drag. How do you combat
-it?" 
+let seasonal_depression = make_scenario "Seasonal depression" 
+    "You're going through the semester and at a time of prime Ithaca winter 
+    weather, you start to catch seasonal depression and the semester seems to 
+    drag. How do you combat it?" 
     ["Talk to a caps counselor"; 
      "binge on junk food and Netflix shows"; "hang out with friends"] []
 
-let internship = make_scenario "Internship" "As you go through the semester,
- you realize that it would be a great time to start looking into internships 
- for the summer break. However, you've never done this before and need help on
-  your resume." ["Go to the career center"; "Just apply next year"] []
+let internship = make_scenario "Internship" 
+    "As you go through the semester, you realize that it would be a great time 
+    to start looking into internships for the summer break. However, you've 
+    never done this before and need help on your resume." 
+    ["Go to the career center"; "Just apply next year"] []
 
-let spring_break = make_scenario "Spring break" "Your first college spring
- break! Time to go crazy and destress from a long and painful semester of 
- classes. How do you plan on spending it?" 
+let spring_break = make_scenario "Spring break" 
+    "Your first college spring break! Time to go crazy and destress from a long 
+    and painful semester of classes. How do you plan on spending it?" 
     ["Stay on campus"; "Go home"; "Vacation with friends"] []
 
-let slope_day = make_scenario "Slope day" "Time to celebrate the end of
- classes and there's no better way than to celebrate at slope day!!! How shall 
- you commemorate the end of the school year?"
+let slope_day = make_scenario "Slope day" 
+    "Time to celebrate the end of classes and there's no better way than to 
+    celebrate at slope day!!! How shall you commemorate the end of the school 
+    year?"
     ["go to the slope"; "start studying early"; "sleep"] []
 
-let slope_day_2 = make_scenario "Slope day pt 2" "You got your wristband and 
-decided to head down the slope with some friends. There are some people
- checking bags at the top of the slope. What are you guys going to do?" 
+let slope_day_2 = make_scenario "Slope day pt 2" 
+    "You got your wristband and decided to head down the slope with some 
+    friends. There are some people checking bags at the top of the slope. What 
+    are you guys going to do?" 
     ["Sneak it in"; "Don't sneak it in"] []
 
-let finals = make_scenario "Ew finals" "It's that time of the year where 
-students pull all nighters and drown gallons of coffee and red bull. 
-There's a brief study period before the start of your finals. How do you wish
- to spend all of that time?" 
+let finals = make_scenario "Ew finals" 
+    "It's that time of the year where students pull all nighters and drown 
+    gallons of coffee and red bull. There's a brief study period before the 
+    start of your finals. How do you wish to spend all of that time?" 
     ["Study most of the time"; "Mix of friends and books"; 
      "Don't study at all"] []
 
-let olin_finals = make_scenario "Olin finals" "You decide that the best 
-environment to study for finals is at Olin library. However, you go inside and 
-discover that the stacks as well as every other room in Olin is packed to the 
-brim with busying students. 
-What do you do now?" ["Wait around for a seat"; "Study somewhere else"] []
+let olin_finals = make_scenario "Olin finals" 
+    "You decide that the best environment to study for finals is at Olin 
+    library. However, you go inside and discover that the stacks as well as 
+    every other room in Olin is packed to the brim with busying students. 
+    What do you do now?" 
+    ["Wait around for a seat"; "Study somewhere else"] []
 
 (* ============================SOPHOMORE FALL============================== *)
 
