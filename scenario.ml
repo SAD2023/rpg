@@ -1,6 +1,8 @@
 open Storage 
 open Friend
 open Student
+open Gui
+open Graphics
 
 let jack = make_friend "Jack" 5 0
 let nicola = make_friend "Nicola" 5 0
@@ -114,9 +116,12 @@ let return_choices scenario =
 
 (** [print_prompt] prints the prompt pertaining to a given scenario to 
     the terminal. *)
-let print_prompt scenario = 
+let print_prompt scenario = (*
   ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
   ANSITerminal.(print_string [yellow] (print_choices scenario.choices 0 ^ "\n"))
+*)
+  Gui.make_graph scenario.prompt;
+  Graphics.draw_string (print_choices scenario.choices 0)
 
 (**[filter_helper] is a helper function to filter. *)
 let filter_helper a b = 

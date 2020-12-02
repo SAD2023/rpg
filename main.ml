@@ -4,6 +4,9 @@ open Scenario
 open Storage
 open Minigames
 open Graphics
+open Gui 
+
+
 
 
 (*1. Hangman
@@ -78,6 +81,7 @@ let rec play_game player scenario acc =
       2. take input based on scenario
       3. update student based on input
       4. recall itself *)
+  (*Gui.make_graph "camel"; *)
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
   let player = friend_minigame player in  
@@ -107,9 +111,10 @@ let rec play_game player scenario acc =
     Scenario.print_changes decision choices player; (*
    print_string(print_list (Student.return_decisions player)); *)
     play_game player next_scenario (acc+1)
-  with | Failure(string) ->
+  with | Failure(string) -> (*
     ANSITerminal.(print_string [red] "\n 
-    Oops, wrong input playa. Please enter a valid choice \n \n");
+    Oops, wrong input playa. Please enter a valid choice \n \n"); *)
+    Gui.make_graph "Oops, wrong input playa. Please enter a valid choice";
     play_game player scenario acc
        | Student.Poor(float) ->
          ANSITerminal.(print_string [red] "\n 
