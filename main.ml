@@ -145,6 +145,7 @@ let main () =
   ANSITerminal.(print_string [blue] "What's your name kid?\n");
   print_string  "\n > ";
   let player = Student.initial (read_line ()) in
+  Graphics.open_graph "";
   play_game player Scenario.starting_scenario 0
 
 let () = main ()

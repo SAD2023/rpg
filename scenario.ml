@@ -120,8 +120,7 @@ let print_prompt scenario = (*
   ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
   ANSITerminal.(print_string [yellow] (print_choices scenario.choices 0 ^ "\n"))
 *)
-  Gui.make_graph scenario.prompt;
-  Graphics.draw_string (print_choices scenario.choices 0)
+  Gui.make_graph_scenario scenario.prompt scenario.choices
 
 (**[filter_helper] is a helper function to filter. *)
 let filter_helper a b = 
