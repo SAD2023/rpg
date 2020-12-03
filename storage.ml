@@ -196,8 +196,8 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("I don't need a partner", [("social_life", 
                                                               -5.0); ("gpa", 
                                                                       -0.2)]);
-                                 ("Wow! I can't believe you've been teaching CS 
-                                 for 58 years!", [("gpa", 0.4)]);
+                                 ("Wow! I can't believe you've been teaching CS for 58 years!",
+                                  [("gpa", 0.4)]);
                                  ("Are you sure it's not 56?", [("gpa", -0.2)]);
                                  ("58 years. 58 years. 58 years.", [("gpa", 
                                                                      0.2)]);
@@ -222,9 +222,8 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                                                        health", 
                                                                         -10.0)
                                                                       ]);
-                                 ("I'll study super hard and get all A's (
-                                   really tho?)", [("gpa", 0.5); ("health", 
-                                                                  -10.0)]);
+                                 ("I'll study super hard and get all A's (really tho?)",
+                                  [("gpa", 0.5); ("health", -10.0)]);
                                  ("Head to collegetown", [("social_life", 10.0);
                                                           ("health", 12.0); 
                                                           ("morality", 5.0)]);
