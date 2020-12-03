@@ -91,7 +91,7 @@ let rec match_input_to_choice choices input =
 let starting_scenario = {
   name = "fresh start";
   prompt = "You are about to move into the low rises. Make sure you're ready 
-  for a riot. Stay strapped at all times. Do you want a single or double?";
+  for a riot. ~Stay strapped at all times. Do you want a single or double?";
   choices = ["double"; "single"];
   hidden_choices = ["Triple"; "Live with happy dave"];
 }

@@ -2,7 +2,7 @@ open Graphics
 
 let print_graph_choices choices = 
   let x = ref 300 in 
-  let y = ref 400 in 
+  let y = ref 375 in 
   for i = 0 to List.length choices - 1 do 
     y.contents <- y.contents - 50;
     let x1 = x.contents in let y1 = y.contents in 
@@ -25,7 +25,14 @@ let make_graph word =
 
 let make_graph_scenario prompt choices= 
   Graphics.clear_graph ();
+  let x = ref 50 in 
+  let y = ref 400 in 
   Graphics.moveto 50 400;
-  Graphics.draw_string prompt;
+  let prompt_list = String.split_on_char '~' prompt in 
+  for i= 0 to List.length prompt_list - 1 do
+    y.contents <- y.contents - 15;
+    Graphics.moveto x.contents y.contents;
+    Graphics.draw_string (List.nth prompt_list i);
+  done;
   print_graph_choices choices
 
