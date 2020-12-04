@@ -50,6 +50,9 @@ let make_graph_scenario prompt choices=
     Graphics.set_color Graphics.white;
     Graphics.draw_string (List.nth prompt_list i);
   done;
+  Graphics.set_color Graphics.white;
+  Graphics.moveto 50 50;
+  Graphics.draw_string "Your Choice: ";
   print_graph_choices choices
 
 let type_out_string () = 
@@ -62,6 +65,11 @@ let type_out_string () =
   done;
   acc.contents
 
+let type_out_choice user_choice =
+  Graphics.set_color Graphics.white;
+  Graphics.moveto 130 50;
+  Graphics.draw_char (Char.uppercase_ascii user_choice);
+  Unix.sleepf (0.5) 
 (* DELETE THIS LATER IF WE DON'T NEED
     let rec get_string acc = 
     let status = Graphics.wait_next_event [Graphics.Key_pressed] in 

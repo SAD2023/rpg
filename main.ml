@@ -5,6 +5,7 @@ open Storage
 open Minigames
 open Graphics
 open Gui 
+open Unix
 
 
 
@@ -103,8 +104,10 @@ let rec play_game player scenario acc =
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
   try 
+    let user_choice = Graphics.read_key () in 
+    Gui.type_out_choice user_choice;
     let (decision: Student.decision) = List.nth choices 
-        (give_number(String.uppercase_ascii (String.make 1 (Graphics.read_key ())))) in 
+        (give_number(String.uppercase_ascii (String.make 1 (user_choice)))) in 
 
     let player = Scenario.match_consequences player 
         (return_consequences decision choices player) decision in 
