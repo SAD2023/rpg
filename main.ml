@@ -104,7 +104,8 @@ let rec play_game player scenario acc =
   let choices = List.map String.uppercase_ascii lower_choices in 
   try 
     let (decision: Student.decision) = List.nth choices 
-        (give_number(String.uppercase_ascii (read_line ()))) in 
+        (give_number(String.uppercase_ascii (String.make 1 (Graphics.read_key ())))) in 
+
     let player = Scenario.match_consequences player 
         (return_consequences decision choices player) decision in 
     let next_scenario = Scenario.next_scenario decision choices player in 
@@ -122,30 +123,35 @@ let rec play_game player scenario acc =
          play_game player scenario acc
 
 let main () =
-  ANSITerminal.(print_string [red] (
-      "\n
-    Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.."));
-  ANSITerminal.(print_string [green] (
-      "\n
-    You're about to start your college life! From now on, you make your own 
-    decisions and your decisions have consequences! 
-
-    People will judge you on the following qualities: 
-
-    Morality: how ethical you are. 
-
-    Social Life: how smashed you get on the weekends 
-
-    Health: what is a broccoli? Have you seen it? 
-
-    BRBS: do you own a canada goose jacket and a gucci belt? 
-
-    And most importantly, GPA: your entire self-worth, basically. \n
-    "));
-  ANSITerminal.(print_string [blue] "What's your name kid?\n");
-  print_string  "\n > ";
-  let player = Student.initial (read_line ()) in
   Graphics.open_graph "";
+
+  Gui.make_graph " \
+    ~Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.. \
+    ~               \
+    ~You're about to start your college life! From now on, you make your own \
+    ~               \
+    ~decisions and your decisions have consequences! \
+    ~               \
+    ~People will judge you on the following qualities: \
+    ~               \
+    ~Morality: how ethical you are. \
+    ~               \
+    ~Social Life: how smashed you get on the weekends \
+    ~               \
+    ~Health: what is a broccoli? Have you seen it? \
+    ~               \
+    ~BRBS: do you own a canada goose jacket and a gucci belt? \
+    ~               \
+    ~And most importantly, GPA: your entire self-worth, basically. \
+    ~ \
+    ~What's your name kid?\
+    ~ \
+    ~(Type in your name, make sure to end it with a period ('.')) \
+    ~ ";
+  Graphics.set_color Graphics.white; 
+
+  let name = Gui.type_out_string () in 
+  let player = Student.initial (name) in
   play_game player Scenario.starting_scenario 0
 
 let () = main ()
