@@ -85,9 +85,9 @@ let rec play_game player scenario acc =
   (*Gui.make_graph "camel"; *)
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
-  let player = friend_minigame player in  
-  if (acc mod 3) = 2 then Student.judgement player;
-  if (acc mod 500) = 20 then (let word =  word_picker words_to_scramble  in 
+  (* let player = friend_minigame player in   *)
+  (* if (acc mod 3) = 2 then Student.judgement player;
+     if (acc mod 500) = 20 then (let word =  word_picker words_to_scramble  in 
                               (Minigames.scramble_intro word); 
                               let input = (read_line ()) in begin 
                                 if Minigames.scramble_engine word input = 
@@ -99,7 +99,7 @@ let rec play_game player scenario acc =
                                 You get 3 bucks! \n\n"; 
                                 let player = Student.give_money player in 
                                 play_game player scenario (acc+1) 
-                              end); 
+                              end);  *)
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
