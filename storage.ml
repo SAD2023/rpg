@@ -272,8 +272,8 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("Time to cry",[("social_life",-5.0)]);
                                  ("Tell them THEY'RE wrong",[("social_life", 
                                                               -5.0)]);
-                                 ("Yell that it was your idea first",[(
-                                      "social_life",-5.0)]);
+                                 ("Yell that it was your idea first",
+                                  [("social_life",-5.0)]);
                                  ("Cry into your pillow",[("social_life", 
                                                            -5.0)]);
                                  ("Stuuudy",[("gpa", 0.3)]);
@@ -503,8 +503,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                                "Partner Social");
                               ("Attend the partner social", "57 years");
                               ("I don't need a partner", "57 years");
-                              ("Wow! I can't believe you've been teaching CS 
-                              for 58 years!", "God");
+                              ("Wow! I can't believe you've been teaching CS for 58 years!",
+                               "God");
                               ("Are you sure it's not 56?", "58 years");
                               ("58 years. 58 years. 58 years.", "inhaler");
                               ("59 years. 59 years. 59 years.", "inhaler");
@@ -515,8 +515,8 @@ let decision_scenario_name = [("single", "Meet Brad");
                                "finals sophomore");
                               ("Fuck me. I need some substances.", 
                                "senior week");
-                              ("I'll study super hard and get all A's 
-                              (really tho?)", "senior week");
+                              ("I'll study super hard and get all A's (really tho?)",
+                               "senior week");
                               ("Head to collegetown", "Ta apps");
                               ("I have no friends. Stay in the low rises.", 
                                "Ta apps");
@@ -551,8 +551,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("I'm scared", "did not answer");
                               ("Time to cry","finals already");
                               ("Tell them THEY'RE wrong","finals already");
-                              ("Yell that it was your idea first","finals 
-                              already");
+                              ("Yell that it was your idea first","finals already");
                               ("Cry into your pillow","finals already");
                               ("Stuuudy","friend pack");
                               ("Target","friend pack");
@@ -572,13 +571,11 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Spend it alone", "cs visit");
                               ("Find me love", "cs visit");
                               ("Single like a pringle", "cs visit");
-                              ("I need help choosing courses", "junior 
-                              slope day");
+                              ("I need help choosing courses", "junior slope day");
                               ("I don't need their help", "junior slope day");
                               ("I'm falling for them", "junior slope day");
                               ("I have commitment issues", "junior slope day");
-                              ("Steppin on puddles with my timbs on", "junior 
-                              finals");
+                              ("Steppin on puddles with my timbs on", "junior finals");
                               ("Na na na", "junior finals");
                               ("Visit Cornell Health", "senior classes");
                               ("I have no time for that", "senior classes");
@@ -608,8 +605,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("ski time", "startup");
                               ("I'm studious", "startup");
                               ("Startup", "grad school");
-                              ("Meh. I would only work for Google", "grad 
-                              school");
+                              ("Meh. I would only work for Google", "grad school");
                               ("Grad school", "wines");
                               ("Industry", "wines");
                               ("White wine please", "tower");
@@ -617,12 +613,10 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Too many steps", "first dam");
                               ("Yes views", "first dam");
                               ("Time to cliff dive", "last day of classes");
-                              ("I'm scared of the water", "last day of 
-                              classes");
+                              ("I'm scared of the water", "last day of classes");
                               ("SENIOR DAYS", "graduation");
                               ("Go for the interview", "graduation");
-                              ("Go to class! It's the last day", "final 
-                              finals");
+                              ("Go to class! It's the last day", "final finals");
                               ("skip", "final finals");
                               ("Actually try", "senior days");
                               ("Nah, not worth it", "senior days");
