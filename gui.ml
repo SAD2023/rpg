@@ -2,6 +2,11 @@ open Graphics
 
 let abcde = ["A"; "B"; "C"; "D"; "E"]
 
+let set_background () = 
+  Graphics.clear_graph ();
+  Graphics.set_color Graphics.black;
+  Graphics.fill_rect 0 0 (Graphics.size_x ()) (Graphics.size_y ())
+
 let print_graph_choices choices = 
   let x = ref 300 in 
   let y = ref 375 in 
@@ -21,9 +26,7 @@ let print_graph_choices choices =
   done
 
 let make_graph word = 
-  Graphics.clear_graph ();
-  Graphics.set_color Graphics.black;
-  Graphics.fill_rect 0 0 (Graphics.size_x ()) (Graphics.size_y ());
+  set_background ();
   Graphics.moveto 50 400;
   let x = ref 50 in 
   let y = ref 400 in 
@@ -37,9 +40,7 @@ let make_graph word =
 
 
 let make_graph_scenario prompt choices= 
-  Graphics.clear_graph ();
-  Graphics.set_color Graphics.black;
-  Graphics.fill_rect 0 0 (Graphics.size_x ()) (Graphics.size_y ());
+  set_background ();
   let x = ref 50 in 
   let y = ref 400 in 
   Graphics.moveto 50 400;
