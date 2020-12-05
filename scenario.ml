@@ -149,25 +149,25 @@ let meet_brad =  make_scenario "Meet Brad"
 
 let roommate_and_brad = 
   make_scenario "Roommate and Brad" 
-    "Your roommate's friend comes with you, but unfortunately needs a little\ 
+    "Your roommate's friend comes with you, but unfortunately needs a little \
     ~help going home..." 
     ["Help them home"; "Leave without them"] []
 
 let no_roommate_and_brad = 
   make_scenario "No Roommate and Brad" 
-    "You see someone (Nicola) and they seem very lost. Do you help them or stay\ 
+    "You see someone (Nicola) and they seem very lost. Do you help them or stay\
     ~with Brad and see if they can find their way by themselves?" 
     ["Help them home"; "Leave without them"] []
 
 
 let first_day = make_scenario "First Day" 
-    "It's the first day of classes! Your alarm buzzes  WAAAY too early. Do you\ 
+    "It's the first day of classes! Your alarm buzzes  WAAAY too early. Do you\
     ~snooze or go to your first class?" 
     ["Snooze"; "Go to class"] []
 
 let clubfest = 
   make_scenario "Clubfest" 
-    "It's Clubfest! Choose a club and decide whether or not you actually show up\ 
+    "It's Clubfest! Choose a club and decide whether or not you actually show up\
     ~to the first meeting here:" 
     ["Fun Club"; "Career Club"; "Charity Club"] []
 
