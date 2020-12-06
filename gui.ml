@@ -67,7 +67,7 @@ let make_graph_scenario prompt choices=
     Graphics.draw_string (List.nth prompt_list i);
   done;
   Graphics.set_color Graphics.white;
-  Graphics.moveto 50 50;
+  Graphics.moveto 50 100;
   Graphics.draw_string "Your Choice: ";
   print_graph_choices choices
 
@@ -96,7 +96,7 @@ let type_out_unscrambled () =
 
 let type_out_choice user_choice =
   Graphics.set_color Graphics.white;
-  Graphics.moveto 130 50;
+  Graphics.moveto 130 100;
   Graphics.draw_char (Char.uppercase_ascii user_choice);
   Unix.sleepf (0.5) 
 (* DELETE THIS LATER IF WE DON'T NEED
