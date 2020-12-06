@@ -86,20 +86,21 @@ let rec play_game player scenario acc =
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
   (* let player = friend_minigame player in   *)
-  (* if (acc mod 3) = 2 then Student.judgement player;
-     if (acc mod 500) = 20 then (let word =  word_picker words_to_scramble  in 
-                              (Minigames.scramble_intro word); 
-                              let input = (read_line ()) in begin 
-                                if Minigames.scramble_engine word input = 
-                                   "Wrong!" then
-                                  (print_string "\n WRONG! Let's try a 
-                                  different word...\n"; 
-                                   play_game player scenario acc) 
-                                else print_string "\n Correct! Hurray! 
-                                You get 3 bucks! \n\n"; 
-                                let player = Student.give_money player in 
-                                play_game player scenario (acc+1) 
-                              end);  *)
+  if (acc mod 3) = 2 then (Student.judgement player;
+                           Unix.sleep 5);
+  if (acc mod 500) = 2 then (let word =  word_picker words_to_scramble  in 
+                             (Minigames.scramble_intro word); 
+                             let input = (Gui.type_out_unscrambled ()) in begin 
+                               if Minigames.scramble_engine word input = 
+                                  "Wrong!" then
+                                 (Gui.make_graph "WRONG! Let's try a different word..." Graphics.white;
+                                  Unix.sleep 1;
+                                  play_game player scenario acc) 
+                               else Gui.make_graph "Correct! Hurray! You get 3 bucks!" Graphics.white;
+                               Unix.sleep 1; 
+                               let player = Student.give_money player in 
+                               play_game player scenario (acc+1) 
+                             end);  
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
@@ -118,11 +119,12 @@ let rec play_game player scenario acc =
   with | Failure(string) -> (*
     ANSITerminal.(print_string [red] "\n 
     Oops, wrong input playa. Please enter a valid choice \n \n"); *)
-    Gui.make_graph "Oops, wrong input playa. Please enter a valid choice";
+    Gui.make_graph "Oops, wrong input playa. Please enter a valid choice" Graphics.red;
+    Unix.sleep 2;
     play_game player scenario acc
        | Student.Poor(float) ->
-         ANSITerminal.(print_string [red] "\n 
-         Oops, you're too poor. Please enter a valid choice poor person \n \n");
+         Gui.make_graph "Oops, you're too poor. Please enter a valid choice poor person :/ " Graphics.green;
+         Unix.sleep 2;
          play_game player scenario acc
 
 let main () =
@@ -150,10 +152,11 @@ let main () =
     ~What's your name kid?\
     ~ \
     ~(Type in your name, make sure to end it with a period ('.')) \
-    ~ ";
+    ~ \
+    ~Name: " Graphics.red;
   Graphics.set_color Graphics.white; 
 
-  let name = Gui.type_out_string () in 
+  let name = Gui.type_out_string Graphics.yellow in 
   let player = Student.initial (name) in
   play_game player Scenario.starting_scenario 0
 

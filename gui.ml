@@ -25,7 +25,7 @@ let print_graph_choices choices =
     Graphics.draw_string ((List.nth abcde i) ^ ") " ^ (List.nth choices i));
   done
 
-let make_graph word = 
+let make_graph word color = 
   set_background ();
   Graphics.moveto 50 400;
   let x = ref 50 in 
@@ -34,9 +34,24 @@ let make_graph word =
   for i= 0 to List.length word_list - 1 do
     y.contents <- y.contents - 15;
     Graphics.moveto x.contents y.contents;
-    Graphics.set_color Graphics.red;
+    Graphics.set_color color;
     Graphics.draw_string (List.nth word_list i);
   done
+
+let make_graph_addon word = 
+  let current_x, current_y = Graphics.current_point () in 
+  Graphics.moveto 50 (current_y - 25);
+  let word_list = String.split_on_char '~' word in 
+  for i= 0 to List.length word_list - 1 do
+    Graphics.set_color Graphics.white;
+    Graphics.draw_string (List.nth word_list i);
+  done
+
+let type_word word = 
+  set_background ();
+  Graphics.set_color Graphics.white;
+  Graphics.moveto 100 100;
+  Graphics.draw_string word
 
 
 let make_graph_scenario prompt choices= 
@@ -56,7 +71,20 @@ let make_graph_scenario prompt choices=
   Graphics.draw_string "Your Choice: ";
   print_graph_choices choices
 
-let type_out_string () = 
+let type_out_string color = 
+  Graphics.set_color color;
+  let acc = ref "" in 
+  let char = ref (Graphics.read_key ()) in 
+  while char.contents <> '.' do  
+    Graphics.draw_char char.contents;
+    acc.contents <- acc.contents ^ String.make 1 char.contents;
+    char.contents <- Graphics.read_key ()
+  done;
+  acc.contents
+
+let type_out_unscrambled () = 
+  Graphics.set_color Graphics.white;
+  Graphics.draw_string "Your Answer: ";
   let acc = ref "" in 
   let char = ref (Graphics.read_key ()) in 
   while char.contents <> '.' do  

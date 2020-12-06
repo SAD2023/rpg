@@ -875,7 +875,7 @@ let print_tuple tuple =
 let rec map_print_helper string_list = 
   match string_list with 
   | [] -> ()
-  | h :: t -> print_string h; map_print_helper t 
+  | h :: t -> Gui.make_graph_addon h; map_print_helper t 
 
 (**takes a decision and choices and prints changes to all attributes,
    including new friends! *)

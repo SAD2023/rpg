@@ -1,4 +1,5 @@
 open Random
+open Gui
 
 type name = string
 
@@ -29,8 +30,11 @@ let rec scramble_word (word : string) (result : string)=
                                                            index)))
 
 let scramble_intro word = 
-  print_string ("\n Time to test your intellect! Can you unscramble this word? 
-  \n\n " ^ (scramble_word word "") ^ "\n\n")
+  Gui.make_graph ("Time to test your intellect! Can you unscramble this word? \
+  ~Make sure to press '.' when you're done! \
+  ~ \
+  ~Your word: " ^  (scramble_word word "") ^ "~ \
+  ~") Graphics.red
 
 let rec scramble_engine word input = 
   if String.uppercase_ascii input = String.uppercase_ascii word then "Correct!" 
