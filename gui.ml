@@ -38,12 +38,12 @@ let make_graph word color =
     Graphics.draw_string (List.nth word_list i);
   done
 
-let make_graph_addon word = 
+let make_graph_addon ?color:(arg1=Graphics.white) word = 
   let current_x, current_y = Graphics.current_point () in 
   Graphics.moveto 50 (current_y - 25);
   let word_list = String.split_on_char '~' word in 
   for i= 0 to List.length word_list - 1 do
-    Graphics.set_color Graphics.white;
+    Graphics.set_color arg1;
     Graphics.draw_string (List.nth word_list i);
   done
 

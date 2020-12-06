@@ -129,45 +129,45 @@ let see_if_you_have_friend name student =
   List.mem name list_of_names 
 
 let judgement student = 
-  Gui.make_graph ("AGE: " ^ string_of_int student.age) Graphics.white;
-  Gui.make_graph_addon "\nHmm... time to judge your character! \n";
-  Gui.make_graph_addon "First, let's look at your gpa. ";
+  Gui.make_graph ("AGE: " ^ string_of_int student.age) Graphics.red;
+  Gui.make_graph_addon ~color:Graphics.yellow "Hmm... time to judge your character!";
+  Gui.make_graph_addon ~color:Graphics.red "First, let's look at your gpa. ";
   if student.gpa <= 1.5 then Gui.make_graph_addon 
       ("ew your gpa is " ^ (string_of_float student.gpa) 
-       ^ " Move to info sci \n \n") 
+       ^ " Move to info sci") 
   else Gui.make_graph_addon ("wow your gpa is " ^ (string_of_float student.gpa)
-                             ^  " Walker White would be proud! \n \n");
+                             ^  " Walker White would be proud!");
 
-  Gui.make_graph_addon "Let's see how scummy you are. \n";
+  Gui.make_graph_addon ~color:Graphics.red "Let's see how scummy you are.";
   if student.morality <= 30.0 then Gui.make_graph_addon 
-      "Heh. You're kind of a mean person. I have an internship for you at 
-      Goldman Sachs \n \n" 
-  else Gui.make_graph_addon "You're a decent human it seems. Boring \n \n";
+      "Heh. You're kind of a mean person. I have an internship for you at Goldman Sachs" 
+  else Gui.make_graph_addon "You're a decent human it seems. Boring";
 
-  Gui.make_graph_addon "How's that gym membership going? \n";
+  Gui.make_graph_addon ~color:Graphics.red "How's that gym membership going?";
   if student.health <= 50.0 then Gui.make_graph_addon 
-      "You're definitely a cs major. Please take a shower. \n \n" 
-  else Gui.make_graph_addon "You're a fine human specimen. \n \n";
+      "You're definitely a cs major. Please take a shower." 
+  else Gui.make_graph_addon "You're a fine human specimen.";
 
 
-  Gui.make_graph_addon "Let's see how rich your dad is. \n";
+  Gui.make_graph_addon ~color:Graphics.red "Let's see how rich your dad is.";
   if student.brbs <= 50.0 then Gui.make_graph_addon (
       "You're broke. Get a job. You only have " ^ 
-      (string_of_int (int_of_float student.brbs)) ^ " brbs left. \n \n")
+      (string_of_int (int_of_float student.brbs)) ^ " brbs left.")
   else Gui.make_graph_addon ("You're ballin! You have " ^
                              (string_of_int (int_of_float student.brbs)) ^ 
-                             " brbs left. \n \n");
+                             " brbs left.");
 
 
-  Gui.make_graph_addon "Got any friends? \n";
+  Gui.make_graph_addon ~color:Graphics.red "Got any friends?";
   if student.social_life <= 40.0 then Gui.make_graph_addon 
-      "Get some friends loser \n \n"
-  else Gui.make_graph_addon ("Oh ma gosh you're so popular... \n \n");
+      "Get some friends loser"
+  else Gui.make_graph_addon ("Oh ma gosh you're so popular...")
+(* ;
 
-  List.iter 
-    (fun x -> 
-       Gui.make_graph_addon(Friend.get_name x ^ " " ^ string_of_int 
-                              (Friend.get_closeness x) ^ " \n\n")) student.friends
+   List.iter 
+   (fun x -> 
+     Gui.make_graph_addon(Friend.get_name x ^ " " ^ string_of_int 
+                            (Friend.get_closeness x) ^ "")) student.friends *)
 
 
 

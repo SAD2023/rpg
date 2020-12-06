@@ -86,21 +86,21 @@ let rec play_game player scenario acc =
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
   (* let player = friend_minigame player in   *)
-  if (acc mod 3) = 2 then (Student.judgement player;
-                           Unix.sleep 5);
-  if (acc mod 500) = 2 then (let word =  word_picker words_to_scramble  in 
-                             (Minigames.scramble_intro word); 
-                             let input = (Gui.type_out_unscrambled ()) in begin 
-                               if Minigames.scramble_engine word input = 
-                                  "Wrong!" then
-                                 (Gui.make_graph "WRONG! Let's try a different word..." Graphics.white;
-                                  Unix.sleep 1;
-                                  play_game player scenario acc) 
-                               else Gui.make_graph "Correct! Hurray! You get 3 bucks!" Graphics.white;
-                               Unix.sleep 1; 
-                               let player = Student.give_money player in 
-                               play_game player scenario (acc+1) 
-                             end);  
+  if (acc mod 20) = 19 then (Student.judgement player;
+                             Unix.sleep 5);
+  if (acc mod 500) = 50 then (let word =  word_picker words_to_scramble  in 
+                              (Minigames.scramble_intro word); 
+                              let input = (Gui.type_out_unscrambled ()) in begin 
+                                if Minigames.scramble_engine word input = 
+                                   "Wrong!" then
+                                  (Gui.make_graph "WRONG! Let's try a different word..." Graphics.white;
+                                   Unix.sleep 1;
+                                   play_game player scenario acc) 
+                                else Gui.make_graph "Correct! Hurray! You get 3 bucks!" Graphics.white;
+                                Unix.sleep 1; 
+                                let player = Student.give_money player in 
+                                play_game player scenario (acc+1) 
+                              end);  
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
@@ -131,29 +131,33 @@ let main () =
   Graphics.open_graph "";
 
   Gui.make_graph " \
-    ~Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.. \
-    ~               \
-    ~You're about to start your college life! From now on, you make your own \
-    ~               \
-    ~decisions and your decisions have consequences! \
-    ~               \
-    ~People will judge you on the following qualities: \
-    ~               \
-    ~Morality: how ethical you are. \
-    ~               \
-    ~Social Life: how smashed you get on the weekends \
-    ~               \
-    ~Health: what is a broccoli? Have you seen it? \
-    ~               \
-    ~BRBS: do you own a canada goose jacket and a gucci belt? \
-    ~               \
-    ~And most importantly, GPA: your entire self-worth, basically. \
-    ~ \
-    ~What's your name kid?\
-    ~ \
-    ~(Type in your name, make sure to end it with a period ('.')) \
-    ~ \
-    ~Name: " Graphics.red;
+    ~Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.." Graphics.red;
+  Gui.make_graph_addon
+    "~You're about to start your college life! From now on, you make your own";
+  Gui.make_graph_addon
+    "~decisions and your decisions have consequences!";
+  Gui.make_graph_addon
+    "";
+  Gui.make_graph_addon ~color:Graphics.red
+    "~People will judge you on the following qualities: ";
+  Gui.make_graph_addon ~color:Graphics.magenta
+    "~ - Morality: how ethical you are.";
+  Gui.make_graph_addon ~color:Graphics.cyan
+    "~ - Social Life: how smashed you get on the weekends";
+  Gui.make_graph_addon ~color:Graphics.yellow
+    "~ - Health: what is a broccoli? Have you seen it?";
+  Gui.make_graph_addon ~color:Graphics.green
+    "~ - BRBS: do you own a canada goose jacket and a gucci belt?";
+  Gui.make_graph_addon ~color:Graphics.blue
+    "~ - And most importantly, GPA: your entire self-worth, basically.";
+  Gui.make_graph_addon
+    "";
+  Gui.make_graph_addon
+    "~What's your name kid?";
+  Gui.make_graph_addon
+    "~(Type in your name, make sure to end it with a period ('.'))";
+  Gui.make_graph_addon
+    "~Name: ";
   Graphics.set_color Graphics.white; 
 
   let name = Gui.type_out_string Graphics.yellow in 

@@ -363,9 +363,9 @@ let friday_afternoon = make_scenario "Friday Afternoon"
     ["Start your homework"; "Watch the Office"; "Go to the gym"; "Do laundry"] []
 
 let career_fair_choice = make_scenario "Career Fair Choice" 
-    "The Virtual Career Fair is in a couple of days. However, you also have a\ 
-    ~prelim coming up. You know that you still have to fix up your resume and\ 
-    ~research the companies in attendance, all of which will take away time from\ 
+    "The Virtual Career Fair is in a couple of days. However, you also have a\
+    ~prelim coming up. You know that you still have to fix up your resume and\
+    ~research the companies in attendance, all of which will take away time from\
     ~studying. Do you want to go to the career fair?" 
     ["Not career fair"; "Career fair"] []
 
@@ -375,41 +375,41 @@ let career_fair = make_scenario "Career Fair"
     ["Big tech company"; "Small start up"; "Non profit"] []
 
 let academic_integrity = make_scenario "Academic Integrity" 
-    "Your friend left their homework off to the last minute and ask if they can\ 
+    "Your friend left their homework off to the last minute and ask if they can\
     ~see yours to 'check their work'. Do you let them?" 
     ["Help them"; "I would never"]  []
 
 let applications = make_scenario "Applications" 
     "You are really scared that you will be unable to get a summer internship. You\
-    ~have some free time this weekend. Do you want to apply for some internships,\ 
+    ~have some free time this weekend. Do you want to apply for some internships,\
     ~spend time with friends, or do homework?" 
     ["Apply to internships"; "Spend time with friends"; "Work on homework" ] []
 
 let football_game = make_scenario "Football Game" 
-    "Cornell is playing Dartmouth in football, but you have a CS project due in a\ 
+    "Cornell is playing Dartmouth in football, but you have a CS project due in a\
     ~couple of days" 
     ["Football game"; "CS Project"] []
 
 let canada_goose = make_scenario "Canada Goose" 
-    "It's starting to get really cold out! You need to get a new winter jacket.\ 
+    "It's starting to get really cold out! You need to get a new winter jacket.\
     ~Which should you buy?" 
     ["Canada Goose Jacket"; "Jacket from TJ Maxx"] ["Freeze"]
 
 (* ======================SOPOMORE SPRING ================================ *)
 
 let ring_the_bell = make_scenario "Ring the bell"
-    "Your friend asks you to hike into the arboretum and ring the bell, which is\ 
+    "Your friend asks you to hike into the arboretum and ring the bell, which is\
     ~one of the 161 things every Cornellian should do. It's kinda chilly out tho.\
     ~What're you gonna do?" 
     ["DING DING!"; "Stay cozy"] []
 
 let elections  = make_scenario "SA elections" 
-    "You get an email notifying you that the student assembly elections are today!\ 
+    "You get an email notifying you that the student assembly elections are today!\
     ~Are you going to vote?" 
     ["Vote!"; "What the fuck is a student assembly?"] []
 
 let wicc  = make_scenario "Partner Social" 
-    "WICC is holding a partner finding social for your cs class. Having a partner\ 
+    "WICC is holding a partner finding social for your cs class. Having a partner\
     ~might be helpful for the tough assigments!" 
     ["Attend the partner social"; "I don't need a partner"] []
 
@@ -419,20 +419,20 @@ let professor  = make_scenario "57 years" "I have been teaching computer\
      "Are you sure it's not 56?"] []
 
 let professor2  = make_scenario "58 years" 
-    "I have been teaching computer  science for 58 years - the man adds 1 to the\ 
+    "I have been teaching computer  science for 58 years - the man adds 1 to the\
     ~number. You can feel his immense intellect. You realize that you can not doubt\
     ~his capabilities. He is an instance of the 'god' class. Bow down to his\
     ~highness" 
     ["58 years. 58 years. 58 years."; "59 years. 59 years. 59 years."] []
 
 let mission  = make_scenario "God" 
-    "The man smirks. He's impressed by your response. As he walks towards Gates\ 
-    ~doing breadth first search, you receive an email that your major declaration\ 
+    "The man smirks. He's impressed by your response. As he walks towards Gates\
+    ~doing breadth first search, you receive an email that your major declaration\
     ~has been approved." 
     ["Celebrate by throwing a party"; "Go write some proofs"] []
 
 let inhaler  = make_scenario "inhaler" 
-    "You wake up in your bed and realize that Slope day is about to start! You head\ 
+    "You wake up in your bed and realize that Slope day is about to start! You head\
     ~to the area but you hear that apparently swae lee doesn't want to come out and\
     ~perform. People are frantically looking around the stage for something. You \
     ~notice an inhaler on the ground." 
@@ -861,11 +861,11 @@ let change_tuple_helper tuple =
     (attribute, change in attribute). *)
 let print_tuple tuple =  
   if fst tuple = "gpa" then
-    " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
-    string_of_float (snd tuple) ^ "!! \n\n" 
+    "Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
+    string_of_float (snd tuple) ^ "!!" 
   else
-    " \n Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
-    string_of_int (abs (int_of_float (snd tuple))) ^ "!! \n\n" 
+    "Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
+    string_of_int (abs (int_of_float (snd tuple))) ^ "!!" 
 (* Prints an int so that there is no situation when it would print
      out "Your social life changed by 5.!!" with a period and then 
      exclamation points which looks weird *)
