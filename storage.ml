@@ -2,7 +2,7 @@ open Student
 
 let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                  ("single", [("gpa", 0.2)]);
-                                 ("double", [("brb", -100.0); 
+                                 ("double", [("brbs", -50.0); 
                                              ("social_life", 5.0)]);
                                  ("o Week", [("social_life", 5.0); 
                                              ("health", 3.0)]);

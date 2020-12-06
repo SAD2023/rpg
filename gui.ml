@@ -9,7 +9,7 @@ let set_background () =
 
 let print_graph_choices choices = 
   let x = ref 300 in 
-  let y = ref 375 in 
+  let y = ref 350 in 
   for i = 0 to List.length choices - 1 do 
     y.contents <- y.contents - 50;
     let x1 = x.contents in let y1 = y.contents in 
