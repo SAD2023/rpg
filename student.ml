@@ -62,6 +62,7 @@ let rec print_string_list = function
   | [] -> ""
   | h :: t -> h ^ ", " ^ print_string_list t
 
+
 (** [get_list_of_names] returns all of the names in a list of friends *)
 let rec get_list_of_names = function
   | [] -> []
@@ -77,6 +78,16 @@ let print_characteristics student =
   print_string ("BRBs: " ^ string_of_float student.brbs ^ "\n");
   print_string ("Friends: " 
                 ^ print_string_list (get_list_of_names student.friends))
+
+let gui_print_characteristics student = 
+  ("Name: " ^ student.name ^
+   "~Age: " ^ string_of_int student.age ^
+   "~Morality: " ^ string_of_float student.morality ^
+   "~GPA: " ^ string_of_float student.gpa ^ 
+   "~Social Life: " ^ string_of_float student.social_life ^
+   "~Health: " ^ string_of_float student.health ^ 
+   "~BRBs: " ^ string_of_float student.brbs ^ 
+   "~Friends: " ^ print_string_list (get_list_of_names student.friends))
 
 (**[bounds] checks to see if a value is between 0.0 and a given upper bound.
    If it is not, then it will return the upper or lower bound that it 
@@ -174,31 +185,36 @@ let judgement student =
 
 
 let final_judgement student =
-  print_string "\n";
-  print_characteristics student;
-  print_string "\n\nCongratulations! Your time at Cornell has come to an end. 
-  Now it's time to go out into the real world. \n";
-  if student.gpa > 3.7 && student.morality < 30.0 then print_string 
-      "\nYou were a terrible human being throughout your college life, but not
-       a terrible student. Seems like you left your morals somewhere along the 
-       lines. This is the perfect combination to become successful! 
-       You have been invited to intern at Goldman Sachs. \n
-  Good luck ripping people off. \n" 
+  Gui.make_graph (gui_print_characteristics student) Graphics.red;
+  Gui.make_final_judgement_graph_addon
+    "Congratulations! Your time at Cornell has come to an end. \
+  ~Now it's time to go out into the real world.";
+  (if student.gpa > 3.7 && student.morality < 30.0 then 
+     Gui.make_final_judgement_graph_addon
+       "You were a terrible human being throughout your college life, but not \
+      ~a terrible student. Seems like you left your morals somewhere along the \
+       ~lines. This is the perfect combination to become successful! \
+       ~You have been invited to intern at Goldman Sachs. \
+      ~Good luck ripping people off." 
 
-  else if student.gpa > 3.9 && student.social_life < 30.0 
-  then print_string 
-      "You smell terrible and you have a 4.0 in all of your CS classes. 
-      You are also very lonely. \n
-  Congrats on your Google internship! \n"
+   else if student.gpa > 3.9 && student.social_life < 30.0 
+   then Gui.make_final_judgement_graph_addon
+       "You smell terrible and you have a 4.0 in all of your CS classes. \
+      ~You are also very lonely.\
+      ~Congrats on your Google internship!"
 
-  else if student.gpa < 3.0 && student.social_life > 4.0 then print_string
-      "You changed your major from CS to communications. You are now a middle
-       school English teacher in a room full of screaming children. Enjoy your
-        liberal arts degree! \n"
+   else if student.gpa < 3.0 && student.social_life > 4.0 then
+     Gui.make_final_judgement_graph_addon
+       "You changed your major from CS to communications. You are now a middle \
+      ~school English teacher in a room full of screaming children. Enjoy your \
+      ~liberal arts degree!"
 
-  else print_string "\nYou're not ready for real life yet. You'll now go to 
-  grad school! \n\n"
-
+   else  Gui.make_final_judgement_graph_addon 
+       "You're not ready for real life yet. You'll now go to \
+  ~grad school!");
+  Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
+  if Graphics.read_key ()='q' then Graphics.close_graph ()
+  else ()
 
 let return_decisions student = 
   student.decision_list

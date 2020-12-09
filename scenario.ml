@@ -883,10 +883,11 @@ let print_changes decision choices player =
   let consequence_list = return_consequences decision choices player in 
   let string_list = List.map print_tuple consequence_list in
   let new_friend = match_decision_to_friend decision in  
-  map_print_helper string_list;
-  Unix.sleep 2;
-  if new_friend = "NONE" then () else
-    print_string("\n You gained a new friend: " ^ new_friend ^ "\n \n")
+  map_print_helper string_list;(
+    if new_friend = "NONE" then () else 
+      Gui.make_graph_addon ("You gained a new friend: " ^ new_friend ^ "~")
+  );
+  Unix.sleep 1
 
 let update_age scenario_name student = 
   if scenario_name = "Classes" 

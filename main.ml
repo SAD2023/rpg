@@ -82,7 +82,6 @@ let rec play_game player scenario acc =
       2. take input based on scenario
       3. update student based on input
       4. recall itself *)
-  (*Gui.make_graph "camel"; *)
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
   (* let player = friend_minigame player in   *)

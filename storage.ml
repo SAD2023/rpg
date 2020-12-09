@@ -388,7 +388,7 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                 ]
 
 let decision_scenario_name = [("single", "Meet Brad");
-                              ("test", "ditch finals");
+                              ("test", "graduation");
                               ("double", "Meet Brad");
                               ("o Week", "Roommate and Brad"); 
                               ("o Week", "No Roommate and Brad");
