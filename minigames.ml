@@ -40,3 +40,24 @@ let rec scramble_engine word input =
   if String.uppercase_ascii input = String.uppercase_ascii word then "Correct!" 
   else "Wrong!"
 
+let play_minigame word = 
+  scramble_intro word;
+  let input = Gui.type_out_unscrambled () in 
+  if scramble_engine word input = "Wrong!" 
+  then let result = "WRONG! Let's try a different word..." in Gui.make_graph result Graphics.white;
+    Unix.sleep 1; result
+  else let result = "Correct! Hurray! You get 3 bucks!" in Gui.make_graph result Graphics.white;
+    Unix.sleep 1; result
+
+
+(* (Minigames.scramble_intro word); 
+                            let input = (Gui.type_out_unscrambled ()) in begin 
+                              if Minigames.scramble_engine word input = 
+                                 "Wrong!" then
+                                (Gui.make_graph "WRONG! Let's try a different word..." Graphics.white;
+                                 Unix.sleep 1;
+                                 play_game player scenario acc) 
+                              else Gui.make_graph "Correct! Hurray! You get 3 bucks!" Graphics.white;
+                              Unix.sleep 1; 
+                              let player = Student.give_money player in 
+                              play_game player scenario (acc+1)  *)

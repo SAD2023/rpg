@@ -336,11 +336,8 @@ let olin_finals = make_scenario "Olin finals"
 (* ============================SOPHOMORE FALL============================== *)
 
 let classes = make_scenario "Classes" 
-    "\
-    It's time to pick out your classes! But oh no! You really want to take the\
-    \
+    "It's time to pick out your classes! But oh no! You really want to take the\
     ~Ice Cream class with your friend, but it conflicts with CS 3110, which you\
-    \
      ~need for your major!" 
     ["Ice Cream Class"; "CS 3110"] []
 

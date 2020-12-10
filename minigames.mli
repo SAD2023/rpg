@@ -30,3 +30,5 @@ val scramble_engine: string -> string -> string
 (** [scramble_intro] prints the introduction/instructions for the scramble
     minigame.*)
 val scramble_intro: string -> unit
+
+val play_minigame: string -> string
