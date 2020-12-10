@@ -88,12 +88,9 @@ let rec play_game player scenario acc =
   if (acc mod 10) = 7 then (Student.judgement player;
                             Unix.sleep 5);
   if (acc mod 10) = 9 then (let word =  word_picker words_to_scramble in 
-                            let result = Minigames.play_minigame word in begin
-                              if result = "WRONG! Let's try a different word..." 
-                              then play_game player scenario acc 
-                              else let player = Student.give_money player in 
-                                play_game player scenario (acc+1)                             
-                            end);  
+                            let player_mini, acc_mini = 
+                              Minigames.play_minigame word player acc in
+                            play_game player_mini scenario acc_mini);  
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 

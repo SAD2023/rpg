@@ -1,6 +1,6 @@
 open Random
 open Gui
-
+open Student 
 type name = string
 
 type rules = string
@@ -40,14 +40,14 @@ let rec scramble_engine word input =
   if String.uppercase_ascii input = String.uppercase_ascii word then "Correct!" 
   else "Wrong!"
 
-let play_minigame word = 
+let play_minigame word player acc = 
   scramble_intro word;
   let input = Gui.type_out_unscrambled () in 
   if scramble_engine word input = "Wrong!" 
   then let result = "WRONG! Let's try a different word..." in Gui.make_graph result Graphics.white;
-    Unix.sleep 1; result
+    Unix.sleep 1; player, acc
   else let result = "Correct! Hurray! You get 3 bucks!" in Gui.make_graph result Graphics.white;
-    Unix.sleep 1; result
+    Unix.sleep 1; (Student.give_money player, acc + 1)
 
 
 (* (Minigames.scramble_intro word); 

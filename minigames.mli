@@ -31,4 +31,4 @@ val scramble_engine: string -> string -> string
     minigame.*)
 val scramble_intro: string -> unit
 
-val play_minigame: string -> string
+val play_minigame: string -> Student.student -> int -> Student.student * int
