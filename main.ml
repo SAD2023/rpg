@@ -18,7 +18,7 @@ let word_to_scramble = "cornell"
 let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
                          "slope"; "beebeelake"; 
                          "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
-
+(* CAN PUT WORD PICKER + WORDS TO SCRAMBLE IN MINIGAME FILE *)
 let word_picker lst_of_words = 
   let index  = Random.int (List.length lst_of_words) in
   List.nth lst_of_words index 
