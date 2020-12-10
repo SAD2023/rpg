@@ -44,10 +44,14 @@ let play_minigame word player acc =
   scramble_intro word;
   let input = Gui.type_out_unscrambled () in 
   if scramble_engine word input = "Wrong!" 
-  then let result = "WRONG! Let's try a different word..." in Gui.make_graph result Graphics.white;
-    Unix.sleep 1; player, acc
-  else let result = "Correct! Hurray! You get 3 bucks!" in Gui.make_graph result Graphics.white;
-    Unix.sleep 1; (Student.give_money player, acc + 1)
+  then let result = "WRONG! Let's try a different word..." in 
+    Gui.make_graph result Graphics.white;
+    Unix.sleep 1; 
+    player, acc
+  else let result = "Correct! Hurray! You get 3 bucks!" in 
+    Gui.make_graph result Graphics.white;
+    Unix.sleep 1; 
+    (Student.give_money player, acc + 1)
 
 
 (* (Minigames.scramble_intro word); 
