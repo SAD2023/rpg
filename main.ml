@@ -6,6 +6,7 @@ open Minigames
 open Graphics
 open Gui 
 open Unix
+open Hangman
 
 
 
