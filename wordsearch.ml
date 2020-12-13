@@ -4,7 +4,8 @@ let letters = ['a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'; 'j'; 'k'; 'l';
                'm'; 'n'; 'o'; 'p'; 'q'; 'r'; 's'; 't'; 'u'; 'v'; 'w'; 'x';
                'y'; 'z']
 
-let word_lst = ["cookies"; "pizza"; "cake"; "pasta"; "candy"]
+let word_lst = ["cookie"; "pizza"; "cake"; "pasta"; "candy"; "donut";
+                "fries"; "oreo"; "cheese"; "apple"; "nugget"; "orange"]
 
 let word_picker lst_of_words = 
   let index  = Random.int (List.length lst_of_words) in
@@ -13,6 +14,8 @@ let word_picker lst_of_words =
 let random_letter () = 
   List.nth letters (Random.int 25) 
 
+
+(* Used for putting on the terminal, not needed for gui functionality *)
 let rec print_row lst =
   match lst with
   | [] -> print_endline ""
@@ -127,7 +130,7 @@ let rec main_wordsearch_engine_helper word=
      graph_print_nested_lst (make_grid_with_word_in_h word)
    else 
      (graph_print_nested_lst (make_grid_with_word_in_v word)));
-  Gui.make_graph_addon "Guess a letter or word: ";
+  Gui.make_graph_addon "Guess a word: ";
   let guess = (Gui.type_out_string Graphics.yellow) in
   (if guess = word then
      Gui.make_graph_addon "Congratulations! You got it!"

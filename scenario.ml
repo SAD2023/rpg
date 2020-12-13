@@ -206,19 +206,19 @@ let drop = make_scenario "drop"
     ["Lower the course load"; "Keep current course load"] []
 
 let dinner = make_scenario "dinner out" 
-    "Your friends want to go to Antlers for dinner on Friday. They ask whether\ 
+    "Your friends want to go to Antlers for dinner on Friday. They ask whether\
     ~you want to join them "
     ["Go to dinner"; "Stay home and be lonely"] []
 
 let office_hours = make_scenario "office hours" 
-    "Your professor gave you an assignment and didn't teach several concepts\ 
-    ~needed to solve it. Maybe you should go to office hours to figure it out\ 
+    "Your professor gave you an assignment and didn't teach several concepts\
+    ~needed to solve it. Maybe you should go to office hours to figure it out\
     ~(note: it will be crowded like a fish market, you will be #135 on the queue,\
     ~and will likely have a mental breakdown" 
     ["Sacrifice mental health for gpa"; "Fail the assignment"] []
 
 let frisbee = make_scenario "frisbee team" 
-    "One of your friends is in the frisbee team and invites you to join. It\ 
+    "One of your friends is in the frisbee team and invites you to join. It\
     ~might be some good exercise"
     ["Join the frisbee team"; "Don't join"] []
 
@@ -233,13 +233,13 @@ let transport =  make_scenario "transport"
     ["Get a bike"; "Keep walking"; "Start using the bus pass"] []
 
 let touchdown = make_scenario "Touchdown" 
-    "On your way to class, you run into touchdown, Cornell's Big Red Mascot!\ 
+    "On your way to class, you run into touchdown, Cornell's Big Red Mascot!\
     ~But it seems you're running late." 
     ["Stop and take a pic with touchdown"; "Rush to class"] []
 
 let nasties_run  = make_scenario "Nasties Run" 
-    "Your roommate wants to cook dinner tonight to bond together, but you're\ 
-    ~really craving some ~unhealthy~ food from nasties." 
+    "Your roommate wants to cook dinner tonight to bond together, but you're\
+    ~really craving some unhealthy food from nasties." 
     ["Cook with roommate"; "Onion rings and chicken tenders from Nasties"] []
 
 let igloo = make_scenario "Igloo" 

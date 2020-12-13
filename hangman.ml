@@ -26,53 +26,57 @@ let rec string_of_char_list lst  =
   | h :: t -> (String.make 1 h) ^ ", " ^ string_of_char_list t 
 
 let rec main_hangman_helper letters_guessed word guesses_left acc=
-
   if guesses_left = 0 then 
     Gui.make_graph_addon ("You lose :-(, the correct word was: " ^ word)
   else
-    (Gui.make_graph ("Guesses left: " ^ string_of_int guesses_left ^
-                     "~Guesses so far: " ^ acc ^
-                     "~Letters guessed so far: " ^ 
-                     (string_of_char_list (List.sort_uniq compare letters_guessed)) ^ 
-                     "~Guess a letter or word: ") Graphics.red;
-     let guess = (Gui.type_out_string Graphics.yellow) in
-     let empty = ref "" in
-     if String.length guess = 1 then
-       let chara = (String.get guess 0) in
-       begin 
-         if List.mem chara letters_guessed then
-           (let astrisks = (format chara word empty acc) in
-            Gui.make_graph_addon
-              "You have already guessed this letter. Please try again!";
-            main_hangman_helper (letters_guessed) word (guesses_left) astrisks)
+    (Gui.make_graph "Let's play hangman! Can you guess the word?" Graphics.red;
 
-         else if String.contains word chara then 
-           let astrisks = (format chara word empty acc) in
-           begin
-             if String.contains astrisks '*' = false then
-               Gui.make_graph_addon 
-                 "Congratulations! You guessed the word correctly!"    
-             else 
-               (Gui.make_graph_addon ("Correct letter! You have " ^
-                                      (string_of_int (guesses_left )) 
-                                      ^ " guesses left");
-                let astrisks = (format chara word empty acc) in
-                Gui.make_graph_addon  astrisks;
-                main_hangman_helper (chara :: letters_guessed) word (guesses_left) astrisks)
-           end
-         else
-           (Gui.make_graph_addon  ("Wrong letter! You have " ^
-                                   (string_of_int (guesses_left-1)) ^ " guesses left");
-            let astrisks = (format chara word empty acc) in
-            Gui.make_graph_addon  astrisks;
-            main_hangman_helper (chara :: letters_guessed) word (guesses_left - 1) astrisks)
-       end
-     else if guess = word then 
-       (Gui.make_graph_addon  "Congratulations! You guessed the word correctly!";)
-     else begin
-       Gui.make_graph_addon  "That is not the correct word. Try again";
-       main_hangman_helper letters_guessed word (guesses_left - 1) acc
-     end)
+     Gui.make_final_judgement_graph_addon  
+       ("~Guesses left: " ^ string_of_int guesses_left ^
+        "~Guesses so far: " ^ acc ^
+        "~Letters guessed so far: " ^ 
+        (string_of_char_list 
+           (List.sort_uniq compare letters_guessed)) ^ 
+        "~Guess a letter or word and then press '.': "));
+
+  let guess = (Gui.type_out_string Graphics.yellow) in
+  let empty = ref "" in
+  if String.length guess = 1 then
+    let chara = (String.get guess 0) in
+    begin 
+      if List.mem chara letters_guessed then
+        (let astrisks = (format chara word empty acc) in
+         Gui.make_graph_addon
+           "You have already guessed this letter. Please try again!";
+         main_hangman_helper (letters_guessed) word (guesses_left) astrisks)
+
+      else if String.contains word chara then 
+        let astrisks = (format chara word empty acc) in
+        begin
+          if String.contains astrisks '*' = false then
+            Gui.make_graph_addon 
+              "Congratulations! You guessed the word correctly!"    
+          else 
+            (Gui.make_graph_addon ("Correct letter! You have " ^
+                                   (string_of_int (guesses_left )) 
+                                   ^ " guesses left");
+             let astrisks = (format chara word empty acc) in
+             Gui.make_graph_addon  astrisks;
+             main_hangman_helper (chara :: letters_guessed) word (guesses_left) astrisks)
+        end
+      else
+        (Gui.make_graph_addon  ("Wrong letter! You have " ^
+                                (string_of_int (guesses_left-1)) ^ " guesses left");
+         let astrisks = (format chara word empty acc) in
+         Gui.make_graph_addon  astrisks;
+         main_hangman_helper (chara :: letters_guessed) word (guesses_left - 1) astrisks)
+    end
+  else if guess = word then 
+    (Gui.make_graph_addon  "Congratulations! You guessed the word correctly!";)
+  else begin
+    Gui.make_graph_addon  "That is not the correct word. Try again";
+    main_hangman_helper letters_guessed word (guesses_left - 1) acc
+  end
 
 
 
@@ -89,8 +93,8 @@ let astrisks_maker word=
     | h :: t -> (String.make (String.length h) '*') ^ " " ^ (astrisks_helper t)
   in astrisks_helper lst
 
-let main_hangman =
-  Graphics.open_graph "";
+let main_hangman ()=
+  (* Graphics.open_graph ""; *)
   Gui.make_graph "" Graphics.red;
   let word = word_picker hangman_words in
   let astrisks = astrisks_maker word in

@@ -7,6 +7,7 @@ open Graphics
 open Gui 
 open Unix
 open Hangman
+open Wordsearch
 
 
 
@@ -36,18 +37,18 @@ let give_number letter =
   else if letter = "D" then 3 
   else 4
 
-let friend_minigame player = 
-  let player_friend_list = Student.friend_list_getter player in 
-  let lonely_list = List.filter (fun x -> Friend.get_closeness x < 1) 
+(* let friend_minigame player = 
+   let player_friend_list = Student.friend_list_getter player in 
+   let lonely_list = List.filter (fun x -> Friend.get_closeness x < 1) 
       player_friend_list in  (*
-  print_string (string_of_int (List.length lonely_list)); *)
-  if List.length lonely_list > 0 then 
+   print_string (string_of_int (List.length lonely_list)); *)
+   if List.length lonely_list > 0 then 
     let lonely_friend = List.hd lonely_list in 
     print_string ("\nYou haven't spent much time with your friend " ^ 
                   Friend.get_name (lonely_friend) ^ 
                   ". \nDo you want to play a quick game with them? \n\n
- A)Yes\n
- B)No \n\n");
+   A)Yes\n
+   B)No \n\n");
     let input =  String.uppercase_ascii (read_line ()) in 
     if input = "A" || input = "YES" then 
       (print_string "How do you spell cornell? Hint: it's cornell \n";
@@ -75,7 +76,7 @@ let friend_minigame player =
            print_string(Friend.get_name x)) (Student.friend_list_getter player)); 
       player)
 
-  else player 
+   else player  *)
 
 (** [play_game f] keeps the game playing. *)
 let rec play_game player scenario acc =
@@ -86,12 +87,14 @@ let rec play_game player scenario acc =
   let player = Scenario.update_age (Scenario.return_scenario_name scenario) 
       player in 
   (* let player = friend_minigame player in   *)
-  if (acc mod 10) = 7 then (Student.judgement player;
+  if (acc mod 15) = 5 then (Student.judgement player;
                             Unix.sleep 5);
-  if (acc mod 10) = 9 then (let word =  word_picker words_to_scramble in 
+  if (acc mod 30) = 9 then (let word =  word_picker words_to_scramble in 
                             let player_mini, acc_mini = 
                               Minigames.play_minigame word player acc in
-                            play_game player_mini scenario acc_mini);  
+                            play_game player_mini scenario acc_mini); 
+  if (acc mod 30) = 19 then main_hangman (); 
+  if (acc mod 30) = 29 then main_wordsearch (); 
   Scenario.print_prompt scenario;
   let lower_choices = Scenario.return_choices scenario in
   let choices = List.map String.uppercase_ascii lower_choices in 
