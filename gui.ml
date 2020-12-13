@@ -47,6 +47,14 @@ let make_graph_addon ?color:(arg1=Graphics.white) word =
     Graphics.draw_string (List.nth word_list i);
   done
 
+let make_graph_addon_no_newline ?color:(arg1=Graphics.white) word = 
+  (* let current_x, current_y = Graphics.current_point () in  *)
+  let word_list = String.split_on_char '~' word in 
+  for i= 0 to List.length word_list - 1 do
+    Graphics.set_color arg1;
+    Graphics.draw_string (List.nth word_list i);
+  done
+
 let make_final_judgement_graph_addon ?color:(arg1=Graphics.white) word = 
   let current_x, current_y = Graphics.current_point () in 
   let y = ref current_y in
