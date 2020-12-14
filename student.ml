@@ -203,6 +203,20 @@ let final_judgement student =
       ~You are also very lonely.\
       ~Congrats on your Google internship!"
 
+
+   else if student.gpa < 1.0 then
+     Gui.make_final_judgement_graph_addon
+       "You failed to meet the academic requirements and will have to stay an \
+       ~extra semester. Congrats Van Wilder!\
+
+       ~Hint: there's this thing called an academic advisor!"
+
+   else if student.gpa < 2.0 && student.brbs > 60.0 then
+     Gui.make_final_judgement_graph_addon
+       "You barely made it, but hey! You can now work as a 'Data Scientist' at \
+       ~your dad's company (it involves the art of inputting numbers into excel \
+       ~and convincing an entire company to pay you for it)."
+
    else if student.gpa < 3.0 && student.social_life > 4.0 then
      Gui.make_final_judgement_graph_addon
        "You changed your major from CS to communications. You are now a middle \
