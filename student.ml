@@ -203,6 +203,19 @@ let final_judgement student =
       ~You are also very lonely.\
       ~Congrats on your Google internship!"
 
+   else if student.gpa > 3.99 && student.social_life > 95.0 && 
+           student.morality > 90.0 && student.health > 90.0 then 
+     (* Impossible scenario *)
+
+     Gui.make_final_judgement_graph_addon
+       "Congratulations!! You made it all the way through college with an \
+       ~incredibly high GPA and lots of friends and connections, all without \
+       ~sacrificing your health or your soul! How did you do it? Are you a \
+       ~wizard? Why didn't you go to Hogwarts then?\
+       ~~You received offers from Google and Facebook, but you turn them down to\
+       ~work at a small non-profit saving kittens and ending world hunger. I \
+       ~heard that they're considering you for a Nobel Prize. Woo. Excuse me \
+       ~while I go cry with the remaining 2 shards of my dignity."
 
    else if student.gpa < 1.0 then
      Gui.make_final_judgement_graph_addon
@@ -222,6 +235,13 @@ let final_judgement student =
        "You changed your major from CS to communications. You are now a middle \
       ~school English teacher in a room full of screaming children. Enjoy your \
       ~liberal arts degree!"
+
+   else if student.brbs = 0.0 && student.gpa < 3.0 then
+     Gui.make_final_judgement_graph_addon
+       "Wow. You have no more money left. You got an offer at a start up, but it \
+     ~doesn't pay very well, so you take the only offer you could get: \
+     ~Martha Pollack's personal butler."
+
 
    else  Gui.make_final_judgement_graph_addon 
        "You're not ready for real life yet. You'll now go to \

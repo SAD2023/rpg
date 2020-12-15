@@ -1,31 +1,43 @@
 open Graphics
 
+(** A list of the letters of the alphabet *)
 let letters = ['a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'; 'j'; 'k'; 'l';
                'm'; 'n'; 'o'; 'p'; 'q'; 'r'; 's'; 't'; 'u'; 'v'; 'w'; 'x';
                'y'; 'z']
 
+(** A list of words *)
 let word_lst = ["cookie"; "pizza"; "cake"; "pasta"; "candy"; "donut";
                 "fries"; "oreo"; "cheese"; "apple"; "nugget"; "orange"]
 
+
+(** [word_picker lst_of_words] picks a random word in a list of words *)
 let word_picker lst_of_words = 
   let index  = Random.int (List.length lst_of_words) in
   List.nth lst_of_words index 
 
+(** [random_letter ()] returns a random letter from the list of words above*)
 let random_letter () = 
   List.nth letters (Random.int 25) 
 
 
 (* Used for putting on the terminal, not needed for gui functionality *)
+
+(** [print_row lst] prints a row of characters into the terminal, each separated
+    by a space*)
 let rec print_row lst =
   match lst with
   | [] -> print_endline ""
   | h :: t -> print_char h; print_char ' '; print_row t
 
+(** [print_nested_lst lst] prints a nested list of character lists into the
+    terminal, each separated by a new line *)
 let rec print_nested_lst lst=
   match lst with
   | [] -> ()
   | h :: t -> print_row h; print_nested_lst t
 
+
+(** [make_row len] makes a list of random charactes of lengh len *)
 let make_row len =
   let acc = ref [] in
   while List.length (acc.contents) < len do
@@ -34,6 +46,9 @@ let make_row len =
   done;
   acc.contents
 
+
+(** [make_grid len] makes a nested list of characters, where each "row" and
+    "column" is of length len *)
 let rec make_grid len = 
   let acc = ref [] in
   while (List.length acc.contents) < len do
@@ -42,6 +57,9 @@ let rec make_grid len =
   done;
   acc.contents
 
+
+(** [replace_in_lst lst n value] returns a new list which is an identical copy
+    of lst, except that the nth value is replaced by value*)
 let replace_in_lst (lst : 'a list) n value =
   let acc_counter = ref 0 in
   let acc_lst = ref [] in
@@ -55,7 +73,9 @@ let replace_in_lst (lst : 'a list) n value =
   done;
   acc_lst.contents
 
-
+(** [replace_h init_lst word_lst starting_pos length] returns a new list of
+    characters that is an identical copy of the original, but with the chars
+    in word_lst inserted starting at starting_pos *)
 let rec replace_h (init_lst : char list) (word_lst : char list) starting_pos length =
   let acc = ref 0 in
   let acc_lst = ref [] in
@@ -74,11 +94,15 @@ let rec replace_h (init_lst : char list) (word_lst : char list) starting_pos len
   done;
   acc_lst.contents
 
+(** [make_char_lst str] takes each character in str and appends it onto a new
+    list of characters. *)
 let make_char_lst str=
   let acc = ref [] in
   String.iter (fun x -> acc.contents <- acc.contents @ [x]) str;
   acc.contents
 
+(**[make_grid_with_word_in_h word] makes a grid that is double the length of the
+   given word, with word hidden inside horizontally. *)
 let make_grid_with_word_in_h word =
   let len = String.length word in
   let grid = make_grid (2 * len) in
@@ -88,11 +112,8 @@ let make_grid_with_word_in_h word =
   let new_row = replace_h row (make_char_lst word) start_pos_col len in
   replace_in_lst grid start_pos_col new_row
 
-(* let get_first_and_add_to_new_lst  *)
-
-
-
-
+(** [rev_nested_lst lst] takes a list of rows and columns and turns it into
+    a new list of columns and rows *)
 let rev_nested_lst lst =
   let acc_lst = ref [] in
   let elem = ref [] in
@@ -103,10 +124,14 @@ let rev_nested_lst lst =
   done;
   List.rev acc_lst.contents
 
+(**[make_grid_with_word_in_h word] makes a grid that is double the length of the
+   given word, with word hidden inside vertically. *)
 let make_grid_with_word_in_v word =
   let grid = make_grid_with_word_in_h word in
   rev_nested_lst grid
 
+(** [graph_print_row lst] prints a character list to the GUI, with each
+    separated by three spaces *)
 let rec graph_print_row lst =
   match lst with
   | [] -> Gui.make_graph_addon (String.make 1 '~'); 
@@ -116,11 +141,14 @@ let rec graph_print_row lst =
     Gui.make_graph_addon_no_newline (String.make 1 ' '); 
     graph_print_row t
 
+(** [graph_print_nested_lst lst] prints a grid of characters to the GUI *)
 let rec graph_print_nested_lst lst=
   match lst with
   | [] -> ()
   | h :: t -> graph_print_row h; graph_print_nested_lst t
 
+(** [main_wordsearch_engine_helper word] is the main engine for the word search
+    game. It will print out a grid, and   *)
 let rec main_wordsearch_engine_helper word=
   Gui.make_graph
     "Can you find the hidden word in this word search? \
