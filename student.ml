@@ -215,66 +215,74 @@ let judgement student =
     at the end of the game, dependent on the student's particular attributes by 
     the end of the game  *)
 let final_judgement_intro = "Congratulations! Your time at Cornell has come to an end. \
-  ~Now it's time to go out into the real world."
+     ~Now it's time to go out into the real world."
 let goldman_sachs_ending = "You were a terrible human being throughout your college life, but not \
-       ~a terrible student. Seems like you left your morals somewhere along the \
-       ~lines. This is the perfect combination to become successful! \
-       ~You have been invited to intern at Goldman Sachs. \
-       ~Good luck ripping people off."
+     ~a terrible student. Seems like you left your morals somewhere along the \
+     ~lines. This is the perfect combination to become successful! \
+     ~You have been invited to intern at Goldman Sachs. \
+     ~Good luck ripping people off."
 let google_ending = "It seems like you have a 4.0 in all of your CS classes. \
-      ~You are also very lonely.\
-      ~Congrats on your Google internship!"
+     ~You are also very lonely.\
+     ~Congrats on your Google internship!"
 let impossible_ending = "Congratulations!! You made it all the way through college with an \
-       ~incredibly high GPA and lots of friends and connections, all without \
-       ~sacrificing your health or your soul! How did you do it? Are you a \
-       ~wizard? Why didn't you go to Hogwarts then?\
-       ~~You received offers from Google and Facebook, but you turn them down to\
-       ~work at a small non-profit saving kittens and ending world hunger. I \
-       ~heard that they're considering you for a Nobel Prize. Woo. Excuse me \
-       ~while I go cry with the remaining 2 shards of my dignity."
+     ~incredibly high GPA and lots of friends and connections, all without \
+     ~sacrificing your health or your soul! How did you do it? Are you a \
+     ~wizard? Why didn't you go to Hogwarts then?\
+     ~~You received offers from Google and Facebook, but you turn them down to\
+     ~work at a small non-profit saving kittens and ending world hunger. I \
+     ~heard that they're considering you for a Nobel Prize. Woo. Excuse me \
+     ~while I go cry with the remaining 2 shards of my dignity."
 let extra_semester_ending = "You failed to meet the academic requirements and will have to stay an \
-       ~extra semester. Congrats Van Wilder!\
+     ~extra semester. Congrats Van Wilder!\
 
-       ~Hint: there's this thing called an academic advisor!"
+     ~Hint: there's this thing called an academic advisor!"
 let data_scientist_ending = "You barely made it, but hey! You can now work as a 'Data Scientist' at \
-       ~your dad's company (it involves the art of inputting numbers into excel \
-       ~and convincing an entire company to pay you for it)."
+     ~your dad's company (it involves the art of inputting numbers into excel \
+     ~and convincing an entire company to pay you for it)."
 let english_teacher_ending = "You changed your major from CS to communications. You are now a middle \
-      ~school English teacher in a room full of screaming children. Enjoy your \
-      ~liberal arts degree!"
+     ~school English teacher in a room full of screaming children. Enjoy your \
+     ~liberal arts degree!"
 let pollack_butler_ending = "Wow. You have no more money left. You got an offer at a start up, but it \
      ~doesn't pay very well, so you take the only offer you could get: \
      ~Martha Pollack's personal butler."
 let grad_school_ending = "You're not ready for real life yet. You'll now go to \
-  ~grad school!"
+     ~grad school!"
+let medicine_ending = "Even though you were a CS major, it looks like you're truly passionate about \
+     ~medicine. You decide to take a few gap years to build up your profile before \
+     ~applying to medical school."
+let 
 
 
-(** [final_judgement student] takes in a student and prints out a string 
-    judging their various final attributes, depending on the actions that they 
-    have taken, and if they are ethical or not. It also determines their future 
-    career. *)
-let final_judgement student =
-  Gui.make_graph (gui_print_characteristics student) Graphics.red;
-  Gui.make_final_judgement_graph_addon final_judgement_intro;
-  (if student.gpa > 3.7 && student.morality < 30.0 
-   then Gui.make_final_judgement_graph_addon goldman_sachs_ending
-   else if student.gpa > 3.9 && student.social_life < 30.0 
-   then Gui.make_final_judgement_graph_addon google_ending
-   else if student.gpa > 3.99 && student.social_life > 95.0 && 
-           student.morality > 90.0 && student.health > 90.0 
-   then Gui.make_final_judgement_graph_addon impossible_ending
-   else if student.gpa < 1.0 
-   then Gui.make_final_judgement_graph_addon extra_semester_ending
-   else if student.gpa < 2.0 && student.brbs > 60.0 
-   then Gui.make_final_judgement_graph_addon data_scientist_ending
-   else if student.gpa < 3.0 && student.social_life > 4.0 
-   then Gui.make_final_judgement_graph_addon english_teacher_ending
-   else if student.brbs = 0.0 && student.gpa < 3.0 
-   then Gui.make_final_judgement_graph_addon pollack_butler_ending
-   else  Gui.make_final_judgement_graph_addon grad_school_ending);
 
-  Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
-  if Graphics.read_key ()='q' then Graphics.close_graph () else ()
+  (** [final_judgement student] takes in a student and prints out a string 
+      judging their various final attributes, depending on the actions that they 
+      have taken, and if they are ethical or not. It also determines their future 
+      career. *)
+  let final_judgement student =
+    Gui.make_graph (gui_print_characteristics student) Graphics.red;
+    Gui.make_final_judgement_graph_addon final_judgement_intro;
+    (if student.gpa > 3.7 && student.morality < 30.0 
+     then Gui.make_final_judgement_graph_addon goldman_sachs_ending
+     else if student.gpa > 3.9 && student.social_life < 30.0 
+     then Gui.make_final_judgement_graph_addon google_ending
+     else if student.gpa > 3.99 && student.social_life > 95.0 && 
+             student.morality > 90.0 && student.health > 90.0 
+     then Gui.make_final_judgement_graph_addon impossible_ending
+     else if student.gpa > 3.8 && student.social_life < 60.0 && 
+             student.morality > 60.0 && student.health > 70.0 
+     then Gui.make_final_judgement_graph_addon medicine_ending
+     else if student.gpa < 1.0 
+     then Gui.make_final_judgement_graph_addon extra_semester_ending
+     else if student.gpa < 2.0 && student.brbs > 60.0 
+     then Gui.make_final_judgement_graph_addon data_scientist_ending
+     else if student.gpa < 3.0 && student.social_life > 4.0 
+     then Gui.make_final_judgement_graph_addon english_teacher_ending
+     else if student.brbs = 0.0 && student.gpa < 3.0 
+     then Gui.make_final_judgement_graph_addon pollack_butler_ending
+     else  Gui.make_final_judgement_graph_addon grad_school_ending);
+
+    Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
+    if Graphics.read_key ()='q' then Graphics.close_graph () else ()
 
 
 (** [return_decisions student] returns all of the decisions that a student has

@@ -10,14 +10,6 @@ open Hangman
 open Wordsearch
 
 
-
-
-(*1. Hangman
-  2. tic tac toe
-  3. cornell trivia
-  4.  *)
-
-
 let give_number letter = 
   if letter = "A" then 0 
   else if letter = "B" then 1 
