@@ -167,7 +167,7 @@ let rec main_wordsearch_engine_helper word=
       main_wordsearch_engine_helper word))
 
 
-let main_wordsearch ()=
+let main_wordsearch () =
   Graphics.open_graph "";
   Gui.make_graph "" Graphics.red;
   let word = word_picker word_lst in

@@ -1,5 +1,3 @@
-(**open Scenario*)
-
 (** The abstract type of values representing the student*)
 type student
 
@@ -35,8 +33,7 @@ type gpa = float
     friendships, how many characters they meet and ultimately their final job 
     options.   
 
-    Minimum of 0 and a maximum of 100. 
-*)
+    Minimum of 0 and a maximum of 100. *)
 type social_life = float
 
 
@@ -46,8 +43,7 @@ type social_life = float
     healthy option (e.g. being on their laptop with junk food). Determines how 
     happy they are, future scenarios, and their endings.  
 
-    Minimum of 0 and a maximum of 100. 
-*)
+    Minimum of 0 and a maximum of 100. *)
 type health = float
 
 (** This shows how much a student is ballin. Increases when given a scenario
@@ -55,29 +51,20 @@ type health = float
     swipes) and Decreases when given a scenario and they choose an option that 
     is more expensive or a waste of money (e.g. going to four seasons) 
 
-    Minimum of 0 and a maximum of 100. 
-*)
+    Minimum of 0 and a maximum of 100. *)
 type brbs = float
 
+
+(** This exception is raised if the student does not have enough BRBs *)
 exception Poor of brbs
-(**  
-   (** The abstract type of values representing friends (other characters)
- *)
-   type friends = friend list
 
-   (** The abstract type of values representing the decisions a student makes 
-   when given a certain scenario *)
-   type decisions = Scenario.choice list 
 
-*)
-
-(** [decision] is the decision that the user makes during a given scenario.
-*)
+(** [decision] is the decision that the user makes during a given scenario. *)
 type decision = string
 
 (** [initial name] takes in a name (a string) and creates a new student with 
     that name, plus default values of 0.0 for gpa, morality, brbs, health, 
-    social_life, and 18 for the age*)
+    social_life, and 18 for the age *)
 val initial : string -> student
 
 (** [make_student] creates a new student with the given parameters, which are
@@ -130,5 +117,7 @@ val friend_list_getter: student -> Friend.friend list
     to the previous student but with the friend list friends_list *)
 val update_friend_list_only: student -> Friend.friend list -> student
 
-
+(** [see_if_you_have_friend name student] checks to see if there exists a friend
+    with [name] in the list of friends belonging to this [student], returning
+    true if this friend exists in the list, and false otherwise *)
 val see_if_you_have_friend: string -> student -> bool 
