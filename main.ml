@@ -16,19 +16,7 @@ open Wordsearch
   2. tic tac toe
   3. cornell trivia
   4.  *)
-let word_to_scramble = "cornell"
-let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
-                         "slope"; "beebeelake"; 
-                         "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
-(* CAN PUT WORD PICKER + WORDS TO SCRAMBLE IN MINIGAME FILE *)
-let word_picker lst_of_words = 
-  let index  = Random.int (List.length lst_of_words) in
-  List.nth lst_of_words index 
 
-let rec print_list lst = 
-  match lst with 
-  | [] -> ""
-  | h :: t -> h ^ ", " ^ print_list t 
 
 let give_number letter = 
   if letter = "A" then 0 
@@ -89,9 +77,8 @@ let rec play_game player scenario acc =
   (* let player = friend_minigame player in   *)
   if (acc mod 15) = 5 then (Student.judgement player;
                             Unix.sleep 5);
-  if (acc mod 30) = 9 then (let word =  word_picker words_to_scramble in 
-                            let player_mini, acc_mini = 
-                              Minigames.play_minigame word player acc in
+  if (acc mod 30) = 9 then (let player_mini, acc_mini = 
+                              Minigames.play_minigame player acc in
                             play_game player_mini scenario acc_mini); 
   if (acc mod 30) = 19 then main_hangman (); 
   if (acc mod 30) = 29 then main_wordsearch (); 

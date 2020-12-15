@@ -13,6 +13,16 @@ type minigame
 
 open Stdlib
 
+let word_to_scramble = "cornell"
+let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
+                         "slope"; "beebeelake"; 
+                         "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
+(* CAN PUT WORD PICKER + WORDS TO SCRAMBLE IN MINIGAME FILE *)
+let word_picker lst_of_words = 
+  let index  = Random.int (List.length lst_of_words) in
+  List.nth lst_of_words index 
+
+
 (** [remove_char str index] takes in a string and index value and removes
     a character in order to switch up the ordering of a word. *)
 let remove_char str index =
@@ -40,18 +50,19 @@ let rec scramble_engine word input =
   if String.uppercase_ascii input = String.uppercase_ascii word then "Correct!" 
   else "Wrong!"
 
-let play_minigame word player acc = 
-  scramble_intro word;
-  let input = Gui.type_out_unscrambled () in 
-  if scramble_engine word input = "Wrong!" 
-  then let result = "WRONG! Let's try a different word..." in 
-    Gui.make_graph result Graphics.white;
-    Unix.sleep 1; 
-    player, acc
-  else let result = "Correct! Hurray! You get 3 bucks!" in 
-    Gui.make_graph result Graphics.white;
-    Unix.sleep 1; 
-    (Student.give_money player, acc + 1)
+let play_minigame player acc = 
+  let word =  word_picker words_to_scramble in 
+  (scramble_intro word;
+   let input = Gui.type_out_unscrambled () in 
+   if scramble_engine word input = "Wrong!" 
+   then let result = "WRONG! Let's try a different word..." in 
+     Gui.make_graph result Graphics.white;
+     Unix.sleep 1; 
+     player, acc
+   else let result = "Correct! Hurray! You get 3 bucks!" in 
+     Gui.make_graph result Graphics.white;
+     Unix.sleep 1; 
+     (Student.give_money player, acc + 1))
 
 
 (* (Minigames.scramble_intro word); 
