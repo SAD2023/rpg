@@ -250,6 +250,9 @@ let grad_school_ending = "You're not ready for real life yet. You'll now go to \
 let medicine_ending = "Even though you were a CS major, it looks like you're truly passionate about \
      ~medicine. You decide to take a few gap years to build up your profile before \
      ~applying to medical school."
+let cs_around_world = "Hey it looks like you're graduating pretty popular! You've mastered the \
+     ~fine art of networking and you take this key skill with you as you integrate your CS
+     ~knowledge into the business world. Safe travels!"
 
 
 
@@ -271,6 +274,8 @@ let final_judgement student =
    else if student.gpa > 3.8 && student.social_life < 60.0 && 
            student.morality > 60.0 && student.health > 70.0 
    then Gui.make_final_judgement_graph_addon medicine_ending
+   else if student.social_life > 90 && student.gpa > 3.0
+   then Gui.make_final_judgement_graph_addon cs_around_world
    else if student.gpa < 1.0 
    then Gui.make_final_judgement_graph_addon extra_semester_ending
    else if student.gpa < 2.0 && student.brbs > 60.0 
