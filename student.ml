@@ -250,39 +250,39 @@ let grad_school_ending = "You're not ready for real life yet. You'll now go to \
 let medicine_ending = "Even though you were a CS major, it looks like you're truly passionate about \
      ~medicine. You decide to take a few gap years to build up your profile before \
      ~applying to medical school."
-let 
 
 
 
-  (** [final_judgement student] takes in a student and prints out a string 
-      judging their various final attributes, depending on the actions that they 
-      have taken, and if they are ethical or not. It also determines their future 
-      career. *)
-  let final_judgement student =
-    Gui.make_graph (gui_print_characteristics student) Graphics.red;
-    Gui.make_final_judgement_graph_addon final_judgement_intro;
-    (if student.gpa > 3.7 && student.morality < 30.0 
-     then Gui.make_final_judgement_graph_addon goldman_sachs_ending
-     else if student.gpa > 3.9 && student.social_life < 30.0 
-     then Gui.make_final_judgement_graph_addon google_ending
-     else if student.gpa > 3.99 && student.social_life > 95.0 && 
-             student.morality > 90.0 && student.health > 90.0 
-     then Gui.make_final_judgement_graph_addon impossible_ending
-     else if student.gpa > 3.8 && student.social_life < 60.0 && 
-             student.morality > 60.0 && student.health > 70.0 
-     then Gui.make_final_judgement_graph_addon medicine_ending
-     else if student.gpa < 1.0 
-     then Gui.make_final_judgement_graph_addon extra_semester_ending
-     else if student.gpa < 2.0 && student.brbs > 60.0 
-     then Gui.make_final_judgement_graph_addon data_scientist_ending
-     else if student.gpa < 3.0 && student.social_life > 4.0 
-     then Gui.make_final_judgement_graph_addon english_teacher_ending
-     else if student.brbs = 0.0 && student.gpa < 3.0 
-     then Gui.make_final_judgement_graph_addon pollack_butler_ending
-     else  Gui.make_final_judgement_graph_addon grad_school_ending);
 
-    Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
-    if Graphics.read_key ()='q' then Graphics.close_graph () else ()
+(** [final_judgement student] takes in a student and prints out a string 
+    judging their various final attributes, depending on the actions that they 
+    have taken, and if they are ethical or not. It also determines their future 
+    career. *)
+let final_judgement student =
+  Gui.make_graph (gui_print_characteristics student) Graphics.red;
+  Gui.make_final_judgement_graph_addon final_judgement_intro;
+  (if student.gpa > 3.7 && student.morality < 30.0 
+   then Gui.make_final_judgement_graph_addon goldman_sachs_ending
+   else if student.gpa > 3.9 && student.social_life < 30.0 
+   then Gui.make_final_judgement_graph_addon google_ending
+   else if student.gpa > 3.99 && student.social_life > 95.0 && 
+           student.morality > 90.0 && student.health > 90.0 
+   then Gui.make_final_judgement_graph_addon impossible_ending
+   else if student.gpa > 3.8 && student.social_life < 60.0 && 
+           student.morality > 60.0 && student.health > 70.0 
+   then Gui.make_final_judgement_graph_addon medicine_ending
+   else if student.gpa < 1.0 
+   then Gui.make_final_judgement_graph_addon extra_semester_ending
+   else if student.gpa < 2.0 && student.brbs > 60.0 
+   then Gui.make_final_judgement_graph_addon data_scientist_ending
+   else if student.gpa < 3.0 && student.social_life > 4.0 
+   then Gui.make_final_judgement_graph_addon english_teacher_ending
+   else if student.brbs = 0.0 && student.gpa < 3.0 
+   then Gui.make_final_judgement_graph_addon pollack_butler_ending
+   else  Gui.make_final_judgement_graph_addon grad_school_ending);
+
+  Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
+  if Graphics.read_key ()='q' then Graphics.close_graph () else ()
 
 
 (** [return_decisions student] returns all of the decisions that a student has
