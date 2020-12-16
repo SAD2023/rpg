@@ -403,7 +403,7 @@ let ring_the_bell = make_scenario "Ring the bell"
 let elections  = make_scenario "SA elections" 
     "You get an email notifying you that the student assembly elections are today!\
     ~Are you going to vote?" 
-    ["Vote!"; "What the fuck is a student assembly?"] []
+    ["Vote!"; "What is a student assembly?"] []
 
 let wicc  = make_scenario "Partner Social" 
     "WICC is holding a partner finding social for your cs class. Having a partner\
