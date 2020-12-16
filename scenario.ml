@@ -30,6 +30,7 @@ type scenario = {
   choices: choice list;
   hidden_choices : hidden_choice list;
 }
+
 (** [get_element_out_of_list] exerts the head of a list; if the list 
     is empty, an exception is raised. *)
 let get_element_out_of_list list = 
@@ -44,6 +45,8 @@ let rec tuple_friend_helper tuple_list acc =
   | [] -> acc
   | h :: t -> tuple_friend_helper t (fst h :: acc) 
 
+(**[friend_list_filter_helper name friend] returns whether [friend] has the 
+   name [name] *)
 let friend_list_filter_helper name (friend:Friend.friend) =  
   name <> Friend.get_name friend
 
@@ -87,7 +90,6 @@ let rec match_input_to_choice choices input =
   | [] -> raise (InvalidInput input)
   | h :: t -> if h = input then h else match_input_to_choice t input
 
-
 let starting_scenario = {
   name = "fresh start";
   prompt = "You are about to move into the low rises. Make sure you're ready \
@@ -110,24 +112,19 @@ let rec print_choices choices acc =
     "\n " ^ (List.nth list_of_letters acc) ^ 
     ") " ^ h ^ (print_choices t (acc+1)) 
 
-
-
+(** [return_choices scenario] returns the choices associated with the scenario
+    [scenario] *)
 let return_choices scenario = 
   scenario.choices
 
 (** [print_prompt] prints the prompt pertaining to a given scenario to 
     the terminal. *)
-let print_prompt scenario = (*
-  ANSITerminal.(print_string [blue] (scenario.prompt ^ "\n")); 
-  ANSITerminal.(print_string [yellow] (print_choices scenario.choices 0 ^ "\n"))
-*)
+let print_prompt scenario = 
   Gui.make_graph_scenario scenario.prompt scenario.choices
 
 (**[filter_helper] is a helper function to filter. *)
 let filter_helper a b = 
   String.uppercase_ascii a = String.uppercase_ascii (fst b)
-
-
 
 (** [make_scenario] takes in types name, prompt, choices, and hidden_choices
     and produces a new scenario type. *)
@@ -158,7 +155,6 @@ let no_roommate_and_brad =
     "You see someone (Nicola) and they seem very lost. Do you help them or stay\
     ~with Brad and see if they can find their way by themselves?" 
     ["Help them home"; "Leave without them"] []
-
 
 let first_day = make_scenario "First Day" 
     "It's the first day of classes! Your alarm buzzes  WAAAY too early. Do you\
@@ -718,8 +714,6 @@ let senior_days = make_scenario "senior days"
     ~job after college"
     ["SENIOR DAYS"; "Go for the interview"] []
 
-
-
 let graduation = make_scenario "graduation" 
     "~*Pomp and circumstances plays* \n\n All of your friends are in fancy robes. \
     ~Ed Helms, Bill Nye, and Martha Pollack are speaking. They point to you and \
@@ -754,11 +748,17 @@ let scenario_list = [meet_brad; roommate_and_brad; no_roommate_and_brad;
                      last_day_of_classes; graduation;
                      final_finals; startup]
 
+(** [go_through_unlocks lst name] checks whether any tuples in [lst] contains
+    [name] and if so, returns the second value in the tuple. If not, it raises
+    an error. *)
 let rec go_through_unlocks lst name = 
   match lst with 
   | [] -> raise (InvalidInput name)
   | h :: t -> if fst h = name then (snd h) else (go_through_unlocks t name)
 
+(** [check_prereq scenario] checks whether [scenario] has a prereq. If so,
+    it returns the pre-req, and if not, it returns the tuple ("NOT IN HERE", "") 
+*)
 let check_prereq scenario= 
   let name = scenario.name in 
   if List.mem name Storage.has_prereq 
@@ -785,7 +785,6 @@ let next_scenario decision choices student =
         ( List.filter (fun x -> String.uppercase_ascii x.name = 
                                 String.uppercase_ascii alternative)
             scenario_list)
-
   else raise (InvalidInput decision)
 
 (**Takes a decision and returns a list of consequences in the form 
@@ -809,12 +808,19 @@ let rec tuple_helper attribute tuple_list =
   | [] -> 0.0
   | h :: t -> if fst h = attribute then snd h else tuple_helper attribute t 
 
+(** [closeness_helper decision list student] checks whether any tuples in 
+    [list] have [decision] and if [stident] has the friend in that tuple. If so, 
+    it returns the second value of the tuple. If none of the tuples have it, it 
+    returns ("false", 0) *)
 let rec closeness_helper decision list student= 
   match list with 
   | [] -> ("false", 0)
   | h :: t -> if fst h = decision && Student.see_if_you_have_friend (fst (snd h)) 
                    student then snd h else closeness_helper decision t student
 
+(** [main_closeness_function decision student] update's the student's friend 
+    list based on [decision], increasing or decreasing closeness with certain 
+    friends. *)
 let main_closeness_function decision student = 
   let tuple = closeness_helper decision Storage.friend_closeness_list student in 
   if fst tuple = "false" then student else 
@@ -827,7 +833,6 @@ let main_closeness_function decision student =
     let updated_friend_list 
       = new_friend :: (remove_friend (Friend.get_name friend) friend_list) in 
     Student.update_friend_list_only student updated_friend_list
-
 
 (**Takes a student and a list of consequences in the form [("gpa", 0.2)] and 
    creates a new student instance. *)
@@ -843,7 +848,6 @@ let match_consequences student consequence_list decision =
     (Student.update_student student morality gpa social_life 
        health brbs friend decision) in 
   main_closeness_function decision new_student 
-
 
 (** [change_tuple_helper] returns " increased by "  if the second value in
     a given tuple is positive, else returns " decreased by "  *)
@@ -862,9 +866,6 @@ let print_tuple tuple =
   else
     "Your " ^ fst tuple ^ change_tuple_helper tuple ^ 
     string_of_int (abs (int_of_float (snd tuple))) ^ "!!" 
-(* Prints an int so that there is no situation when it would print
-     out "Your social life changed by 5.!!" with a period and then 
-     exclamation points which looks weird *)
 
 (** [map_print_helper] is a helper function to print_changes which takes
     in a string list and prints out all of the values in the list.*)
@@ -885,6 +886,8 @@ let print_changes decision choices player =
   );
   Unix.sleep 1
 
+(** [update_age scenario_name student] updates the age of [student] depending
+    on what the name of [scenario] is. *)
 let update_age scenario_name student = 
   if scenario_name = "Classes" 
   || scenario_name = "where living" 
@@ -892,5 +895,6 @@ let update_age scenario_name student =
   then Student.update_age student
   else student
 
+(** [return_scenario_name scenario] returns the name of [scenario] *)
 let return_scenario_name scenario = 
   scenario.name

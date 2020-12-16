@@ -47,6 +47,21 @@ exception InvalidInput of choice
     has just moved into the low rises and needs to choose a roommate*)
 val starting_scenario: scenario
 
+(** [meet_brad] is the second scenario in the game. *)
+val meet_brad: scenario
+
+(** [roommate_and_brad] is the third scenario in the game. *)
+val roommate_and_brad: scenario
+
+(** [no_roommate_and_brad] is the alternative third scenario in the game. *)
+val no_roommate_and_brad: scenario
+
+(** [first_day] is the fourth scenario in the game. *)
+val first_day: scenario
+
+(** [clubfest] is the fifth scenario in the game. *)
+val clubfest: scenario
+
 (** [print_prompt scenario] takes in a given scenario (in blue) and prints out
     the prompt and then prints out the choices (in yellow), separated by a new
     line each time *)
@@ -55,7 +70,6 @@ val print_prompt: scenario -> unit
 (** [next_scenario decision] takes in a Student.decision and then prints out
     the next scenario that corresponds to it *)
 val next_scenario: Student.decision -> choices -> Student.student -> scenario
-
 
 (** [return_conseses decision] returns a list of the consequences (changes of 
     a player's attributes) based on the decision they made. If it is the end of
@@ -70,10 +84,8 @@ val return_consequences: Student.decision -> choices -> Student.student ->
 val match_consequences: Student.student -> (string * float) list ->
   Student.decision -> Student.student
 
-
 (** [print_changes decision] takes in a given decision and prints the values
     of the changes to the terminal. *)
-
 val print_changes: Student.decision -> choices -> Student.student -> unit
 
 (**[return_choices scenario] returns the choices of a given scenario *)
@@ -106,3 +118,6 @@ val return_scenario_name: scenario -> string
 (** [remove_friend name friend_list] Takes the name of a friend and a 
     friend_list and removes the friend with the name from the friend_list  *)
 val remove_friend: string -> Friend.friend list -> Friend.friend list
+
+val make_scenario: string -> prompt -> choice list -> hidden_choice list -> 
+  scenario

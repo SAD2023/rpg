@@ -30,15 +30,12 @@ let student_c = Student.make_student "student" 18 4.0 0.0 0.0 0.0 0.0
 let student_d = Student.make_student "student" 18 10.0 3.0 8.0 40.0 10.5 
     [friend_a; friend_b] []
 
-
 let update_student_test name student morality gpa social_life health brbs 
     friends dec expected_output =
   name >:: (fun _ -> assert_equal expected_output 
                (Student.update_student student morality gpa social_life health 
                   brbs friends dec))
-(*~printer: Student.print_characteristics)*)
 
-(**Mohammed, Nicola *)
 let student_tests = [
   update_student_test "Changing one attribute (morality)" student_a 4.0 0.0 0.0 
     0.0 0.0 [] "" student_b;
@@ -47,8 +44,6 @@ let student_tests = [
   update_student_test "Changing lots of attributes" student_c 6.0 3.0 8.0 40.0 
     10.5 [friend_b] "" student_d;
 ]
-
-
 
 let return_consequences_test name decision choices player expected_output  =
   name >:: fun ctxt -> assert_equal (cmp_set_like_lists (expected_output) 
@@ -60,7 +55,14 @@ let return_consequences_error_test name decision choices player expected_output
   name >:: fun ctxt -> assert_raises expected_output (fun () -> 
       (Scenario.return_consequences decision choices player))
 
-(**Sadman, Lirinda *)
+let return_scenario_name_test name scenario expected_output = 
+  name >:: fun ctxt -> assert_equal  (expected_output) 
+      (Scenario.return_scenario_name scenario)
+
+let return_choices_test name scenario expected_output = 
+  name >:: fun ctxt -> assert_equal  (expected_output) 
+      (Scenario.return_choices scenario)
+
 let scenario_tests = [
   return_consequences_test "first choice" "single" ["double"; "single"] 
     student_a [("gpa", 0.2)];
@@ -68,6 +70,41 @@ let scenario_tests = [
   return_consequences_error_test "choice not in choice list" "outside" 
     ["double"; "single"] student_a (InvalidInput "outside");
 
+  return_scenario_name_test "name of starting scenario" 
+    Scenario.starting_scenario "fresh start";
+
+  return_scenario_name_test "name of second scenario" 
+    Scenario.meet_brad "Meet Brad";
+
+  return_scenario_name_test "name of third scenario" 
+    Scenario.roommate_and_brad "Roommate and Brad";
+
+  return_scenario_name_test "name of alternative third scenario" 
+    Scenario.no_roommate_and_brad "No Roommate and Brad";
+
+  return_scenario_name_test "name of fourth scenario" 
+    Scenario.first_day "First Day";
+
+  return_scenario_name_test "name of fifth scenario" 
+    Scenario.clubfest "Clubfest";
+
+  return_choices_test "choices for first scenario" Scenario.starting_scenario
+    ["double"; "single"];
+
+  return_choices_test "choices for second scenario" Scenario.meet_brad
+    ["O Week"; "Stay in"; "Look at textbook"; "test"];
+
+  return_choices_test "choices for third scenario" Scenario.roommate_and_brad
+    ["Help them home"; "Leave without them"];
+
+  return_choices_test "choices for alternative third scenario"
+    Scenario.no_roommate_and_brad ["Help them home"; "Leave without them"];
+
+  return_choices_test "choices for fourth scenario" Scenario.first_day
+    ["Snooze"; "Go to class"];
+
+  return_choices_test "choices for fifth scenario" Scenario.clubfest
+    ["Fun Club"; "Career Club"; "Charity Club"];
 ]
 
 let suite =
