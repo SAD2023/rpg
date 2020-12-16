@@ -185,30 +185,21 @@ let judgement student =
   Gui.make_graph ("AGE: " ^ string_of_int student.age) Graphics.red;
   Gui.make_graph_addon ~color:Graphics.yellow "Hmm... time to judge your character!";
   Gui.make_graph_addon ~color:Graphics.red "First, let's look at your gpa. ";
-  if student.gpa <= 1.5 then Gui.make_graph_addon (get_string_gpa student)
+  if student.gpa <= 1.5 then Gui.make_graph_addon (get_str_bad_gpa student)
   else Gui.make_graph_addon (get_str_good_gpa student);
-
   Gui.make_graph_addon ~color:Graphics.red "Let's see how scummy you are.";
   if student.morality <= 30.0 then Gui.make_graph_addon low_morality_judge 
   else Gui.make_graph_addon high_morality_judge;
-
   Gui.make_graph_addon ~color:Graphics.red "How's that gym membership going?";
   if student.health <= 50.0 then Gui.make_graph_addon low_health_judge
   else Gui.make_graph_addon high_health_judge;
-
   Gui.make_graph_addon ~color:Graphics.red "Let's see how rich your dad is.";
   if student.brbs <= 50.0 then Gui.make_graph_addon (low_brbs_judge student)
   else Gui.make_graph_addon (high_brbs_judge student);
-
   Gui.make_graph_addon ~color:Graphics.red "Got any friends?";
   if student.social_life <= 40.0 then Gui.make_graph_addon low_social_life_judge
   else Gui.make_graph_addon high_social_life_judge
-(* ;
 
-   List.iter 
-   (fun x -> 
-     Gui.make_graph_addon (Friend.get_name x ^ " " ^ string_of_int 
-                            (Friend.get_closeness x) ^ "")) student.friends *)
 
 
 (** The following variables are all potential endings that can print in the GUI
@@ -236,9 +227,6 @@ let extra_semester_ending = "You failed to meet the academic requirements and wi
      ~extra semester. Congrats Van Wilder!\
 
      ~Hint: there's this thing called an academic advisor!"
-let data_scientist_ending = "You barely made it, but hey! You can now work as a 'Data Scientist' at \
-     ~your dad's company (it involves the art of inputting numbers into excel \
-     ~and convincing an entire company to pay you for it)."
 let english_teacher_ending = "You changed your major from CS to communications. You are now a middle \
      ~school English teacher in a room full of screaming children. Enjoy your \
      ~liberal arts degree!"
@@ -247,9 +235,6 @@ let pollack_butler_ending = "Wow. You have no more money left. You got an offer 
      ~Martha Pollack's personal butler."
 let grad_school_ending = "You're not ready for real life yet. You'll now go to \
      ~grad school!"
-let medicine_ending = "Even though you were a CS major, it looks like you're truly passionate about \
-     ~medicine. You decide to take a few gap years to build up your profile before \
-     ~applying to medical school."
 let cs_around_world = "Hey it looks like you're graduating pretty popular! You've mastered the \
      ~fine art of networking and you take this key skill with you as you integrate your CS
      ~knowledge into the business world. Safe travels!"
@@ -271,21 +256,15 @@ let final_judgement student =
    else if student.gpa > 3.99 && student.social_life > 95.0 && 
            student.morality > 90.0 && student.health > 90.0 
    then Gui.make_final_judgement_graph_addon impossible_ending
-   else if student.gpa > 3.8 && student.social_life < 60.0 && 
-           student.morality > 60.0 && student.health > 70.0 
-   then Gui.make_final_judgement_graph_addon medicine_ending
-   else if student.social_life > 90 && student.gpa > 3.0
+   else if student.social_life > 90.0 && student.gpa > 3.0
    then Gui.make_final_judgement_graph_addon cs_around_world
    else if student.gpa < 1.0 
    then Gui.make_final_judgement_graph_addon extra_semester_ending
-   else if student.gpa < 2.0 && student.brbs > 60.0 
-   then Gui.make_final_judgement_graph_addon data_scientist_ending
    else if student.gpa < 3.0 && student.social_life > 4.0 
    then Gui.make_final_judgement_graph_addon english_teacher_ending
    else if student.brbs = 0.0 && student.gpa < 3.0 
    then Gui.make_final_judgement_graph_addon pollack_butler_ending
    else  Gui.make_final_judgement_graph_addon grad_school_ending);
-
   Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
   if Graphics.read_key ()='q' then Graphics.close_graph () else ()
 

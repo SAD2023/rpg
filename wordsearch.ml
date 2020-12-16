@@ -7,7 +7,9 @@ let letters = ['a'; 'b'; 'c'; 'd'; 'e'; 'f'; 'g'; 'h'; 'i'; 'j'; 'k'; 'l';
 
 (** A list of words *)
 let word_lst = ["cookie"; "pizza"; "cake"; "pasta"; "candy"; "donut";
-                "fries"; "oreo"; "cheese"; "apple"; "nugget"; "orange"]
+                "fries"; "oreo"; "cheese"; "apple"; "nugget"; "orange";
+                "stress"; "slope"; "ithaca"; "bagel"; "baker"; "banana";
+                "gorge"]
 
 
 (** [word_picker lst_of_words] picks a random word in a list of words *)
@@ -171,11 +173,12 @@ let main_wordsearch () =
   Graphics.open_graph "";
   Gui.make_graph "" Graphics.red;
   let word = word_picker word_lst in
-  main_wordsearch_engine_helper word;
+  main_wordsearch_engine_helper word
 
-  (* Useful things for copy-pasting into terminal:
-     export DISPLAY=:0
 
-     #load "gui.cmo";;
-     #use "wordsearch.ml";; (IN THAT ORDER)
-  *)
+(* Useful things for copy-pasting into terminal:
+   export DISPLAY=:0
+
+   #load "gui.cmo";;
+   #use "wordsearch.ml";; (IN THAT ORDER)
+*)

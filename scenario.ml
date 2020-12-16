@@ -173,7 +173,7 @@ let clubfest =
 
 let halloween = make_scenario "Halloween" 
     "It's Halloween! You want to go trick-or-treating, but you have a prelim\
-    ~the next morning. Do you…" 
+    ~the next morning. Do you:" 
     ["Go Trick or Treating"; "Study"] []
 
 let club_meeting = make_scenario "Club Meeting" 
@@ -249,9 +249,9 @@ let igloo = make_scenario "Igloo"
     ["Build an igloo"; "Study for prelim"; "Netflix and hot chocolate"] []
 
 let winter_sign  = make_scenario "Winter Sign" 
-    "On your way back to north, you notice a ‘no winter maintenance' sign in\
-    ~front of you. You know it's a tradition to ‘borrow' one of these at least 
-    once while at Cornell." 
+    "On your way back to north, you notice a 'no winter maintenance' sign in\
+    ~front of you. You know it's a tradition to 'borrow' one of these at least\
+    ~once while at Cornell." 
     ["Take the sign"; "Leave it"] []
 
 let winter_sign_fall = make_scenario "Winter Sign Fall" 
@@ -817,7 +817,6 @@ let rec closeness_helper decision list student=
 
 let main_closeness_function decision student = 
   let tuple = closeness_helper decision Storage.friend_closeness_list student in 
-  print_string (fst tuple);
   if fst tuple = "false" then student else 
     let name_of_friend = fst tuple in 
     let friend_list = Student.friend_list_getter student in 

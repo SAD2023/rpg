@@ -5,8 +5,7 @@ open Graphics
 let hangman_words = ["this game sucks"; "cornell"; "peace love and ocaml";
                      "goodbye ocaml programmers"; "stupid ocaml syntax";
                      "let me put this in utop"; "ill let you think about it"; 
-                     "this is 3110"; "jump off a bridge"; 
-                     "send me a screenshot"; "DON'T CROP"]
+                     "this is 3110"; "send me a screenshot"; "DON'T CROP"]
 
 (** [make_list_of_strings phrase] makes a list of each word in the list*)
 let make_list_of_strings phrase = 

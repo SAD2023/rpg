@@ -72,9 +72,6 @@ val initial : string -> student
 val make_student : string -> int -> float -> float -> float -> float -> float 
   -> Friend.friend list -> decision list -> student
 
-(** [print_characteristics] prints out the characteristics (ex: gpa, morality,
-    brbs, health etc) for a given student. *)
-val print_characteristics : student -> unit
 
 (** [update_student student morality gpa social_life health brbs] takes in
     a student and creates a new student with the previous student's attributes

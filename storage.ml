@@ -216,12 +216,11 @@ let decision_consequence_list = [("test", [("gpa", 0.0)]);
                                                              5.0)]);
                                  ("Meh, Black beatles wasn't that good anyway", 
                                   [("morality", -10.0)]);
-                                 ("Fuck me. I need some substances.", [("gpa", 
-                                                                        -0.5); 
-                                                                       ("
-                                                                       health", 
-                                                                        -10.0)
-                                                                      ]);
+                                 ("Fuck me. I need a nap.", [("gpa", 
+                                                              -0.5); 
+                                                             ("health", 
+                                                              -10.0)
+                                                            ]);
                                  ("I'll study super hard and get all A's (really tho?)",
                                   [("gpa", 0.5); ("health", -10.0)]);
                                  ("Head to collegetown", [("social_life", 10.0);
@@ -513,7 +512,7 @@ let decision_scenario_name = [("single", "Meet Brad");
                               ("Give swae his inhaler", "finals sophomore");
                               ("Meh, Black beatles wasn't that good anyway", 
                                "finals sophomore");
-                              ("Fuck me. I need some substances.", 
+                              ("Fuck me. I need a nap.", 
                                "senior week");
                               ("I'll study super hard and get all A's (really tho?)",
                                "senior week");

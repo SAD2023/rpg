@@ -1,19 +1,9 @@
 open Random
 open Gui
 open Student 
-type name = string
-
-type rules = string
-
-type correct_answer
-
-type win = bool
-
-type minigame
 
 open Stdlib
 
-let word_to_scramble = "cornell"
 let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
                          "slope"; "beebeelake"; 
                          "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
