@@ -15,18 +15,18 @@ type closeness = int
     integer from 1 - 100. *)
 type worth = int
 
-(** [make_friend] takes in a string value for the name and integer values
-    for closeness and worth and generates a new friend object with those
+(** [make_friend] takes in a string value for [name] and integer values
+    for [closeness] and [worth] and generates a new [friend] object with those
     attributes. *)
 val make_friend: string -> closeness -> worth -> friend
 
-(** [get_name] is a getter to extract a friend's name. *)
+(** [get_name] returns the name of [friend]. *)
 val get_name: friend -> string
 
-(** [update_friend] takes in a friend, a closeness, and a worth and 
-    updates the previous friend object based on the new closeness and worth 
+(** [update_friend] takes in a [friend], a [closeness_add], and a [worth] and 
+    returns and updated [friend] object based on the new closeness and worth 
     values. *)
 val update_friend: friend -> closeness -> worth -> friend
 
-(** [get_closeness] is a getter to extract a friend's closeness. *)
+(** [get_closeness] returns the closeness of a [friend] *)
 val get_closeness: friend -> closeness
