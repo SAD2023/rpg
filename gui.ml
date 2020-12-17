@@ -48,7 +48,6 @@ let make_graph_addon ?color:(arg1=Graphics.white) word =
   done
 
 let make_graph_addon_no_newline ?color:(arg1=Graphics.white) word = 
-  (* let current_x, current_y = Graphics.current_point () in  *)
   let word_list = String.split_on_char '~' word in 
   for i= 0 to List.length word_list - 1 do
     Graphics.set_color arg1;
@@ -72,7 +71,6 @@ let type_word word =
   Graphics.set_color Graphics.white;
   Graphics.moveto 100 100;
   Graphics.draw_string word
-
 
 let make_graph_scenario prompt choices= 
   set_background ();
@@ -119,7 +117,3 @@ let type_out_choice user_choice =
   Graphics.moveto 130 100;
   Graphics.draw_char (Char.uppercase_ascii user_choice);
   Unix.sleepf (0.5) 
-(* DELETE THIS LATER IF WE DON'T NEED
-    let rec get_string acc = 
-    let status = Graphics.wait_next_event [Graphics.Key_pressed] in 
-    if status.key = '.' then (acc) else get_string (acc ^ (String.make 1 (Graphics.read_key ()))) *)
