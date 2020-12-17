@@ -88,6 +88,60 @@ let check_decisions_test name decision student expected_output =
   name >:: (fun _ -> assert_equal expected_output 
                (Student.check_decisions decision student))
 
+let check_prereq_test name scenario expected_output = 
+  name >:: fun ctxt -> assert_equal (expected_output) 
+      (Scenario.check_prereq scenario)
+
+let go_through_unlocks_test name unlock_list choice expected_output = 
+  name >:: fun ctxt -> assert_equal (expected_output) 
+      (Scenario.go_through_unlocks unlock_list choice)
+
+let go_through_unlocks_error_test name unlock_list choice expected_output = 
+  name >:: fun ctxt -> assert_raises expected_output 
+      (fun () -> (Scenario.go_through_unlocks unlock_list choice)) 
+
+let main_friend_function_test name decision expected_output = 
+  name >:: fun ctxt -> assert_equal (expected_output) 
+      (Scenario.main_friend_function decision)
+
+let roommate_and_brad = 
+  Scenario.make_scenario "Roommate and Brad" 
+    "Your roommate's friend comes with you, but unfortunately needs a little \
+          ~help going home..." 
+    ["Help them home"; "Leave without them"] []
+
+let love = Scenario.make_scenario "love"
+    "Oop, things seem to be getting serious <3. Would you like to make things\
+   ~official with them ?"
+    ["I'm falling for them"; "I have commitment issues"] []
+
+let startup =  Scenario.make_scenario "startup" 
+    "~Your friend Maximillian the III is making a startup as a side hustle. \
+    ~Do you wanna be a part of it? It might take some time out of your semester\
+    ~but it'll definitely look good on your resume."
+    ["Startup"; "Meh. I would only work for Google"] []
+
+let grad_school =  Scenario.make_scenario "grad school" 
+    "~Grad school applications are starting to be due. Would you like to apply \
+    ~to a grad school?"
+    ["Grad school"; "Industry"] []
+
+let wines = Scenario.make_scenario "wines" 
+    "~It is your very last semester at Cornell!! This means that this is your \
+    ~last chance to take any course before you leave. Everyone talks about \
+    ~taking the wine course at Cornell. Shall we raise a glass?" 
+    ["White wine please"; "I don't drink"] [] 
+
+let tower = Scenario.make_scenario "tower" 
+    "~It is basically a tradition to climb all 161 steps to the top of McGraw \
+    ~Tower. Who knows when you'll even happen to be in Ithaca again; plus the \
+    ~views would be amazing. Would you like to climb the tower?" 
+    ["Too many steps"; "Yes views"] [] 
+
+let charlie = Friend.make_friend "Charlie" 5 0
+
+let lirinda = Friend.make_friend "Lirinda" 5 0 
+
 let student_tests = [
   update_student_test "Changing one attribute (morality)" student_a 4.0 0.0 0.0 
     0.0 0.0 [] "" student_b;
@@ -161,6 +215,40 @@ let scenario_tests = [
   return_choices_test "choices for fifth scenario" Scenario.clubfest
     ["Fun Club"; "Career Club"; "Charity Club"];
 
+  check_prereq_test "had prereq" roommate_and_brad 
+    ("double", "No Roommate and Brad");
+
+  check_prereq_test "had prereq 2" love 
+    ("spend it with them", "junior slope day");
+
+  check_prereq_test "had prereq 3" startup 
+    ("career club", "grad school");
+
+  check_prereq_test "no prereq" grad_school ("NOT IN HERE", "");
+
+  check_prereq_test "no prereq 2" wines ("NOT IN HERE", "");
+
+  check_prereq_test "no prereq 3" tower ("NOT IN HERE", "");
+
+  go_through_unlocks_test "Is in list" Storage.unlock_list "love" 
+    ("spend it with them", "junior slope day");
+
+  go_through_unlocks_test "Is in list 2" Storage.unlock_list "Roommate and Brad" 
+    ("double", "No Roommate and Brad");
+
+  go_through_unlocks_error_test "Is not in list" Storage.unlock_list "wines"
+    (InvalidInput "wines");
+
+  go_through_unlocks_error_test "Is not in list" Storage.unlock_list "tower"
+    (InvalidInput "tower");
+
+  main_friend_function_test "Gain friend" "GET THEIR SNAP" [charlie];
+
+  main_friend_function_test "Gain friend 2" "FUN CLUB" [lirinda];
+
+  main_friend_function_test "Don't gain friend" "SINGLE" [];
+
+  main_friend_function_test "Don't gain friend 2" "SNOOZE" [];
 ]
 
 let scrambler_tests = [
@@ -169,6 +257,10 @@ let scrambler_tests = [
   scramble_engine_test "Uppercase Input = Word" "cOrNelL" "cornell" "Correct!";
   scramble_engine_test "Input = Uppercase Word" "cornell" "cOrNelL" "Correct!"
 ]
+
+
+
+
 
 let suite =
   "test suite for BIG RED REDEMPTION!"  >::: List.flatten [
