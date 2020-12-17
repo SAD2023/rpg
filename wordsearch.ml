@@ -73,7 +73,7 @@ let replace_in_lst (lst : 'a list) n value =
       (acc_lst.contents <- (value :: acc_lst.contents);
        acc_counter.contents <- acc_counter.contents + 1)
   done;
-  acc_lst.contents
+  List.rev acc_lst.contents
 
 (** [replace_h init_lst word_lst starting_pos length] returns a new list of
     characters that is an identical copy of the original, but with the chars
@@ -149,31 +149,39 @@ let rec graph_print_nested_lst lst=
   | [] -> ()
   | h :: t -> graph_print_row h; graph_print_nested_lst t
 
-(** [main_wordsearch_engine_helper word] is the main engine for the word search
-    game. It will print out a grid, and   *)
-let rec main_wordsearch_engine_helper word=
+(** [main_wordsearch_engine_helper word grid] is the engine for the word search
+    game. It will print out a grid, and ask the player if they can find the 
+    correct hidden word. If they can find it, then "Congratulations! 
+    You got it!" will appear. Else, "That's not right! Try again" will be 
+    visible and the player will be prompted to find the word again in the same
+    word search game. *)
+let rec main_wordsearch_engine_helper word grid =
   Gui.make_graph
     "Can you find the hidden word in this word search? \
      ~Type your guess and press '.' when you're done.~~"
     Graphics.red ;
-  (if Random.bool () then 
-     graph_print_nested_lst (make_grid_with_word_in_h word)
-   else 
-     (graph_print_nested_lst (make_grid_with_word_in_v word)));
+  graph_print_nested_lst grid;
   Gui.make_graph_addon "Guess a word: ";
   let guess = (Gui.type_out_string Graphics.yellow) in
   (if guess = word then
-     Gui.make_graph_addon "Congratulations! You got it!"
+     (Gui.make_graph_addon "Congratulations! You got it!";
+      Unix.sleep 1)
    else
      (Gui.make_graph_addon "That's not right! Try again";
-      main_wordsearch_engine_helper word))
+      Unix.sleep 1;
+      main_wordsearch_engine_helper word grid))
 
 
 let main_wordsearch () =
   Graphics.open_graph "";
   Gui.make_graph "" Graphics.red;
   let word = word_picker word_lst in
-  main_wordsearch_engine_helper word
+  (if Random.bool () then 
+     (let grid =make_grid_with_word_in_h word in
+      main_wordsearch_engine_helper word grid)
+   else 
+     (let grid = make_grid_with_word_in_v word in
+      main_wordsearch_engine_helper word grid))
 
 
 (* Useful things for copy-pasting into terminal:

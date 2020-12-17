@@ -4,3 +4,8 @@
      word at each turn.
 *)
 val main_hangman: unit -> unit
+
+(** [make_list_of_strings phrase] makes a list with each element a different
+    word in the list*)
+
+val make_list_of_strings: string -> string list

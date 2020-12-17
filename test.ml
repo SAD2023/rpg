@@ -3,7 +3,24 @@ open Scenario
 open Storage
 open Student
 open Friend
+open Hangman
+open Wordsearch
 
+(** [pp_string s] pretty-prints string [s]. *)
+let pp_string s = "\"" ^ s ^ "\""
+
+(** [pp_list pp_elt lst] pretty-prints list [lst], using [pp_elt]
+    to pretty-print each element of [lst]. *)
+let pp_list pp_elt lst =
+  let pp_elts lst =
+    let rec loop n acc = function
+      | [] -> acc
+      | [h] -> acc ^ pp_elt h
+      | h1 :: (h2 :: t as t') ->
+        if n = 100 then acc ^ "..."  (* stop printing long list *)
+        else loop (n + 1) (acc ^ (pp_elt h1) ^ "; ") t'
+    in loop 0 "" lst
+  in "[" ^ pp_elts lst ^ "]"
 
 (** [cmp_set_like_lists lst1 lst2] compares two lists to see whether
     they are equivalent set-like lists.  That means checking two things.
@@ -103,6 +120,29 @@ let go_through_unlocks_error_test name unlock_list choice expected_output =
 let main_friend_function_test name decision expected_output = 
   name >:: fun ctxt -> assert_equal (expected_output) 
       (Scenario.main_friend_function decision)
+
+let make_list_of_strings_test name phrase expected_output =
+  name >:: fun _ -> assert_equal ~cmp:cmp_set_like_lists (expected_output) 
+      ~printer:(pp_list pp_string)
+      (Hangman.make_list_of_strings phrase)
+
+let replace_in_lst_test name lst n value expected_output=
+  name >:: fun _ -> assert_equal
+      (* ~cmp:cmp_set_like_lists  *)
+      (expected_output) 
+      (* ~printer:(pp_list pp_string) *)
+      (Wordsearch.replace_in_lst lst n value)
+let replace_h_test name init_lst word_lst starting_pos length expected_output=
+  name >:: fun _ -> assert_equal
+      (* ~cmp:cmp_set_like_lists  *)
+      (expected_output) 
+      (* ~printer:(pp_list pp_string) *)
+      (Wordsearch.replace_h init_lst word_lst starting_pos length)
+
+let rev_nested_lst_test name lst expected_value =
+  name >:: fun _ -> assert_equal expected_value (Wordsearch.rev_nested_lst lst)
+
+
 
 let roommate_and_brad = 
   Scenario.make_scenario "Roommate and Brad" 
@@ -258,7 +298,30 @@ let scrambler_tests = [
   scramble_engine_test "Input = Uppercase Word" "cornell" "cOrNelL" "Correct!"
 ]
 
+let minigames_tests = [
+  make_list_of_strings_test "One word" "Hello" ["Hello"];
+  make_list_of_strings_test "Two words" "Hello world" ["Hello"; "world"];
+  make_list_of_strings_test "Longer phrase with punctuation" 
+    "Hello world! It's so nice to meet you!!" ["Hello"; "world!"; "It's";
+                                               "so"; "nice"; "to"; "meet"; 
+                                               "you!!"];
+  replace_in_lst_test "One element chars" ['1'] 0 '2' ['2'];
+  replace_in_lst_test "One element ints" [1] 0 2 [2];
+  replace_in_lst_test "Multiple elements strings" ["'0'"; "'1'"; "'2'"; "'3'"] 
+    2 "'b'"   ["'0'"; "'1'"; "'b'"; "'3'"];
+  replace_in_lst_test "Multiple elements nested list ints"
+    [[1; 2]; [2]; [4;5]; [67;1;3;4]] 2 [6] [[1; 2]; [2]; [6]; [67;1;3;4]] ;
+  replace_h_test "one char" ['a'] ['b'] 0 1 ['b'];
+  replace_h_test "whole list" ['d';'o';'g']  ['c';'a'; 't'] 0 3 ['c';'a'; 't'];
+  replace_h_test "starting in a later position" ['a'; 'b'; 'd';'o';'g']
+    ['c';'a'; 't'] 2 3 ['a'; 'b'; 'c';'a'; 't'];
+  replace_h_test "starting in a later position with things on the end"
+    ['a'; 'b'; 'd';'o';'g'; 'c'; 'd'] ['c';'a'; 't']  2 3 
+    ['a'; 'b'; 'c';'a'; 't'; 'c'; 'd'];
+  rev_nested_lst_test "two elements" [[1; 2]; [3; 4]] [[1; 3]; [2; 4]];
+  rev_nested_lst_test "one element" [[1]] [[1]];
 
+]
 
 
 
@@ -267,7 +330,8 @@ let suite =
     student_tests;
     scenario_tests;
     friend_tests;
-    scrambler_tests
+    scrambler_tests;
+    minigames_tests
   ]
 
 let _ = run_test_tt_main suite

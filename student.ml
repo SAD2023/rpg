@@ -223,10 +223,9 @@ let impossible_ending = "Congratulations!! You made it all the way through colle
      ~work at a small non-profit saving kittens and ending world hunger. I \
      ~heard that they're considering you for a Nobel Prize. Woo. Excuse me \
      ~while I go cry with the remaining 2 shards of my dignity."
-let extra_semester_ending = "You failed to meet the academic requirements and will have to stay an \
+let extra_semester_ending = "You failed to meet the academic requirements and will have to stay an\
      ~extra semester. Congrats Van Wilder!\
-
-     ~Hint: there's this thing called an academic advisor!"
+     ~~Hint: there's this thing called an academic advisor!"
 let english_teacher_ending = "You changed your major from CS to communications. You are now a middle \
      ~school English teacher in a room full of screaming children. Enjoy your \
      ~liberal arts degree!"
@@ -265,7 +264,7 @@ let final_judgement student =
    else if student.brbs = 0.0 && student.gpa < 3.0 
    then Gui.make_final_judgement_graph_addon pollack_butler_ending
    else  Gui.make_final_judgement_graph_addon grad_school_ending);
-  Gui.make_final_judgement_graph_addon "Press \"q\" to quit.";
+  Gui.make_final_judgement_graph_addon ~color:Graphics.yellow "Press \"q\" to quit.";
   if Graphics.read_key ()='q' then Graphics.close_graph () else ()
 
 

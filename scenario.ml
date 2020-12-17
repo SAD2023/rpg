@@ -715,7 +715,8 @@ let senior_days = make_scenario "senior days"
     ["SENIOR DAYS"; "Go for the interview"] []
 
 let graduation = make_scenario "graduation" 
-    "~*Pomp and circumstances plays* \n\n All of your friends are in fancy robes. \
+    "*Pomp and circumstances plays*\
+    ~All of your friends are in fancy robes. \
     ~Ed Helms, Bill Nye, and Martha Pollack are speaking. They point to you and \
     ~say 'alumni pls donate money. we r broke' "
     ["Spread your wings and fly"] []
