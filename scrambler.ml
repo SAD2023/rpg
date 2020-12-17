@@ -29,14 +29,13 @@ let rec scramble_word (word : string) (result : string)=
                                                         (String.get word 
                                                            index)))
 
-let scramble_intro word = 
+let scramble_intro word : unit = 
   Gui.make_graph ("Time to test your intellect! Can you unscramble this word? \
   ~Make sure to press '.' when you're done! \
   ~ \
-  ~Your word: " ^  (scramble_word word "") ^ "~ \
-  ~") Graphics.red
+  ~Your word: " ^  (scramble_word word "") ^ "~~") Graphics.red
 
-let rec scramble_engine word input = 
+let scramble_engine word input = 
   if String.uppercase_ascii input = String.uppercase_ascii word then "Correct!" 
   else "Wrong!"
 
@@ -53,16 +52,3 @@ let play_minigame player acc =
      Gui.make_graph result Graphics.white;
      Unix.sleep 1; 
      (Student.give_money player, acc + 1))
-
-
-(* (Minigames.scramble_intro word); 
-                            let input = (Gui.type_out_unscrambled ()) in begin 
-                              if Minigames.scramble_engine word input = 
-                                 "Wrong!" then
-                                (Gui.make_graph "WRONG! Let's try a different word..." Graphics.white;
-                                 Unix.sleep 1;
-                                 play_game player scenario acc) 
-                              else Gui.make_graph "Correct! Hurray! You get 3 bucks!" Graphics.white;
-                              Unix.sleep 1; 
-                              let player = Student.give_money player in 
-                              play_game player scenario (acc+1)  *)

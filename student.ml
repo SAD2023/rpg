@@ -308,7 +308,7 @@ let update_age student=
     gpa = student.gpa;
     social_life = student.social_life;
     health = student.health;
-    brbs = student.brbs +. 3.0;
+    brbs = student.brbs;
     friends = student.friends;
     decision_list = student.decision_list;
   }
