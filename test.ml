@@ -6,6 +6,40 @@ open Friend
 open Hangman
 open Wordsearch
 
+
+(**---------------------------------TEST PLAN------------------------------
+
+   Argument for testing approach
+
+   For the majority of our project, we used interactive play testing. From the
+   very beginning of this assignment, we used 
+
+   - All integrated (piece of a bigger puzzle)
+   - Primarily used terminal and then transitioned to graphics module 
+   - Used the test suite for some smaller parts (lots of text based functions
+     helper functions in minigames (such as those that checked for correctness,
+     case-sensitivity, or list-splicing) or transitions)
+   - Since the majority of functions were printed directly into the terminal (or
+     later the GUI), and were based on user input, it made more sense to test them
+     by integrating them into the program and then interactively play-testing them
+
+
+   Modules tested by OUnit:
+   - Student Glass box testing)
+   - Scenario (Glass box testing)
+   - Friend
+   - Hangman (Individual helper functions w/ black box teating, overall with
+     interactive play testing)
+   - Wordsearch
+   - Scrambler
+
+   MAKE PARAGRAPH SO GOOD TO MAKE ENGLISH PROFESSOR CRY
+
+   Overall, the majority of the functionality was interactively tested. 
+   Additionally, parts that were not specifically tested in the OUnit test suite 
+   were either used directly or indirectly in the interactive testing.
+*)
+
 (** [pp_string s] pretty-prints string [s]. *)
 let pp_string s = "\"" ^ s ^ "\""
 
@@ -36,11 +70,11 @@ let cmp_set_like_lists lst1 lst2 =
   &&
   uniq1 = uniq2
 
-let friend_a = Friend.make_friend "kevin" 5 5
-let friend_a_updated = Friend.make_friend "kevin" 9 5
-let friend_a_updated_worth = Friend.make_friend "kevin" 5 9
-let friend_a_both = Friend.make_friend "kevin" 9 9
-let friend_b = Friend.make_friend "joe" 5 5
+let friend_a = Friend.make_friend "kevin" 5 
+let friend_a_updated = Friend.make_friend "kevin" 9 
+let friend_a_updated_worth = Friend.make_friend "kevin" 5 
+let friend_a_both = Friend.make_friend "kevin" 9 
+let friend_b = Friend.make_friend "joe" 5 
 
 let student_a = Student.make_student "student" 18 0.0 0.0 0.0 0.0 0.0 [] []
 let student_b = Student.make_student "student" 18 4.0 0.0 0.0 0.0 0.0 [] [""]
@@ -75,9 +109,9 @@ let return_choices_test name scenario expected_output =
   name >:: fun ctxt -> assert_equal (expected_output) 
       (Scenario.return_choices scenario)
 
-let update_friend_test name friend closeness worth expected_output =
+let update_friend_test name friend closeness expected_output =
   name >:: fun ctxt -> assert_equal (expected_output) 
-      (Friend.update_friend friend closeness worth)
+      (Friend.update_friend friend closeness )
 
 let give_money_test name student expected_output = 
   name >:: fun ctxt -> assert_equal (expected_output) 
@@ -148,39 +182,39 @@ let roommate_and_brad =
   Scenario.make_scenario "Roommate and Brad" 
     "Your roommate's friend comes with you, but unfortunately needs a little \
           ~help going home..." 
-    ["Help them home"; "Leave without them"] []
+    ["Help them home"; "Leave without them"] 
 
 let love = Scenario.make_scenario "love"
     "Oop, things seem to be getting serious <3. Would you like to make things\
    ~official with them ?"
-    ["I'm falling for them"; "I have commitment issues"] []
+    ["I'm falling for them"; "I have commitment issues"]
 
 let startup =  Scenario.make_scenario "startup" 
     "~Your friend Maximillian the III is making a startup as a side hustle. \
     ~Do you wanna be a part of it? It might take some time out of your semester\
     ~but it'll definitely look good on your resume."
-    ["Startup"; "Meh. I would only work for Google"] []
+    ["Startup"; "Meh. I would only work for Google"]
 
 let grad_school =  Scenario.make_scenario "grad school" 
     "~Grad school applications are starting to be due. Would you like to apply \
     ~to a grad school?"
-    ["Grad school"; "Industry"] []
+    ["Grad school"; "Industry"]
 
 let wines = Scenario.make_scenario "wines" 
     "~It is your very last semester at Cornell!! This means that this is your \
     ~last chance to take any course before you leave. Everyone talks about \
     ~taking the wine course at Cornell. Shall we raise a glass?" 
-    ["White wine please"; "I don't drink"] [] 
+    ["White wine please"; "I don't drink"] 
 
 let tower = Scenario.make_scenario "tower" 
     "~It is basically a tradition to climb all 161 steps to the top of McGraw \
     ~Tower. Who knows when you'll even happen to be in Ithaca again; plus the \
     ~views would be amazing. Would you like to climb the tower?" 
-    ["Too many steps"; "Yes views"] [] 
+    ["Too many steps"; "Yes views"]
 
-let charlie = Friend.make_friend "Charlie" 5 0
+let charlie = Friend.make_friend "Charlie" 5 
 
-let lirinda = Friend.make_friend "Lirinda" 5 0 
+let lirinda = Friend.make_friend "Lirinda" 5 
 
 let student_tests = [
   update_student_test "Changing one attribute (morality)" student_a 4.0 0.0 0.0 
@@ -203,13 +237,10 @@ let student_tests = [
 ]
 
 let friend_tests = [
-  update_friend_test "update closeness only" friend_a 4 0 friend_a_updated;
+  update_friend_test "update closeness only" friend_a 4 friend_a_updated;
 
-  update_friend_test "update worth only" friend_a 0 4 friend_a_updated_worth;
+  update_friend_test "don't update either attribute" friend_a 0 friend_a;
 
-  update_friend_test "don't update either attribute" friend_a 0 0 friend_a;
-
-  update_friend_test "update both closeness and worth" friend_a 4 4 friend_a_both;
 ]
 
 let scenario_tests = [
@@ -241,7 +272,7 @@ let scenario_tests = [
     ["double"; "single"];
 
   return_choices_test "choices for second scenario" Scenario.meet_brad
-    ["O Week"; "Stay in"; "Look at textbook"; "test"];
+    ["O Week"; "Stay in"; "Look at textbook"];
 
   return_choices_test "choices for third scenario" Scenario.roommate_and_brad
     ["Help them home"; "Leave without them"];

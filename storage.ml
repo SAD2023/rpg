@@ -1,7 +1,15 @@
+(** This file includes the various scenarios and choices that the
+    player can make (and their consequences).
+
+    None of this should be exposed to the client!! It is exposed to implementers
+    because it is used in other files. This is why it does not have an mli, and 
+    does not show up on makedocs*)
 open Student
 
+(** [decision_consequence_list] is a list of the various choices and then
+    the various corresponding consequences *)
 let decision_consequence_list = [
-  ("test", [("gpa", 0.0)]);
+  (* ("test", [("gpa", 0.0)]); *)
   ("single", [("gpa", 0.2)]);
   ("double", [("brbs", 5.0); ("social_life", 5.0)]);
   ("o Week", [("social_life", 5.0); ("health", 3.0)]);
@@ -19,7 +27,7 @@ let decision_consequence_list = [
   ("sign up", [("gpa", 0.2); ("social_life", 5.0)]);
   ("nah I'm good", [("gpa", -0.2); ("social_life", -5.0); ("health", -3.0)]);
   ("do the right thing", [("morality", 10.0)]); 
-  ("fuck okies", [("morality", -7.0)]);
+  ("Screw okies", [("morality", -7.0)]);
   ("unmask the bear man", [("morality", 10.0)]);
   ("make a reddit post about it", 
    [("morality", -7.0); ("social_life", -5.0)]);
@@ -127,7 +135,7 @@ let decision_consequence_list = [
   ("Go write some proofs", [("gpa", 0.4); ("social_life", -5.0)]);
   ("Give swae his inhaler", [("morality", 10.0); ("social_life", 5.0)]);
   ("Meh, Black beatles wasn't that good anyway", [("morality", -10.0)]);
-  ("Fuck me. I need a nap.", [("gpa", -0.5); ("health", -10.0)]);
+  ("I need a nap.", [("gpa", -0.5); ("health", -10.0)]);
   ("I'll study super hard and get all A's (really tho?)", 
    [("gpa", 0.5); ("health", -10.0)]);
   ("Head to collegetown", 
@@ -234,9 +242,11 @@ let decision_consequence_list = [
   ("Spread your wings and fly", [("end", 0.0)]);
 ]
 
+(** [decision_scenario_name] is a list of choices and then the corresponding 
+    next scenario *)
 let decision_scenario_name = [
   ("single", "Meet Brad");
-  ("test", "graduation");
+  (* ("test", "graduation"); *)
   ("double", "Meet Brad");
   ("o Week", "Roommate and Brad"); 
   ("o Week", "No Roommate and Brad");
@@ -257,7 +267,7 @@ let decision_scenario_name = [
   ("do the right thing", "investigation");
   ("unmask the bear man", "social event");
   ("make a reddit post about it", "social event");
-  ("fuck okies", "social event");
+  ("Screw okies", "social event");
   ("attend the social", "drop");
   ("binge watch youtube", "drop");
   ("do some pushups", "drop");
@@ -355,7 +365,7 @@ let decision_scenario_name = [
   ("Go write some proofs", "inhaler");                     
   ("Give swae his inhaler", "finals sophomore");
   ("Meh, Black beatles wasn't that good anyway", "finals sophomore");
-  ("Fuck me. I need a nap.", "senior week");
+  ("I need a nap.", "senior week");
   ("I'll study super hard and get all A's (really tho?)", "senior week");
   ("Head to collegetown", "Ta apps");
   ("I have no friends. Stay in the low rises.", "Ta apps");
@@ -456,6 +466,8 @@ let decision_scenario_name = [
   ("Spread your wings and fly", "end")
 ]
 
+(** [scenario_friends_list] is a list of friends that can be gained at certain
+    circumstances *)
 let scenario_friends_list = [
   ("DOUBLE", "Sam");
   ("O WEEK", "Brad");
@@ -468,18 +480,24 @@ let scenario_friends_list = [
   ("GET THEIR SNAP", "Charlie")
 
 ]
+
+(** [has_prereq] is a list of scenarios that need to be unlocked previously *)
 let has_prereq = [
   "Roommate and Brad"; 
   "love";
   "startup";
 ]
 
+(** [unlock_list] is a list of scenarios that need to be unlocked previously,
+    and their special consequences*)
 let unlock_list = 
   [("Roommate and Brad", ("double", "No Roommate and Brad"));
    ("love", ("spend it with them", "junior slope day"));
    ("startup", ("career club", "grad school"));
   ]
 
+(** [friend_closeness_list] is a list of the relative closeness of friends at
+    different choices *)
 let friend_closeness_list = 
   [ ("STAY IN", ("Sam", -5));
     ("O WEEK", ("Sam", 5));

@@ -1,4 +1,4 @@
-MODULES= main print student scenario friend scrambler storage test author gui hangman wordsearch
+MODULES= main student scenario friend scrambler storage test author gui hangman wordsearch
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
 MLIS=$(MODULES:=.mli)
@@ -32,7 +32,7 @@ docs: docs-public docs-private
 	
 docs-public: build
 	mkdir -p doc.public
-	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal \
+	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal\
 		-html -stars -d doc.public $(MLIS)
 
 docs-private: build

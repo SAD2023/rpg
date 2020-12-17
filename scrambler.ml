@@ -4,10 +4,14 @@ open Student
 
 open Stdlib
 
+(** [words_to_scramble] is just a list of words to scramble for the minigame *)
 let words_to_scramble = ["cornell"; "clocktower"; "happydave"; "touchdown"; 
                          "slope"; "beebeelake"; 
                          "chimes"; "uris"; "duffield"; "clarkson"; "OCaml";]
-(* CAN PUT WORD PICKER + WORDS TO SCRAMBLE IN MINIGAME FILE *)
+
+
+(** [word_picker lst_of_words] picks a random word from an given list of words
+*)
 let word_picker lst_of_words = 
   let index  = Random.int (List.length lst_of_words) in
   List.nth lst_of_words index 

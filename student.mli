@@ -1,4 +1,11 @@
-(** The abstract type of values representing the student*)
+(** Representation of the Student (the player) and their various attributes
+
+    This module represents the data stored for a given player, including the
+    qualities GPA, morality, social life, health, brbs, age, and name, as well
+    as containing some functions that judge the student depending on these 
+    various qualities *)
+
+(** [student] is the abstract type of values representing the student*)
 type student
 
 (** The age of the student. Starts at 18, and increments every year. *)

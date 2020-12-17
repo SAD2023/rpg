@@ -1,4 +1,3 @@
-open Print
 open Student
 open Scenario
 open Storage
@@ -9,14 +8,14 @@ open Unix
 open Hangman
 open Wordsearch
 
-
+(**[give_number letter] returns a number that corresponds to a given letter.
+   For instance, "A" corresponds to 0, "B" corresponds to 1 etc... *)
 let give_number letter = 
   if letter = "A" then 0 
   else if letter = "B" then 1 
   else if letter = "C" then 2
   else if letter = "D" then 3 
   else 4
-
 
 
 (** [play_game f] keeps the game playing. *)
@@ -40,6 +39,7 @@ let rec play_game player scenario acc =
          Unix.sleep 2;
          play_game player scenario acc
 
+
 (** [play_minigames player scenario acc] will have the player play a minigame
     every ten scenarios*)
 and play_minigames player scenario acc =
@@ -50,6 +50,7 @@ and play_minigames player scenario acc =
                             play_game player_mini scenario acc_mini); 
   if (acc mod 30) = 19 then main_hangman (); 
   if (acc mod 30) = 29 then main_wordsearch ()
+
 
 and try_statement player choices acc=
   let user_choice = Graphics.read_key () in 
@@ -63,18 +64,10 @@ and try_statement player choices acc=
   Scenario.print_changes decision choices player; 
   play_game player next_scenario (acc+1)
 
-let main () =
-  Graphics.open_graph "";
 
-  Gui.make_graph " \
-    ~Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.." 
-    Graphics.red;
-  Gui.make_graph_addon
-    "~You're about to start your college life! From now on, you make your own";
-  Gui.make_graph_addon
-    "~decisions and your decisions have consequences!";
-  Gui.make_graph_addon
-    "";
+(** [your_qualities ()] prints a description of the different qualities that
+    the player will be jedged for onto the GUI *)
+let your_qualities () : unit =
   Gui.make_graph_addon ~color:Graphics.red
     "~People will judge you on the following qualities: ";
   Gui.make_graph_addon ~color:Graphics.magenta
@@ -86,21 +79,31 @@ let main () =
   Gui.make_graph_addon ~color:Graphics.green
     "~ - BRBS: do you own a canada goose jacket and a gucci belt?";
   Gui.make_graph_addon ~color:Graphics.blue
-    "~ - And most importantly, GPA: your entire self-worth, basically.";
-  Gui.make_graph_addon
-    "";
-  Gui.make_graph_addon
-    "~What's your name kid?";
-  Gui.make_graph_addon
-    "~(Type in your name, make sure to end it with a period ('.'))";
-  Gui.make_graph_addon
-    "~Name: ";
+    "~ - And most importantly, GPA: your entire self-worth, basically."
+
+
+(** [main ()] gives the player a description of the game, including the 
+    qualities that they will be judged for. It then asks them for their name and 
+    then starts the engine to run the rest of the program. *)
+let main () =
+  Graphics.open_graph "";
+  Gui.make_graph " \
+    ~Welcome to BIG RED REDEMPTION! Oh look.. a cs student! .. ew.." 
+    Graphics.red;
+  Gui.make_final_judgement_graph_addon
+    "~You're about to start your college life! From now on, you make your own\
+    ~decisions and your decisions have consequences!~";
+  your_qualities ();
+  Gui.make_final_judgement_graph_addon
+    "~What's your name kid?\
+    ~(Type in your name, make sure to end it with a period ('.') to continue.\
+    ~Note: Don't hit backspace :) )\
+    ~~Name: ";
   Graphics.set_color Graphics.white; 
-
-
   let name = Gui.type_out_string Graphics.yellow in 
   let player = Student.initial (name) in
   play_game player Scenario.starting_scenario 0
+
 
 let () = main ()
 

@@ -1,11 +1,18 @@
-(**This is the abstract type representing different scenarios that the
-   student is confronted with. *)
+(** A representation of scenarios and choices
+
+    This module represents the data for various scenarios, including the text 
+    printed out to the GUI, and the various choices that they can take on a 
+    given scenario. This also holds the mechanics for changing to a different
+    scenario, as well as modifying aspect of the student. *)
+
+
+(**[scenario] This is the abstract type representing different scenarios that 
+   the student is confronted with. *)
 type scenario
 
 (** This is the prompt that shows up when a student is given a certain scenario.
     It is a description of the event taking place. E.g. Brad asks you to hang 
-    out on Saturday.
-*)
+    out on Saturday.*)
 type prompt = string
 
 (** An instance of a choice that a student can take. E.g. You choose to hang
@@ -13,19 +20,10 @@ type prompt = string
 *)
 type choice = string
 
-(** Similar to a normal 'choice' but it is not printed out. It can be accessed
-    by a player if they type it in, but it would not be shown with the prompt *)
-type hidden_choice = choice
-
 (**This is a list of choice instances. Includes all of the choices the player/
    student can take.
 *)
 type choices = choice list
-
-(**This is a list of hidden_choice instances. Includes all of the hidden 
-   choices the player/student can take.
-*)
-type hidden_choices = hidden_choice list
 
 (** This is a list of scenario instances. It includes all of the potential 
     scenarios that may arise from this current scenario. 
@@ -119,5 +117,4 @@ val return_scenario_name: scenario -> string
     friend_list and removes the friend with the name from the friend_list  *)
 val remove_friend: string -> Friend.friend list -> Friend.friend list
 
-val make_scenario: string -> prompt -> choice list -> hidden_choice list -> 
-  scenario
+val make_scenario: string -> prompt -> choice list -> scenario

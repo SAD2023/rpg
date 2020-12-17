@@ -51,8 +51,8 @@ let initial_screen letters_guessed word guesses_left acc =
     "Guess a letter or word and then press '.': "
 
 (**[correct_guesses_left_string guesses_left] is a string that simply states
-   that the player guessed the correct letter, and however many guesses left they
-   have*)
+   that the player guessed the correct letter, and however many guesses left 
+   they have*)
 let correct_guesses_left_string guesses_left =
   "Correct letter!"
 
@@ -71,7 +71,8 @@ let wrong_guesses_left_string guesses_left =
 let rec main_hangman_helper letters_guessed word guesses_left acc=
   if guesses_left = 0 then 
     Gui.make_graph_addon ("You lose :-(, the correct word was: " ^ word) else
-    (Gui.make_graph "Let's play hangman! Can you guess the word?" Graphics.yellow;
+    (Gui.make_graph "Let's play hangman! Can you guess the word?" 
+       Graphics.yellow;
      initial_screen letters_guessed word guesses_left acc);
   let guess = (Gui.type_out_string Graphics.yellow) in let empty = ref "" in
   if String.length guess = 1 then let chara = (String.get guess 0) in
@@ -92,7 +93,7 @@ let rec main_hangman_helper letters_guessed word guesses_left acc=
 
 
 (** [already_guessed_word letters_guessed word guesses_left acc ] if the player
-    has already guessed the letter, then this is the scenario that should follow:
+    has already guessed the letter, then this whould follow:
     "You have already guessed this letter. Try again!" will be printed out, and
     the function will be called again.*)
 and already_guessed_word letters_guessed word guesses_left acc chara empty=
@@ -162,10 +163,3 @@ let main_hangman ()=
   let astrisks = astrisks_maker word in
   main_hangman_helper [] word 10 astrisks;
 
-
-  (* Useful things for copy-pasting into terminal:
-     export DISPLAY=:0
-
-     #load "gui.cmo";;
-     #use "hangman.ml";; (IN THAT ORDER)
-  *)

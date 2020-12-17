@@ -1,8 +1,11 @@
 We will assume you already have OCaml and opam installed.
 
-You do not need to install any other external libraries at this moment.
+You do not need to install any other external libraries at this moment, besides
+the OCaml graphics module using opam. 
 
-Simply download the code. Run make build to compile.
+You might also need to install XMing (Windows) or XQuartz (Macs).
+
+Simply download the code, and run make build to compile.
 
 To play the game:
   - Run make play from the terminal.
