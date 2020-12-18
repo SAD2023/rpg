@@ -62,6 +62,9 @@ let correct_guesses_left_string guesses_left =
 let wrong_guesses_left_string guesses_left =
   "Wrong letter! You have " ^ (string_of_int (guesses_left-1)) ^ " guesses left"
 
+(** [congrats] is a string that should be displayed when the word is guessed
+    correctly in hangman *)
+let congrats = "Congratulations! You guessed the word correctly!"
 
 
 (** [main_hangman_helper letters_guessed word guesses_left acc] recursively asks
@@ -81,14 +84,12 @@ let rec main_hangman_helper letters_guessed word guesses_left acc=
       else if String.contains word chara then 
         let astrisks = (format chara word empty acc) in 
         (if String.contains astrisks '*' = false then 
-           (Gui.make_graph_addon  ~color:Graphics.green
-              "Congratulations! You guessed the word correctly!"; Unix.sleep 1)  
+           (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)  
          else 
            (correct_letter letters_guessed word guesses_left acc chara empty))
       else (wrong_letter letters_guessed word guesses_left acc chara empty)
     end else if guess = word then 
-    (Gui.make_graph_addon  ~color:Graphics.green
-       "Congratulations! You guessed the word correctly!";)
+    (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)
   else (wrong_word letters_guessed word guesses_left acc)
 
 

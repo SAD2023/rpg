@@ -542,7 +542,7 @@ let friend_pack = make_scenario "friend pack"
 (* ====================== JUNIOR SPRING ================================ *)
 
 let all_black = make_scenario "all black"
-    "It's the start of a new semester and you want a lit start. The Alpha \  
+    "It's the start of a new semester and you want a lit start. The Alpha \
    ~house is holding their annual all black party at the Southside Community \
    ~Center. You tryna pull up or nah? " 
     ["We in this"; "Not feeling it"]  
