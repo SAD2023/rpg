@@ -1,7 +1,7 @@
 MODULES= main student scenario friend scrambler storage test author gui hangman wordsearch
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
-MLIS= student.mli scenario.mli friend.mli scrambler.mli author.mli gui.mli hangman.mli wordsearch.mli main.mli
+MLIS=$(MODULES:=.mli)
 TEST=test.byte
 MAIN=main.byte
 OCAMLBUILD=ocamlbuild -use-ocamlfind -pkg graphics
