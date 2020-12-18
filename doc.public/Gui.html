@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Author.html">
+<link rel="next" href="Hangman.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Student" rel="Chapter" href="Student.html">
+<link title="Scenario" rel="Chapter" href="Scenario.html">
+<link title="Friend" rel="Chapter" href="Friend.html">
+<link title="Scrambler" rel="Chapter" href="Scrambler.html">
+<link title="Author" rel="Chapter" href="Author.html">
+<link title="Gui" rel="Chapter" href="Gui.html">
+<link title="Hangman" rel="Chapter" href="Hangman.html">
+<link title="Wordsearch" rel="Chapter" href="Wordsearch.html"><title>Gui</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Author.html" title="Author">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Hangman.html" title="Hangman">Next</a>
+</div>
+<h1>Module <a href="type_Gui.html">Gui</a></h1>
+
+<pre><span id="MODULEGui"><span class="keyword">module</span> Gui</span>: <code class="code">sig</code> <a href="Gui.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p><code class="code">set_background</code> sets up the background of the gui graph by clearing the 
+    existing graph and setting the colors of the background.</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="VALset_background"><span class="keyword">val</span> set_background</span> : <code class="type">unit -> unit</code></pre>
+<pre><span id="VALprint_graph_choices"><span class="keyword">val</span> print_graph_choices</span> : <code class="type">string list -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">print_graph_choices</code> takes in the choice list of a given scenario and 
+    formats them on the gui graph by setting the coordinates and colors of
+    each choice.</p>
+</div>
+</div>
+
+<pre><span id="VALmake_graph"><span class="keyword">val</span> make_graph</span> : <code class="type">string -> Graphics.color -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_graph</code> sets the new gui graph for every input the user makes
+    (for every new scenario, minigame, etc.); resets the coordinates and colors 
+    and inserts the new contents of the graph.</p>
+</div>
+</div>
+
+<pre><span id="VALmake_graph_addon"><span class="keyword">val</span> make_graph_addon</span> : <code class="type">?color:Graphics.color -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_graph_addon</code> takes in a color and a string and inserts the string
+   to the existing gui graph by altering the coordinates.</p>
+</div>
+</div>
+
+<pre><span id="VALmake_graph_addon_no_newline"><span class="keyword">val</span> make_graph_addon_no_newline</span> : <code class="type">?color:Graphics.color -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_graph_addon_no_newline</code></p>
+</div>
+</div>
+
+<pre><span id="VALmake_final_judgement_graph_addon"><span class="keyword">val</span> make_final_judgement_graph_addon</span> : <code class="type">?color:Graphics.color -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_final_judgement_graph_addon</code> takes in a color and a string and 
+   inserts the string to the existing gui graph by altering the coordinates. 
+   This displays the final judgement of the user based on the user's choices.</p>
+</div>
+</div>
+
+<pre><span id="VALtype_word"><span class="keyword">val</span> type_word</span> : <code class="type">string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">type_word</code> takes in a string word, sets the background, text color, and 
+   moves the coordinates to print the string onto the gui display.</p>
+</div>
+</div>
+
+<pre><span id="VALmake_graph_scenario"><span class="keyword">val</span> make_graph_scenario</span> : <code class="type">string -> string list -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_graph_scenario</code> takes in a scenario and the choices list and 
+    displays them on the gui display by resetting the coordinates to display
+    the scenario and choices properly.</p>
+</div>
+</div>
+
+<pre><span id="VALtype_out_string"><span class="keyword">val</span> type_out_string</span> : <code class="type">Graphics.color -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">type_out_string</code> takes in a color and sets the color of the text and 
+    takes in the user's input and updates the contents accordingly.</p>
+</div>
+</div>
+
+<pre><span id="VALtype_out_unscrambled"><span class="keyword">val</span> type_out_unscrambled</span> : <code class="type">unit -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">type_out_unscrambled</code> displays the string "Your Answer: " and has an
+    accumulator value which is updated based on the contents of the user's
+    input.</p>
+</div>
+</div>
+
+<pre><span id="VALtype_out_choice"><span class="keyword">val</span> type_out_choice</span> : <code class="type">char -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">type_out_choice</code> displays the user's answer choice on the screen and 
+    keeps the current screen on for a small while before updating the screen 
+    to the next scenario.</p>
+</div>
+</div>
+</body></html>

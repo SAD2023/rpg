@@ -1,7 +1,7 @@
 MODULES= main student scenario friend scrambler storage test author gui hangman wordsearch
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
-MLIS=$(MODULES:=.mli)
+MLIS= student.mli scenario.mli friend.mli scrambler.mli author.mli gui.mli hangman.mli wordsearch.mli main.mli
 TEST=test.byte
 MAIN=main.byte
 OCAMLBUILD=ocamlbuild -use-ocamlfind -pkg graphics
@@ -32,12 +32,12 @@ docs: docs-public docs-private
 	
 docs-public: build
 	mkdir -p doc.public
-	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal\
+	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal -package graphics\
 		-html -stars -d doc.public $(MLIS)
 
 docs-private: build
 	mkdir -p doc.private
-	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal \
+	ocamlfind ocamldoc -I _build -package yojson,ANSITerminal -package graphics \
 		-html -stars -d doc.private \
 		-inv-merge-ml-mli -m A $(MLIS) $(MLS)
 
