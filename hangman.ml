@@ -73,24 +73,25 @@ let congrats = "Congratulations! You guessed the word correctly!"
     runs out of turns. *)
 let rec main_hangman_helper letters_guessed word guesses_left acc=
   if guesses_left = 0 then 
-    Gui.make_graph_addon ("You lose :-(, the correct word was: " ^ word) else
+    (Gui.make_graph_addon ("You lose :(, the correct word was: " ^ word);
+     Unix.sleepf 0.5) else begin
     (Gui.make_graph "Let's play hangman! Can you guess the word?" 
        Graphics.yellow;
      initial_screen letters_guessed word guesses_left acc);
-  let guess = (Gui.type_out_string Graphics.yellow) in let empty = ref "" in
-  if String.length guess = 1 then let chara = (String.get guess 0) in
-    begin if List.mem chara letters_guessed then
-        (already_guessed_word letters_guessed word guesses_left acc chara empty)
-      else if String.contains word chara then 
-        let astrisks = (format chara word empty acc) in 
-        (if String.contains astrisks '*' = false then 
-           (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)  
-         else 
-           (correct_letter letters_guessed word guesses_left acc chara empty))
-      else (wrong_letter letters_guessed word guesses_left acc chara empty)
-    end else if guess = word then 
-    (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)
-  else (wrong_word letters_guessed word guesses_left acc)
+    let guess = (Gui.type_out_string Graphics.yellow) in let empty = ref "" in
+    if String.length guess = 1 then let chara = (String.get guess 0) in
+      begin if List.mem chara letters_guessed then
+          (already_guessed_word letters_guessed word guesses_left acc chara empty)
+        else if String.contains word chara then 
+          let astrisks = (format chara word empty acc) in 
+          (if String.contains astrisks '*' = false then 
+             (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)  
+           else 
+             (correct_letter letters_guessed word guesses_left acc chara empty))
+        else (wrong_letter letters_guessed word guesses_left acc chara empty)
+      end else if guess = word then 
+      (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)
+    else (wrong_word letters_guessed word guesses_left acc; Unix.sleep 1) end
 
 
 (** [already_guessed_word letters_guessed word guesses_left acc ] if the player

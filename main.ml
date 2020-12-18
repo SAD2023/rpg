@@ -52,6 +52,7 @@ and play_minigames player scenario acc =
   if (acc mod 30) = 29 then main_wordsearch ()
 
 
+
 and try_statement player choices acc=
   let user_choice = Graphics.read_key () in 
   Gui.type_out_choice user_choice;
