@@ -1,7 +1,8 @@
 # rpg
 
 Description:
-  The player is a Cornell student who makes decisions as they go through college life. Their choices affect their GPA, Morality, BRBs, Social Life, and Health. They play minigames throughout as well, demonstrating their talent. Their decisions may also earn them friends! Eventually, they'll receive an unique ending depending on their attributes as their 
+
+The player is a Cornell student who makes decisions as they go through college life. Their choices affect their GPA, Morality, BRBs, Social Life, and Health. They play minigames throughout as well, demonstrating their talent. Their decisions may also earn them friends! Eventually, they'll receive an unique ending depending on their attributes as their 
 senior year wraps up.
 
 
