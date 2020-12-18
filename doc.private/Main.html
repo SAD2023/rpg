@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="next" href="Student.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Main" rel="Chapter" href="Main.html">
+<link title="Student" rel="Chapter" href="Student.html">
+<link title="Scenario" rel="Chapter" href="Scenario.html">
+<link title="Friend" rel="Chapter" href="Friend.html">
+<link title="Scrambler" rel="Chapter" href="Scrambler.html">
+<link title="Author" rel="Chapter" href="Author.html">
+<link title="Gui" rel="Chapter" href="Gui.html">
+<link title="Hangman" rel="Chapter" href="Hangman.html">
+<link title="Wordsearch" rel="Chapter" href="Wordsearch.html">
+<link title="Storage" rel="Chapter" href="Storage.html"><title>Main</title>
+</head>
+<body>
+<div class="navbar">&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Student.html" title="Student">Next</a>
+</div>
+<h1>Module <a href="type_Main.html">Main</a></h1>
+
+<pre><span id="MODULEMain"><span class="keyword">module</span> Main</span>: <code class="code">sig</code> <a href="Main.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>The main entry point for the Big Red Redemption game</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="VALgive_number"><span class="keyword">val</span> give_number</span> : <code class="type">string -> int</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">give_number letter</code> returns a number that corresponds to a given letter.
+   For instance, "A" corresponds to 0, "B" corresponds to 1 etc...</p>
+</div>
+</div>
+
+<pre><span id="VALplay_game"><span class="keyword">val</span> play_game</span> : <code class="type"><a href="Student.html#TYPEstudent">Student.student</a> -> <a href="Scenario.html#TYPEscenario">Scenario.scenario</a> -> int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">play_game f</code> keeps the game playing.</p>
+</div>
+</div>
+
+<pre><span id="VALplay_minigames"><span class="keyword">val</span> play_minigames</span> : <code class="type"><a href="Student.html#TYPEstudent">Student.student</a> -> <a href="Scenario.html#TYPEscenario">Scenario.scenario</a> -> int -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">play_minigames player scenario acc</code> will have the player play a minigame
+    every ten scenarios</p>
+</div>
+</div>
+
+<pre><span id="VALtry_statement"><span class="keyword">val</span> try_statement</span> : <code class="type"><a href="Student.html#TYPEstudent">Student.student</a> -> <a href="Scenario.html#TYPEchoices">Scenario.choices</a> -> int -> unit</code></pre>
+<pre><span id="VALyour_qualities"><span class="keyword">val</span> your_qualities</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">your_qualities ()</code> prints a description of the different qualities that
+    the player will be jedged for onto the GUI</p>
+</div>
+</div>
+
+<pre><span id="VALmain"><span class="keyword">val</span> main</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">main ()</code> gives the player a description of the game, including the 
+    qualities that they will be judged for. It then asks them for their name and 
+    then starts the engine to run the rest of the program.</p>
+</div>
+</div>
+</body></html>

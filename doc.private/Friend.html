@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Scenario.html">
+<link rel="next" href="Scrambler.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Main" rel="Chapter" href="Main.html">
+<link title="Student" rel="Chapter" href="Student.html">
+<link title="Scenario" rel="Chapter" href="Scenario.html">
+<link title="Friend" rel="Chapter" href="Friend.html">
+<link title="Scrambler" rel="Chapter" href="Scrambler.html">
+<link title="Author" rel="Chapter" href="Author.html">
+<link title="Gui" rel="Chapter" href="Gui.html">
+<link title="Hangman" rel="Chapter" href="Hangman.html">
+<link title="Wordsearch" rel="Chapter" href="Wordsearch.html">
+<link title="Storage" rel="Chapter" href="Storage.html"><title>Friend</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Scenario.html" title="Scenario">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Scrambler.html" title="Scrambler">Next</a>
+</div>
+<h1>Module <a href="type_Friend.html">Friend</a></h1>
+
+<pre><span id="MODULEFriend"><span class="keyword">module</span> Friend</span>: <code class="code">sig</code> <a href="Friend.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Representation of a given friend and their various attributes</p>
+
+<p>This module represents the data stored for a given friend of a player, as
+    well as their closeness, and the ability to undate attributes.</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="TYPEcloseness"><span class="keyword">type</span> <code class="type"></code>closeness</span> = <code class="type">int</code> </pre>
+<div class="info ">
+<div class="info-desc">
+<p>On a scale of 1 - 5.
+    After every 10 or so scenarios, the closeness decreases, and the player must
+    spend time with the friend. If the closess gets  to 0, they lose the friend.</p>
+</div>
+</div>
+
+
+<pre><code><span id="TYPEfriend"><span class="keyword">type</span> <code class="type"></code>friend</span> = {</code></pre><table class="typetable">
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfriend.name">name</span>&nbsp;: <code class="type">string</code>;</code></td>
+
+</tr>
+<tr>
+<td align="left" valign="top" >
+<code>&nbsp;&nbsp;</code></td>
+<td align="left" valign="top" >
+<code><span id="TYPEELTfriend.closeness">closeness</span>&nbsp;: <code class="type"><a href="Friend.html#TYPEcloseness">closeness</a></code>;</code></td>
+
+</tr></table>
+<code>}</code>
+
+<div class="info ">
+<div class="info-desc">
+<p><code class="code">friend</code> The player gains friends along their Cornell journey. They can be
+    obtained through classes, social interactions, residential life etc.
+    Each time they gain a friend, the friend is added to their list of friends,
+    and every time they lose a friend, that is removed from the friend list.</p>
+</div>
+</div>
+
+
+<pre><span id="VALmake_friend"><span class="keyword">val</span> make_friend</span> : <code class="type">string -> <a href="Friend.html#TYPEcloseness">closeness</a> -> <a href="Friend.html#TYPEfriend">friend</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_friend</code> takes in a string value for <code class="code">name</code> and integer values
+    for <code class="code">closeness</code> and generates a new <code class="code">friend</code> object with those
+    attributes.</p>
+
+<p><code class="code">make_friend</code> takes in a string value for <code class="code">name</code> and integer values
+    for <code class="code">closeness</code> and <code class="code">worth</code> and generates a new <code class="code">friend</code> object with those
+    attributes.</p>
+</div>
+</div>
+
+<pre><span id="VALget_name"><span class="keyword">val</span> get_name</span> : <code class="type"><a href="Friend.html#TYPEfriend">friend</a> -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">get_name</code> extracts the name of <code class="code">friend</code>.</p>
+
+<p><code class="code">get_name</code> returns the name of <code class="code">friend</code>.</p>
+</div>
+</div>
+
+<pre><span id="VALget_closeness"><span class="keyword">val</span> get_closeness</span> : <code class="type"><a href="Friend.html#TYPEfriend">friend</a> -> <a href="Friend.html#TYPEcloseness">closeness</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">get_closeness</code> is a getter to extract a friend's closeness.</p>
+
+<p><code class="code">get_closeness</code> returns the closeness of a <code class="code">friend</code></p>
+</div>
+</div>
+
+<pre><span id="VALupdate_friend"><span class="keyword">val</span> update_friend</span> : <code class="type"><a href="Friend.html#TYPEfriend">friend</a> -> int -> <a href="Friend.html#TYPEfriend">friend</a></code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">update_friend</code> takes in a <code class="code">friend</code>, a <code class="code">closeness_add</code>, and 
+    returns and updated <code class="code">friend</code> object based on the new closeness and worth 
+    values.</p>
+
+<p><code class="code">update_friend</code> takes in a <code class="code">friend</code>, a <code class="code">closeness_add</code>, and a <code class="code">worth</code> and 
+    returns and updated <code class="code">friend</code> object based on the new closeness and worth 
+    values.</p>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css">
+<meta content="text/html; charset=iso-8859-1" http-equiv="Content-Type">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="Start" href="index.html">
+<link rel="previous" href="Gui.html">
+<link rel="next" href="Wordsearch.html">
+<link rel="Up" href="index.html">
+<link title="Index of types" rel=Appendix href="index_types.html">
+<link title="Index of exceptions" rel=Appendix href="index_exceptions.html">
+<link title="Index of values" rel=Appendix href="index_values.html">
+<link title="Index of modules" rel=Appendix href="index_modules.html">
+<link title="Main" rel="Chapter" href="Main.html">
+<link title="Student" rel="Chapter" href="Student.html">
+<link title="Scenario" rel="Chapter" href="Scenario.html">
+<link title="Friend" rel="Chapter" href="Friend.html">
+<link title="Scrambler" rel="Chapter" href="Scrambler.html">
+<link title="Author" rel="Chapter" href="Author.html">
+<link title="Gui" rel="Chapter" href="Gui.html">
+<link title="Hangman" rel="Chapter" href="Hangman.html">
+<link title="Wordsearch" rel="Chapter" href="Wordsearch.html">
+<link title="Storage" rel="Chapter" href="Storage.html"><title>Hangman</title>
+</head>
+<body>
+<div class="navbar"><a class="pre" href="Gui.html" title="Gui">Previous</a>
+&nbsp;<a class="up" href="index.html" title="Index">Up</a>
+&nbsp;<a class="post" href="Wordsearch.html" title="Wordsearch">Next</a>
+</div>
+<h1>Module <a href="type_Hangman.html">Hangman</a></h1>
+
+<pre><span id="MODULEHangman"><span class="keyword">module</span> Hangman</span>: <code class="code">sig</code> <a href="Hangman.html">..</a> <code class="code">end</code></pre><div class="info module top">
+<div class="info-desc">
+<p>Hangman is a relatively simple minigame that asks the player to find an
+    unknown word or phrase</p>
+
+<p>The player  has 10 lives and each time they guess a character or word 
+    incorrectly, they lose a turn. The player is allowed to guess either a 
+    character or word at each turn.</p>
+</div>
+</div>
+<hr width="100%">
+
+<pre><span id="VALhangman_words"><span class="keyword">val</span> hangman_words</span> : <code class="type">string list</code></pre><div class="info ">
+<div class="info-desc">
+<p>A list of words to guess</p>
+</div>
+</div>
+
+<pre><span id="VALmake_list_of_strings"><span class="keyword">val</span> make_list_of_strings</span> : <code class="type">string -> string list</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">make_list_of_strings phrase</code> makes a list with each element a different
+    word in the list</p>
+</div>
+</div>
+
+<pre><span id="VALformat"><span class="keyword">val</span> format</span> : <code class="type">char -> string -> string Stdlib.ref -> string -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">format char phrase acc so_far</code> takes a word and that word with a number of
+    characters replaced by astrisks. For a given character, if it is a member of
+    the word, then every instance will be replaced by astrisks</p>
+</div>
+</div>
+
+<pre><span id="VALstring_of_char_list"><span class="keyword">val</span> string_of_char_list</span> : <code class="type">char list -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">string_of_char_list lst</code> returns a string of characters in a character
+    list separated by commas</p>
+</div>
+</div>
+
+<pre><span id="VALinitial_screen"><span class="keyword">val</span> initial_screen</span> : <code class="type">char list -> 'a -> int -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">initial_screen letters_guessed word guesses_left acc</code> simply adds on an
+    initial screen that prints out the player's initial statistics</p>
+</div>
+</div>
+
+<pre><span id="VALcorrect_guesses_left_string"><span class="keyword">val</span> correct_guesses_left_string</span> : <code class="type">'a -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">correct_guesses_left_string guesses_left</code> is a string that simply states
+   that the player guessed the correct letter, and however many guesses left 
+   they have</p>
+</div>
+</div>
+
+<pre><span id="VALwrong_guesses_left_string"><span class="keyword">val</span> wrong_guesses_left_string</span> : <code class="type">int -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">wrong_guesses_left_string guesses_left</code> is a string that simply states
+   that the player guessed the incorrect letter, and however many guesses left 
+   they  have</p>
+</div>
+</div>
+
+<pre><span id="VALcongrats"><span class="keyword">val</span> congrats</span> : <code class="type">string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">congrats</code> is a string that should be displayed when the word is guessed
+    correctly in hangman</p>
+</div>
+</div>
+
+<pre><span id="VALmain_hangman_helper"><span class="keyword">val</span> main_hangman_helper</span> : <code class="type">char list -> string -> int -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">main_hangman_helper letters_guessed word guesses_left acc</code> recursively asks
+    the player for input, and then checks if their guess is correct. If not,
+    it will run the engine through again until either it is correct, or they
+    runs out of turns.</p>
+</div>
+</div>
+
+<pre><span id="VALalready_guessed_word"><span class="keyword">val</span> already_guessed_word</span> : <code class="type">char list -> string -> int -> string -> char -> string Stdlib.ref -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">already_guessed_word letters_guessed word guesses_left acc </code> if the player
+    has already guessed the letter, then this whould follow:
+    "You have already guessed this letter. Try again!" will be printed out, and
+    the function will be called again.</p>
+</div>
+</div>
+
+<pre><span id="VALcorrect_letter"><span class="keyword">val</span> correct_letter</span> : <code class="type">char list -> string -> int -> string -> char -> string Stdlib.ref -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">correct_letter_guess letters_guessed word guesses_left acc chara empty</code>
+    if the player guesses a correct letter, then the GUI will print out that
+    they did indeed guess it correctly, and then prompt them to guess another
+    character or word</p>
+</div>
+</div>
+
+<pre><span id="VALwrong_letter"><span class="keyword">val</span> wrong_letter</span> : <code class="type">char list -> string -> int -> string -> char -> string Stdlib.ref -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">wrong_letter letters_guessed word guesses_left acc chara empty</code>
+    if the player guesses an incorrect letter, then the GUI will print out that
+    they did indeed guess it incorrectly, and then prompt them to guess another
+    character or word</p>
+</div>
+</div>
+
+<pre><span id="VALwrong_word"><span class="keyword">val</span> wrong_word</span> : <code class="type">char list -> string -> int -> string -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">wrong_words letters_guessed word guesses_left acc chara empty</code>
+    if the player guesses an incorrect letter, then the GUI will print out that
+    they did indeed guess it incorrectly, and then prompt them to guess another
+    character or word</p>
+</div>
+</div>
+
+<pre><span id="VALword_picker"><span class="keyword">val</span> word_picker</span> : <code class="type">'a list -> 'a</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">word_picker lst_of_words</code> picks a random word in a list of words</p>
+</div>
+</div>
+
+<pre><span id="VALastrisks_maker"><span class="keyword">val</span> astrisks_maker</span> : <code class="type">string -> string</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">astrisks_maker word</code> returns a string with every character in a string 
+    replaced by '*' except for spaces which are left as is.</p>
+</div>
+</div>
+
+<pre><span id="VALmain_hangman"><span class="keyword">val</span> main_hangman</span> : <code class="type">unit -> unit</code></pre><div class="info ">
+<div class="info-desc">
+<p><code class="code">main_hangman ()</code> is the main engine for the hangman minigame. The player 
+    has 10 lives and each time they guess a character or word incorrectly,
+     they lose a turn. The player is allowed to guess either a character or 
+     word at each turn.</p>
+
+<p><code class="code">main_hangman ()</code> is the main engine for the hangman minigame. The player 
+    has 10 lives and each time they guess a character or word incorrectly,
+     they lose a turn. The player is allowed to guess either a character or 
+     word at each turn.</p>
+</div>
+</div>
+</body></html>

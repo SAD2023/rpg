@@ -1,7 +1,7 @@
-MODULES= main student scenario friend scrambler storage test author gui hangman wordsearch
+MODULES= main student scenario friend scrambler storage author gui hangman wordsearch
 OBJECTS=$(MODULES:=.cmo)
 MLS=$(MODULES:=.ml)
-MLIS=$(MODULES:=.mli)
+MLIS=main.mli student.mli scenario.mli friend.mli scrambler.mli author.mli gui.mli hangman.mli wordsearch.mli
 TEST=test.byte
 MAIN=main.byte
 OCAMLBUILD=ocamlbuild -use-ocamlfind -pkg graphics
@@ -17,13 +17,6 @@ test:
 
 play:
 	$(OCAMLBUILD) $(MAIN) && ./$(MAIN)
-
-check:
-	bash checkenv.sh && bash checktypes.sh
-	
-finalcheck: check
-	bash checkzip.sh
-	bash finalcheck.sh
 
 zip:
 	zip game.zip *.ml* *.json _tags Makefile INSTALL.txt LOC.txt
