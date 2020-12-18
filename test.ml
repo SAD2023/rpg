@@ -9,33 +9,53 @@ open Wordsearch
 
 (**---------------------------------TEST PLAN------------------------------
 
-   Argument for testing approach
+   Argument for testing approach:
 
-   For the majority of our project, we used interactive play testing. From the
-   very beginning of this assignment, we used 
+    For the majority of our project, we used interactive play testing. From the
+   very beginning of this assignment, we used test-driven development with a 
+   product that had some start-to-end functionality. When we added on a
+   new feature, we integrated the feature into the rest of the system and then
+   tested the whole system, isolating the new functionality. Each piece is part
+   of a "bigger puzzle", and so we could always see the most recent version of
+   the combined product, and thus always had something that we could show to 
+   the client at a moment's notice. This approach was especially useful when
+   designing a game, because it allowed us not only to build functionality, but
+   also focus on aspects of design and ways to make it more fun along the way. 
+   For the play testing, we primarily used the terminal, and then after MS2, we
+   transitioned to a GUI using OCaml graphics. 
 
-   - All integrated (piece of a bigger puzzle)
-   - Primarily used terminal and then transitioned to graphics module 
-   - Used the test suite for some smaller parts (lots of text based functions
-     helper functions in minigames (such as those that checked for correctness,
-     case-sensitivity, or list-splicing) or transitions)
-   - Since the majority of functions were printed directly into the terminal (or
-     later the GUI), and were based on user input, it made more sense to test them
-     by integrating them into the program and then interactively play-testing them
+     For the test suites that we did include, we tested some smaller parts, such 
+    as text based functions, helper functions in the minigames, or transitions
+    (such as from one scenario to another). Since the majority of functions were
+    printed directly into the terminal (or later the GUI), and were based on
+   -user input, it made more sense to test them by integrating them into
+     the program and then interactively play-testing them
 
 
    Modules tested by OUnit:
-   - Student Glass box testing)
-   - Scenario (Glass box testing)
+
+   We tested the following modules using OUnit:
+   - Student
+   - Scenario
    - Friend
-   - Hangman (Individual helper functions w/ black box teating, overall with
-     interactive play testing)
+   - Hangman 
    - Wordsearch
    - Scrambler
 
-   MAKE PARAGRAPH SO GOOD TO MAKE ENGLISH PROFESSOR CRY
+    We tested the modules that had to do with the main RPG functionality (such
+   as transitioning from one scenario to another or updating a student) with 
+   glass box testing, becasue this allowed us to use more specific corner cases.
+   For such an important aspect of our project, this is incredibly important 
+   because we do not know what the user might try to do! These modules included
+   Student, Scenario, and Friend.
 
-   Overall, the majority of the functionality was interactively tested. 
+    The rest of the modules that we tested corresponded with various minigames,
+   such as Hangman, Wordsearch and Scrambler. We tested various helper functions
+   using black-box testing, and then tested the combined functionality (the 
+   whole minigame all put together) using play testing. We tested these 
+   minigames both in isolation, and then integrated with the rest of the game.
+
+    Overall, the majority of the functionality was interactively tested. 
    Additionally, parts that were not specifically tested in the OUnit test suite 
    were either used directly or indirectly in the interactive testing.
 *)
