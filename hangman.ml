@@ -81,11 +81,11 @@ let rec main_hangman_helper letters_guessed word guesses_left acc=
     let guess = (Gui.type_out_string Graphics.yellow) in let empty = ref "" in
     if String.length guess = 1 then let chara = (String.get guess 0) in
       begin if List.mem chara letters_guessed then
-          (already_guessed_word letters_guessed word guesses_left acc chara empty)
+          (already_guess_word letters_guessed word guesses_left acc chara empty)
         else if String.contains word chara then 
           let astrisks = (format chara word empty acc) in 
           (if String.contains astrisks '*' = false then 
-             (Gui.make_graph_addon  ~color:Graphics.green congrats; Unix.sleep 1)  
+             (Gui.make_graph_addon ~color:Graphics.green congrats; Unix.sleep 1)  
            else 
              (correct_letter letters_guessed word guesses_left acc chara empty))
         else (wrong_letter letters_guessed word guesses_left acc chara empty)
@@ -94,11 +94,11 @@ let rec main_hangman_helper letters_guessed word guesses_left acc=
     else (wrong_word letters_guessed word guesses_left acc; Unix.sleep 1) end
 
 
-(** [already_guessed_word letters_guessed word guesses_left acc ] if the player
+(** [already_guess_word letters_guessed word guesses_left acc ] if the player
     has already guessed the letter, then this whould follow:
     "You have already guessed this letter. Try again!" will be printed out, and
     the function will be called again.*)
-and already_guessed_word letters_guessed word guesses_left acc chara empty=
+and already_guess_word letters_guessed word guesses_left acc chara empty=
   let astrisks = (format chara word empty acc) in
   Gui.make_graph_addon  ~color:Graphics.yellow
     "You have already guessed this letter. Try again!";

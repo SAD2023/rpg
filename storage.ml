@@ -10,6 +10,10 @@ open Student
     the various corresponding consequences *)
 let decision_consequence_list = [
   (* ("test", [("gpa", 0.0)]); *)
+  (** commented out, uncomment this and line 253 and then add "test" to 
+                             line 140 in "scenario.ml" in order to add a 
+                             convenient option that will bring you to the
+                             end screen after the first scenario.!*)
   ("single", [("gpa", 0.2)]);
   ("double", [("brbs", 5.0); ("social_life", 5.0)]);
   ("o Week", [("social_life", 5.0); ("health", 3.0)]);

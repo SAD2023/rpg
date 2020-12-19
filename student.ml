@@ -238,8 +238,8 @@ let cs_around_world = "Hey it looks like you're graduating pretty popular! You'v
      ~fine art of networking and you take this key skill with you as you integrate your CS
      ~knowledge into the business world. Safe travels!"
 
-
-
+(** [quit] is simply a string that says "Press \"q\" to quit." *)
+let quit = "Press \"q\" to quit."
 
 (** [final_judgement student] takes in a student and prints out a string 
     judging their various final attributes, depending on the actions that they 
@@ -264,7 +264,7 @@ let final_judgement student =
    else if student.brbs = 0.0 && student.gpa < 3.0 
    then Gui.make_final_judgement_graph_addon pollack_butler_ending
    else  Gui.make_final_judgement_graph_addon grad_school_ending);
-  Gui.make_final_judgement_graph_addon ~color:Graphics.yellow "Press \"q\" to quit.";
+  Gui.make_final_judgement_graph_addon ~color:Graphics.yellow quit;
   if Graphics.read_key ()='q' then Graphics.close_graph () else ()
 
 

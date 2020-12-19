@@ -249,10 +249,13 @@ let student_tests = [
 
   update_age_test "age should increase by 1" student_a student_age;
 
-  update_friend_list_only_test "two friends" student_a [friend_a; friend_b] student_friends;
+  update_friend_list_only_test "two friends" student_a [friend_a; friend_b]
+    student_friends;
 
-  check_decisions_test "Double in choices" "Double" student_a_check_decisions true;
-  check_decisions_test "single not in choices" "Single" student_a_check_decisions false;
+  check_decisions_test "Double in choices" "Double" student_a_check_decisions 
+    true;
+  check_decisions_test "single not in choices" "Single" 
+    student_a_check_decisions false;
 
 ]
 

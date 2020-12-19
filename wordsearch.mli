@@ -1,7 +1,7 @@
 (** Wordsearch is a relatively simple minigame that asks the player to find a
     word hidden in a grid of random characters
 
-    It will start by printing out a grid, and ask the player if they can find the 
+    It will start by printing out a grid, and ask the player if they can find a 
     correct hidden word. If they can find it, then "Congratulations! 
     You got it!" will appear. Else, "That's not right! Try again" will be 
     visible and the player will be prompted to find the word again in the same
