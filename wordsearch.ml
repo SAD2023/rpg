@@ -67,7 +67,8 @@ let replace_in_lst (lst : 'a list) n value =
   let acc_lst = ref [] in
   while (acc_counter.contents < List.length lst) do
     if acc_counter.contents <> n then
-      (acc_lst.contents <- ((List.nth lst acc_counter.contents) :: acc_lst.contents);
+      (acc_lst.contents <- 
+         ((List.nth lst acc_counter.contents) :: acc_lst.contents);
        acc_counter.contents <- (acc_counter.contents + 1))
     else
       (acc_lst.contents <- (value :: acc_lst.contents);
@@ -78,15 +79,17 @@ let replace_in_lst (lst : 'a list) n value =
 (** [replace_h init_lst word_lst starting_pos length] returns a new list of
     characters that is an identical copy of the original, but with the chars
     in word_lst inserted starting at starting_pos *)
-let rec replace_h (init_lst : char list) (word_lst : char list) starting_pos length =
+let rec replace_h init_lst  word_lst starting_pos length =
   let acc = ref 0 in
   let acc_lst = ref [] in
   while acc.contents < (List.length init_lst) do
     if acc.contents < starting_pos then (
-      acc_lst.contents <- acc_lst.contents @ [(List.nth init_lst acc.contents)];
+      acc_lst.contents <- 
+        acc_lst.contents @ [(List.nth init_lst acc.contents)];
       acc.contents <- acc.contents + 1)
     else if acc.contents > (starting_pos + length -1) then
-      (acc_lst.contents <- acc_lst.contents @ [(List.nth init_lst acc.contents)];
+      (acc_lst.contents <-
+         acc_lst.contents @ [(List.nth init_lst acc.contents)];
        acc.contents <- acc.contents + 1)
     else 
       (acc_lst.contents <-
@@ -184,9 +187,3 @@ let main_wordsearch () =
       main_wordsearch_engine_helper word grid))
 
 
-(* Useful things for copy-pasting into terminal:
-   export DISPLAY=:0
-
-   #load "gui.cmo";;
-   #use "wordsearch.ml";; (IN THAT ORDER)
-*)
